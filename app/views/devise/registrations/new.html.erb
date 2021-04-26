@@ -72,7 +72,7 @@
   <div class="form-group row">
     <%= f.label 'Tipo de usuario:', class: 'col-sm-2' %>
     <div class= "col-sm-4">
-      <%= collection_select(:user, :user_type, UserType.all.order(:typename), :id, :typename) %>
+      <%= collection_select(:user, :user_type_id, UserType.all.order(:typename), :id, :typename) %>
     </div>
   </div>
 
