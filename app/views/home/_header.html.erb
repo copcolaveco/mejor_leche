@@ -1,27 +1,31 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #289672;">
+<nav class="navbar navbar-expand-lg  p-4 navbar-light" style="background-color: #289672;">
   <div class="container-fluid">
-    <%= link_to 'Mejor Leche', root_path, class:"navbar-brand" %>
+    <h5 class="modal-title"><%= link_to 'Mejor Leche', root_path, class:"navbar-brand text-white" %></h5>
+    
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <% if user_signed_in? %>
-          <li class="nav-item">
+          <li class="nav-item mx-2 text-white">
             <%= link_to 'Desconectar', destroy_user_session_path, method: :delete, class:"nav-link" %>
           </li>
-          <li class="nav-item">
+          <li class="nav-item right">
             <%= link_to 'Editar', edit_user_registration_path, class:"nav-link" %>
-          </li>     
+          </li>   
+          <li class="nav-item">
+            <%= link_to 'Ingresar Planilla',  new_payroll_path, class:"nav-link " %>
+          </li>  
         <% else %>
           <li class="nav-item">
             <%= link_to 'Registrarse', new_user_registration_path, class:"nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to 'Iniciar Sesión',  new_user_session_path, class:"nav-link" %>
-          </li>
+            <%= link_to 'Iniciar Sesión',  new_user_session_path, class:"nav-link " %>
+          </li>          
         <% end %>   
       </ul>
     </div>
   </div>
-</nav>
+</nav> 

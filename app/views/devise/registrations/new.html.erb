@@ -1,79 +1,101 @@
-<h2>Sign up</h2>
+<br/>
+<div class="card">
+  <div class="card-header">
+    <h5 class="modal-title text-primary">Registrarse</h5>
+  </div>
+  <div class="card-body">
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+  
+
+  <!-- <div class="field"><br />
+    <%= f.text_field :user_type, autofocus: true, class:"form-control", placeholder:"Productor - Tecnico" %>
+  </div><br/> -->
+
+  <div class="field"><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", placeholder:"Email" %>
+  </div><br/>
 
   <div class="field">
-    <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.password_field :password, autocomplete: "new-password", class:"form-control", placeholder:"Contraseña" %>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  <div class="field"><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control", placeholder:"Confirmar Contraseña" %>
   </div>
 
-  <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username, autofocus: true%>
+  <div class="field"><br/>
+    <%= f.text_field :username, autofocus: true, class:"form-control", placeholder:"Nombre"%>
   </div>
 
-  <div class="field">
-    <%= f.label :dicose %><br />
-    <%= f.text_field :dicose, autofocus: true%>
+  <div class="field"><br />
+    <%= f.text_field :dicose, autofocus: true, class:"form-control", placeholder:"Dicose"%>
   </div>
 
-  <div class="field">
-    <%= f.label :business_name %><br />
-    <%= f.text_field :business_name, autofocus: true%>
+  <div class="field"><br />
+    <%= f.text_field :business_name, autofocus: true, class:"form-control", placeholder:"Nombre de la empresa"%>
   </div>
 
-  <div class="field">
-    <%= f.label :rut %><br />
-    <%= f.text_field :rut, autofocus: true%>
+  <div class="field"><br />
+    <%= f.text_field :rut, autofocus: true, class:"form-control", placeholder:"RUT"%>
   </div>
 
-  <div class="field">
-    <%= f.label :address %><br />
-    <%= f.text_field :address, autofocus: true%>
+  <div class="field"><br />
+    <%= f.text_field :address, autofocus: true, class:"form-control", placeholder:"Direcciòn"%>
   </div>
 
-  <div class="field">
-    <%= f.label :phone_one %><br />
-    <%= f.text_field :phone_one, autofocus: true%>
+  <div class="field"><br />
+    <%= f.text_field :phone_one, autofocus: true, class:"form-control", placeholder:"Telefono"%>
   </div>
 
-  <div class="field">
-    <%= f.label :phone_two %><br />
-    <%= f.text_field :phone_two, autofocus: true%>
+  <div class="field"><br />
+    <%= f.text_field :phone_two, autofocus: true, class:"form-control", placeholder:"Celular"%>
   </div>
 
-  <div class="field">
-    <%= f.label :location %><br />
-    <%= f.text_field :location, autofocus: true%>
+  <div class="field"><br />
+    <%= f.text_field :location, autofocus: true, class:"form-control", placeholder:"Ciudad"%>
   </div>
 
-  <div class="field">
-    <%= f.label :department %><br />
-    <%= f.text_field :department, autofocus: true%>
+  <div class="field"><br />
+    <%= f.text_field :department, autofocus: true, class:"form-control", placeholder:"Departamento"%>
   </div>
 
-  <div class="field">
-    <%= f.label :invoice_postal_code %><br />
-    <%= f.text_field :invoice_postal_code, autofocus: true%>
+  <div class="field"><br />
+    <%= f.text_field :invoice_postal_code, autofocus: true, class:"form-control", placeholder:"Codigo Postal"%>
+  </div><br/>
+
+  <div class="form-group row">
+    <%= f.label 'Tipo de usuario:', class: 'col-sm-2' %>
+    <div class= "col-sm-4">
+      <%= collection_select(:user, :user_type, UserType.all.order(:typename), :id, :typename) %>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+    <div class="actions">
+      <%= f.submit "Registrase", class: 'btn btn-primary'%>
+    </div>
+  <% end %>
 
-<%= render "devise/shared/links" %>
+<!--   <%= render "devise/shared/links" %> -->
+  </div>
+</div>
+
+<div class = "row">
+  <div class = "col-md-2"></div>
+  
+  <div class ="col-xs-12  col-sm-4 col-md-3">
+    <label>region</label>
+    <%= select_tag "region", "<option value="">Seleccione region</option>".html_safe, 
+    class: "form-control" %>
+  </div>
+  <div class ="col-xs-12  col-sm-4 col-md-2">
+    <label>ciudad</label>
+    <%= select_tag "ciudad", "<option value="">Seleccione una ciudad</option>".html_safe, class: "form-control" %>
+  </div>
+  <div class = "col-md-2"></div>
+</div>

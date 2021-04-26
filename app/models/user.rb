@@ -4,6 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+         has_many :payroll
+         belongs_to :user_type
+
   attr_writer :login 
   validate :validate_username
   

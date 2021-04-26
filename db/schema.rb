@@ -10,7 +10,68 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_19_015047) do
+ActiveRecord::Schema.define(version: 2021_04_26_022228) do
+
+  create_table "payrolls", force: :cascade do |t|
+    t.integer "producer"
+    t.string "location"
+    t.integer "user_type"
+    t.integer "technical"
+    t.integer "year"
+    t.string "rodeos_main_breed"
+    t.string "string"
+    t.integer "liter_sent"
+    t.integer "liters_of_milk_not_sent"
+    t.integer "cell_count"
+    t.integer "bacterial_count"
+    t.integer "grease"
+    t.integer "protein"
+    t.integer "urea"
+    t.integer "cryoscopy"
+    t.integer "vm_surface"
+    t.integer "dairy_surface"
+    t.integer "milking_cows"
+    t.integer "dry_cows"
+    t.string "cow_dough"
+    t.integer "suckling_calves"
+    t.integer "conc_protein"
+    t.string "form_of_supply_protein"
+    t.integer "conc_energy"
+    t.string "form_of_supply_energy"
+    t.integer "wet_grain"
+    t.string "form_of_supply_grain"
+    t.integer "henilages"
+    t.string "form_of_supply_henilages"
+    t.integer "silo"
+    t.integer "form_of_supply"
+    t.integer "grams_of_ration_liter"
+    t.integer "mineral_salts"
+    t.integer "grams_of_salt_liter"
+    t.integer "no_grazing_days"
+    t.integer "childbirth_racks"
+    t.integer "calving_heifers"
+    t.integer "discarded_cows"
+    t.integer "cows_served"
+    t.integer "pregnant_cows"
+    t.integer "clinical_mastitis"
+    t.integer "cows_on_detour"
+    t.integer "abortions_seen"
+    t.integer "reproductive_losses"
+    t.integer "cows_with_foot_problems"
+    t.integer "dead_cows"
+    t.integer "rains"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_payrolls_on_user_id"
+  end
+
+  create_table "user_types", force: :cascade do |t|
+    t.string "typename"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "idtype"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -31,8 +92,10 @@ ActiveRecord::Schema.define(version: 2021_04_19_015047) do
     t.string "department", default: "", null: false
     t.string "invoice_postal_code", default: "", null: false
     t.string "username"
+    t.integer "user_type"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["user_type"], name: "index_users_on_user_type"
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
