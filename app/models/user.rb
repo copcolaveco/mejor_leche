@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
          has_many :payroll
          belongs_to :user_type
+         belongs_to :department
 
   attr_writer :login 
   validate :validate_username
