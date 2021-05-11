@@ -9,22 +9,31 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field"><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", placeholder:"Email" %>
+    <%= f.label 'Email' %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", placeholder:"ejemplo@ejemplo.com" %>
   </div><br/>
 
   <div class="field">
+    <%= f.label 'Contraseña' %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <em>(<%= @minimum_password_length %> Caracteres minimos)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password", class:"form-control", placeholder:"Contraseña" %>
+    <%= f.password_field :password, autocomplete: "new-password", class:"form-control", placeholder:"******" %>
   </div>
 
   <div class="field"><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control", placeholder:"Confirmar Contraseña" %>
+    <%= f.label 'Confirmar Contraseña' %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control", placeholder:"******" %>
+  </div>
+
+  <div class="form-group my-3">
+    <%= f.label 'Tipo de Usuario' %>
+    <%= collection_select(:user, :user_type_id, UserType.all.order(:typename), :id, :typename) %>
   </div>
 
   <div class="field"><br/>
-    <%= f.text_field :username, autofocus: true, class:"form-control", placeholder:"Nombre"%>
+    <%= f.label 'Nombre completo' %>
+    <%= f.text_field :username, autofocus: true, class:"form-control"%>
   </div>
 
   <div class="field"><br />
@@ -68,10 +77,7 @@
     <%= f.text_field :invoice_postal_code, autofocus: true, class:"form-control", placeholder:"Codigo Postal"%>
   </div>
 
-  <div class="form-group my-3">
-    <%= f.label 'Tipo de Usuario' %>
-    <%= collection_select(:user, :user_type_id, UserType.all.order(:typename), :id, :typename) %>
-  </div>
+  
 
     <div class="actions">
       <%= f.submit "Registrase", class: 'btn btn-primary'%>

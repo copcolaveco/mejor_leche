@@ -19,6 +19,12 @@
     <%= collection_select(:payroll, :month_id, Month.all.order(:id), :id, :name) %>
   </div>
 
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate">
+    <label class="form-check-label" for="flexCheckIndeterminate">
+      Indeterminate checkbox
+    </label>
+  </div>
 
   <div class="field form-group">
     <%= form.text_field :user_id, id: :payroll_user_id, class:"form-control", value:current_user.id, type:"hidden"%>
