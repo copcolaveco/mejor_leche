@@ -1,4 +1,4 @@
-<h2>Log in</h2>
+<!-- <h2>Log in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
@@ -22,5 +22,38 @@
     <%= f.submit "Log in" %>
   </div>
 <% end %>
+-->
+ 
+ <% if notice %>
+  <div class="alert alert-primary fixed-top" role="alert"><%= notice %></div>
+<% end %>
+<% if alert %>
+  <div class="alert alert-warning fixed-top" role="alert"><%= alert %></div>
+<% end %>
 
-<%= render "devise/shared/links" %>
+<div class="modal-dialog modal-dialog-centered">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title text-primary">Ingresar a Mejor Leche</h5>
+    </div>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="modal-body">
+        <div class="form-group">
+          <%= f.label :login %><br />
+          <%= f.text_field :login, autofocus: true, class: 'form-control' %>
+        </div>
+        <div class="form-group mt-3">
+          <!-- <%= f.label :password %><br /> -->
+          <%= f.label 'Contraseña' %>
+          <%= f.password_field :password, autocomplete: 'off', class: 'form-control' %>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <%= link_to 'Recuperar contraseña', new_password_path(resource_name), class: 'btn btn-secondary' %>
+        <%= f.submit 'Ingresar', class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<!-- <%= render "devise/shared/links" %> -->

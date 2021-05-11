@@ -1,15 +1,38 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+$theme-colors: (
+  'primary': #ef5350,
+  'secondary': #607d8b,
+  'warning': #dc3545,
+  'danger': rgba(244, 67, 54, 0.5),
+  'dark-grey': #A9A9A9,
+  'blue-grey': #D8DAFD,
+  'dark': #000000,
+  'info': rgba(205, 203, 252, 1)
+);
+
+// Custom bootstrap variables must be set or imported *before* bootstrap.
+@import 'bootstrap';
+@import 'font-awesome';
+@import 'reports.scss';
+
+// Number fields
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type='number'] {
+  -moz-appearance: textfield; /* Firefox */
+}
+
+// Textarea
+textarea {
+  resize: none;
+}
+
+// Images
+.img-mdim-50 {
+  max-height: 50px;
+  max-width: 50px;
+}

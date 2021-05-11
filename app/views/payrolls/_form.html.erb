@@ -1,0 +1,282 @@
+<div class="mt-5 container">
+  <%= form_with(model: payroll) do |form| %>
+    <% if payroll.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(payroll.errors.count, "error") %> prohibited this payroll from being saved:</h2>
+
+        <ul>
+          <% payroll.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <h2 class="modal-title">Planilla mensual de datos</h2><br/>
+
+  <div class="form-group my-3">
+    <%= form.label 'Mes' %>
+    <%= collection_select(:payroll, :month_id, Month.all.order(:id), :id, :name) %>
+  </div>
+
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate">
+    <label class="form-check-label" for="flexCheckIndeterminate">
+      Indeterminate checkbox
+    </label>
+  </div>
+
+  <div class="field form-group">
+    <%= form.text_field :user_id, id: :payroll_user_id, class:"form-control", value:current_user.id, type:"hidden"%>
+  </div>
+
+  <% if current_user.user_type_id == 2 %>
+    <div class="field form-group">
+      <%= form.text_field :producer, class:"form-control", value:current_user.id, type:"hidden"%>
+    </div>
+     <!-- Cargar los tecnicos que tenga asignado el productor, en caso de ser tecnico cargar si id -->
+    <div class="field form-group">
+      <%= form.label 'Tecnico' %>
+      <%= form.text_field :technical, id: :payroll_technical, class:"form-control"  %> 
+    </div>
+    <% else %>
+      <!-- Cargar los tecnicos que tenga asignado el productor, en caso de ser tecnico cargar si id -->
+    <div class="field form-group">
+      <%= form.text_field :technical, class:"form-control", value:current_user.id, type:'hidden' %> 
+    </div>
+    <div class="field form-group">
+      <%= form.label 'Productor' %>
+      <%= form.text_field :producer, class:"form-control" %>
+    </div>
+  <% end %>
+
+  <div class="field form-group">
+    <%= form.label 'Ubicación' %>
+    <%= form.text_field :location, id: :payroll_location, class:"form-control"%>
+  </div>
+
+<!-- Aca hay que agregar usertype a los users para que sirva -->  
+  <div class="field form-group">
+    <%= form.text_field :user_type, class:"form-control", value:current_user.user_type_id, type:'hidden' %> 
+  </div>  
+
+  <div class="field form-group">
+    <%= form.label 'Año' %>
+    <%= form.text_field :year, class:"form-control"%> 
+  </div>
+
+  <div class="field form-group">
+    <%= form.label 'Raza principal del rodeo' %>
+    <%= form.text_field :rodeos_main_breed, class:"form-control"%> 
+  </div>
+
+  <div class="field">
+    <%= form.label 'Litros remitidos' %>
+    <%= form.text_field :liter_sent , class:"form-control"%>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Litros leche no remitidos' %>
+    <%= form.text_field :liters_of_milk_not_sent, class:"form-control"%>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Recuento celular (en miles)' %>
+    <%= form.text_field :cell_count, class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Recuento bacteriano (en miles)' %>
+    <%= form.text_field :bacterial_count, class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Grasa %' %>
+    <%= form.text_field :grease, class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Proteína %" %>
+    <%= form.text_field :protein, class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Lactosa %" %>
+    <%= form.text_field :lactose, class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Urea ( mg/dl)' %>
+    <%= form.text_field :urea, class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Crioscopía (° C )' %>
+    <%= form.text_field :cryoscopy, class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Superficie VM (ha)' %>
+    <%= form.text_field :vm_surface, class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Superficie Lechera' %>
+    <%= form.text_field :dairy_surface, class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Vacas en ordeño' %>
+    <%= form.text_field :milking_cows, class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Vacas secas' %>
+    <%= form.text_field :dry_cows, class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Vacas masa' %>
+    <%= form.text_field :cow_dough, class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Terneros lechales' %>
+    <%= form.text_field :suckling_calves, class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Conc. proteico ( kg fresco/VO/día)' %>
+    <%= form.text_field :conc_protein, class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Forma de suministro (seleccionar)' %>
+    <%= form.text_field :form_of_supply_protein, class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Conc. energético ( kg fresco/VO/día)' %>
+    <%= form.text_field :conc_energy, class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Forma de suministro (seleccionar)' %>
+    <%= form.text_field :form_of_supply_energy, class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Grano húmedo ( kg fresco/VO/día)' %>
+    <%= form.text_field :wet_grain, class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Forma de suministro (seleccionar)' %>
+    <%= form.text_field :form_of_supply_grain, class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Henilajes ( kg fresco/VO/día)' %>
+    <%= form.text_field :henilages, class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Forma de suministro (seleccionar)' %>
+    <%= form.text_field :form_of_supply_henilages, class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Silo  ( kg fresco/VO/día)' %>
+    <%= form.text_field :silo, class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Forma de suministro (seleccionar)' %>
+    <%= form.text_field :form_of_supply, class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Gramos de ración / litro' %>
+    <%= form.text_field :grams_of_ration_liter, class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Sales minerales (g/vo/día)' %>
+    <%= form.text_field :mineral_salts, class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Gramos de sal/ litroDias de NO pastoreo (opcional)' %>
+    <%= form.text_field :grams_of_salt_liter, class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Dias de NO pastoreo (opcional)' %>
+    <%= form.text_field :no_grazing_days, class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Partos vacas' %>
+    <%= form.text_field :childbirth_racks, class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Partos vaquillonas' %>
+    <%= form.text_field :calving_heifers, class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Vacas descartadas' %>
+    <%= form.text_field :discarded_cows, class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Vacas servidas (opcional)' %>
+    <%= form.text_field :cows_served, class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Vacas preñadas (opcional)' %>
+    <%= form.text_field :pregnant_cows, class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Mastitis clínica' %>
+    <%= form.text_field :clinical_mastitis, class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Vacas en desvío' %>
+    <%= form.text_field :cows_on_detour, class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Abortos vistos' %>
+    <%= form.text_field :abortions_seen, class:"form-control" %>
+  </div>
+
+  <div class="Perdidas Reproductivas (opcional)">
+    <%= form.label :reproductive_losses %>
+    <%= form.text_field :reproductive_losses, class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Vacas con problemas podales' %>
+    <%= form.text_field :cows_with_foot_problems, class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Vacas muertas' %>
+    <%= form.text_field :dead_cows, class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Lluvias  (mm)' %>
+    <%= form.number_field :rains, class:"form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+</div>
