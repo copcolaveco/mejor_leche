@@ -1,1 +1,12 @@
-<h1>Proyecto Mejor Leche, devise</h1>	
+<div class="mt-5 container">
+	<section>
+	<% if current_user %>
+		<h3>Bienvenido <%= current_user.username %></h3>
+	<% else %>
+		<h3>Ingrese a Mejor Leche</h3>
+	<% end %>	
+	</section>
+		
+</div>
+
+

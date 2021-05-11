@@ -1,0 +1,99 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  producer: 
+  location: 
+  user_type: 
+  technical: 
+  year: 
+  rodeos_main_breed: MyString
+  string,: MyString
+  liter_sent: 
+  liters_of_milk_not_sent: 
+  cell_count: 
+  bacterial_count: 
+  grease: 
+  protein: 
+  urea: 
+  cryoscopy: 
+  vm_surface: 
+  dairy_surface: 
+  milking_cows: 
+  dry_cows: 
+  cow_dough: 
+  suckling_calves: 
+  conc_protein: 
+  form_of_supply_protein: 
+  conc_energy: 
+  form_of_supply_energy: 
+  wet_grain: 
+  form_of_supply_grain: 
+  henilages: 
+  form_of_supply_henilages: 
+  silo: 
+  form_of_supply: 
+  grams_of_ration_liter: 
+  mineral_salts: 
+  grams_of_salt_liter: 
+  no_grazing_days: 
+  childbirth_racks: 
+  calving_heifers: 
+  discarded_cows: 
+  cows_served: 
+  pregnant_cows: 
+  clinical_mastitis: 
+  cows_on_detour: 
+  abortions_seen: 
+  reproductive_losses: 
+  cows_with_foot_problems: 
+  dead_cows: 
+  rains: 1
+
+two:
+  producer: 
+  location: 
+  user_type: 
+  technical: 
+  year: 
+  rodeos_main_breed: MyString
+  string,: MyString
+  liter_sent: 
+  liters_of_milk_not_sent: 
+  cell_count: 
+  bacterial_count: 
+  grease: 
+  protein: 
+  urea: 
+  cryoscopy: 
+  vm_surface: 
+  dairy_surface: 
+  milking_cows: 
+  dry_cows: 
+  cow_dough: 
+  suckling_calves: 
+  conc_protein: 
+  form_of_supply_protein: 
+  conc_energy: 
+  form_of_supply_energy: 
+  wet_grain: 
+  form_of_supply_grain: 
+  henilages: 
+  form_of_supply_henilages: 
+  silo: 
+  form_of_supply: 
+  grams_of_ration_liter: 
+  mineral_salts: 
+  grams_of_salt_liter: 
+  no_grazing_days: 
+  childbirth_racks: 
+  calving_heifers: 
+  discarded_cows: 
+  cows_served: 
+  pregnant_cows: 
+  clinical_mastitis: 
+  cows_on_detour: 
+  abortions_seen: 
+  reproductive_losses: 
+  cows_with_foot_problems: 
+  dead_cows: 
+  rains: 1
