@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_02_200334) do
+ActiveRecord::Schema.define(version: 2021_05_13_124151) do
 
   create_table "departments", force: :cascade do |t|
     t.string "name"
@@ -84,7 +84,6 @@ ActiveRecord::Schema.define(version: 2021_05_02_200334) do
     t.string "typename"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "idtype"
   end
 
   create_table "users", force: :cascade do |t|
@@ -106,13 +105,11 @@ ActiveRecord::Schema.define(version: 2021_05_02_200334) do
     t.string "department", default: "", null: false
     t.string "invoice_postal_code", default: "", null: false
     t.string "username"
-    t.integer "user_type"
     t.integer "user_type_id"
     t.integer "department_id"
     t.index ["department_id"], name: "index_users_on_department_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["user_type"], name: "index_users_on_user_type"
     t.index ["user_type_id"], name: "index_users_on_user_type_id"
     t.index ["username"], name: "index_users_on_username", unique: true
   end
