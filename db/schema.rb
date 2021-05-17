@@ -10,7 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_13_124151) do
+ActiveRecord::Schema.define(version: 2021_05_17_150750) do
+
+  create_table "active_admin_comments", force: :cascade do |t|
+    t.string "namespace"
+    t.text "body"
+    t.string "resource_type"
+    t.integer "resource_id"
+    t.string "author_type"
+    t.integer "author_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author"
+    t.index ["namespace"], name: "index_active_admin_comments_on_namespace"
+    t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource"
+  end
+
+  create_table "admin_users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_admin_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  end
 
   create_table "departments", force: :cascade do |t|
     t.string "name"
@@ -80,6 +106,34 @@ ActiveRecord::Schema.define(version: 2021_05_13_124151) do
     t.index ["user_id"], name: "index_payrolls_on_user_id"
   end
 
+  create_table "secondary_user_types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_type_id"
+    t.index ["user_type_id"], name: "index_secondary_user_types_on_user_type_id"
+  end
+
+  create_table "sub_type_user_productors", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "sub_type_user_tecnicos", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "sub_user_types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_type_id"
+    t.index ["user_type_id"], name: "index_sub_user_types_on_user_type_id"
+  end
+
   create_table "user_types", force: :cascade do |t|
     t.string "typename"
     t.datetime "created_at", precision: 6, null: false
@@ -94,7 +148,6 @@ ActiveRecord::Schema.define(version: 2021_05_13_124151) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "dicose", default: "", null: false
     t.string "business_name", default: "", null: false
     t.string "rut", default: "", null: false
     t.string "address", default: "", null: false
@@ -102,14 +155,15 @@ ActiveRecord::Schema.define(version: 2021_05_13_124151) do
     t.string "phone_one", default: "", null: false
     t.string "phone_two", default: "", null: false
     t.string "location", default: "", null: false
-    t.string "department", default: "", null: false
     t.string "invoice_postal_code", default: "", null: false
     t.string "username"
     t.integer "user_type_id"
     t.integer "department_id"
+    t.integer "sub_user_type_id"
     t.index ["department_id"], name: "index_users_on_department_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["sub_user_type_id"], name: "index_users_on_sub_user_type_id"
     t.index ["user_type_id"], name: "index_users_on_user_type_id"
     t.index ["username"], name: "index_users_on_username", unique: true
   end

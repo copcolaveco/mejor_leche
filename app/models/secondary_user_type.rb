@@ -1,0 +1,2 @@
+class SecondaryUserType < ApplicationRecord
+end

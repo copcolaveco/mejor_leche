@@ -31,13 +31,14 @@
     <%= collection_select(:user, :user_type_id, UserType.all.order(:typename), :id, :typename) %>
   </div>
 
+  <div class="form-group my-3">
+    <%= f.label 'Tipo de Usuario' %>
+    <%= collection_select(:user, :user_type_id, SecondaryUserType.all.order(:name), :id, :name) %>
+  </div>
+
   <div class="field"><br/>
     <%= f.label 'Nombre completo' %>
     <%= f.text_field :username, autofocus: true, class:"form-control"%>
-  </div>
-
-  <div class="field"><br />
-    <%= f.text_field :dicose, autofocus: true, class:"form-control", placeholder:"Dicose"%>
   </div>
 
   <div class="field"><br />
