@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_17_150750) do
+ActiveRecord::Schema.define(version: 2021_05_17_153304) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -157,14 +157,12 @@ ActiveRecord::Schema.define(version: 2021_05_17_150750) do
     t.string "location", default: "", null: false
     t.string "invoice_postal_code", default: "", null: false
     t.string "username"
-    t.integer "user_type_id"
     t.integer "department_id"
-    t.integer "sub_user_type_id"
+    t.integer "secondary_user_types_id"
     t.index ["department_id"], name: "index_users_on_department_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["sub_user_type_id"], name: "index_users_on_sub_user_type_id"
-    t.index ["user_type_id"], name: "index_users_on_user_type_id"
+    t.index ["secondary_user_types_id"], name: "index_users_on_secondary_user_types_id"
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 

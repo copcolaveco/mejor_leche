@@ -1,15 +1,16 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
          has_many :payroll
-         belongs_to :user_type
+         belongs_to :secondary_user_type, optional: true
          belongs_to :department
 
   attr_writer :login 
   validate :validate_username
+  accepts_nested_attributes_for :secondary_user_type
+   # validates :body, presence: true
   
   def login
   	@login || username || email

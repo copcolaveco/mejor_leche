@@ -16,15 +16,6 @@
         <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
       <% end %>
 
-      <!-- <div class="field">
-        <%= f.label :password %> <i>(déjelo en blanco si no quiere cambiarlo)</i><br />
-        <%= f.password_field :password, autocomplete: "new-password" %>
-        <% if @minimum_password_length %>
-          <br />
-          <em><%= @minimum_password_length %> characters minimum</em>
-        <% end %>
-      </div> -->
-
       <div class="field">
         <% f.label :password %><i>(déjelo en blanco si no quiere cambiarlo)</i><br />
         <%= f.password_field :password, autofocus: true, autocomplete: "password", class:"form-control", placeholder:"Contraseña" %>
@@ -49,71 +40,55 @@
       </div><br/>
 
       <div class="field">
-        <%= f.label :dicose %><br />
-        <%= f.text_field :dicose, autocomplete: "dicose", class:"form-control"%>
-      </div><br/>
-
-
-      <div class="field">
         <%= f.label "Nombre de la empresa" %><br />
         <%= f.text_field :business_name, autocomplete: "business_name", class:"form-control"%>
       </div><br/>
-
 
       <div class="field">
         <%= f.label :rut %><br />
         <%= f.text_field :rut, autocomplete: "rut", class:"form-control"%>
       </div><br/>
 
-
       <div class="field">
         <%= f.label "Direcciòn" %><br />
         <%= f.text_field :address, autocomplete: "address", class:"form-control"%>
       </div><br/>
-
 
       <div class="field">
         <%= f.label "Telefono de linea" %><br />
         <%= f.text_field :phone_one, autocomplete: "phone_one", class:"form-control"%>
       </div><br/>
 
-
       <div class="field">
         <%= f.label "Celular" %><br />
         <%= f.text_field :phone_two, autocomplete: "phone_two", class:"form-control"%>
       </div><br/>
-
 
       <div class="field">
         <%= f.label "Ciudad" %><br />
         <%= f.text_field :location, autocomplete: "location", class:"form-control"%>
       </div><br/>
 
-
       <div class="field">
         <%= f.label "Departamento" %><br />
         <%= f.text_field :department_id, autocomplete: "department", class:"form-control"%>
       </div><br/>
-
 
       <div class="field">
         <%= f.label "Codigo postal" %><br />
         <%= f.text_field :invoice_postal_code, autocomplete: "invoice_postal_code", class:"form-control"%>
       </div><br/>
 
-
       <div class="field">
         <%= f.label "Tipo de usuario" %><br />
-        <%= f.text_field :user_type_id, autofocus: true, autocomplete: "user_type_id", class:"form-control"%>
+        <%= f.text_field :secondary_user_types_id, autofocus: true, autocomplete: "user_type_id", class:"form-control"%>
       </div><br/>
-
 
       <div class="actions">
         <%= f.submit "Editar", class:"btn btn-primary" %>
         <%= link_to "Atras", :back , class:"btn btn-dark"%>
       </div>
     <% end %><br/>
-
 
     <h3>Cancelar mi cuenta?</h3>
 
