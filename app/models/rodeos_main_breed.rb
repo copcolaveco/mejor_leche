@@ -1,0 +1,2 @@
+class RodeosMainBreed < ApplicationRecord
+end

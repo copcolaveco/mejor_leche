@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_17_153304) do
+ActiveRecord::Schema.define(version: 2021_05_21_122246) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -44,18 +44,11 @@ ActiveRecord::Schema.define(version: 2021_05_17_153304) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "months", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "payrolls", force: :cascade do |t|
     t.integer "producer"
     t.string "location"
     t.integer "user_type"
     t.integer "technical"
-    t.integer "year"
     t.string "rodeos_main_breed"
     t.integer "liter_sent"
     t.integer "liters_of_milk_not_sent"
@@ -100,10 +93,16 @@ ActiveRecord::Schema.define(version: 2021_05_17_153304) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
-    t.integer "month_id"
     t.string "lactose"
-    t.index ["month_id"], name: "index_payrolls_on_month_id"
+    t.datetime "saved_date"
     t.index ["user_id"], name: "index_payrolls_on_user_id"
+  end
+
+  create_table "rodeos_main_breeds", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "secondary_user_types", force: :cascade do |t|
@@ -112,26 +111,6 @@ ActiveRecord::Schema.define(version: 2021_05_17_153304) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_type_id"
     t.index ["user_type_id"], name: "index_secondary_user_types_on_user_type_id"
-  end
-
-  create_table "sub_type_user_productors", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "sub_type_user_tecnicos", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "sub_user_types", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_type_id"
-    t.index ["user_type_id"], name: "index_sub_user_types_on_user_type_id"
   end
 
   create_table "user_types", force: :cascade do |t|
@@ -159,6 +138,9 @@ ActiveRecord::Schema.define(version: 2021_05_17_153304) do
     t.string "username"
     t.integer "department_id"
     t.integer "secondary_user_types_id"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
     t.index ["department_id"], name: "index_users_on_department_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
