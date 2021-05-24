@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :estates
   resources :payrolls
   devise_for :users, controllers: { sessions: 'users/sessions' }
   # get 'home/index'

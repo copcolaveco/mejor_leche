@@ -4,6 +4,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
          has_many :payroll
+         has_many :estates
          belongs_to :secondary_user_type, optional: true
          belongs_to :department
 
