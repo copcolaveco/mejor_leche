@@ -1,5 +1,5 @@
 class EstatesController < ApplicationController
-  before_action :set_estate, only: %i[ show edit update destroy ]
+  before_action :set_estate, only: [ :show ,:edit ,:update ,:destroy ]
 
   # GET /estates or /estates.json
   def index
@@ -56,6 +56,10 @@ class EstatesController < ApplicationController
     end
   end
 
+  def from_user
+    @user = User.find(params[:user_id])
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_estate
@@ -66,4 +70,8 @@ class EstatesController < ApplicationController
     def estate_params
       params.require(:estate).permit(:name, :dicose, :user_id)
     end
+
+    def search_params
+    params.require(:estate).permit(:user_id)
+  end
 end

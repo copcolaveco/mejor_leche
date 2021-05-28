@@ -1,3 +1,5 @@
 class Estate < ApplicationRecord
-	belongs_to :User
+	belongs_to :user,  optional: true
+	has_many :payroll
+
 end

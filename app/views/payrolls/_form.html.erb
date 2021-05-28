@@ -15,6 +15,10 @@
     <h2 class="modal-title">Planilla mensual de datos</h2><br/>
 
   <div class="field form-group">
+    <%= collection_select(:payroll, :estate_id, Estate.all.order(:name), :id, :name) %>
+  </div>
+
+  <div class="field form-group">
     <%= form.text_field :user_id, class:"form-control", value:current_user.id, type:"hidden"%>
   </div>
 
