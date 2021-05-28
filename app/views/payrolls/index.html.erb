@@ -1,17 +1,15 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p> -->
 
-<h1>Payrolls</h1>
+<br/>
+<h1>Planillas Menuslaes</h1>
 
-<table>
-  <thead>
+<table class="table table table-hover table table-bordered">
+  <thead class="table-dark">
     <tr>
-      <th>Producer</th>
-      <th>Location</th>
-      <th>User type</th>
-      <th>Technical</th>
-      <th>Year</th>
+      <th>Predio:</th>
+       <th>Fecha:</th>
+      <!--<th>Technical</th>
       <th>Rodeos main breed</th>
-      <th>String,</th>
       <th>Liter sent</th>
       <th>Liters of milk not sent</th>
       <th>Cell count</th>
@@ -51,7 +49,7 @@
       <th>Reproductive losses</th>
       <th>Cows with foot problems</th>
       <th>Dead cows</th>
-      <th>Rains</th>
+      <th>Rains</th> -->
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -59,13 +57,10 @@
   <tbody>
     <% @payrolls.each do |payroll| %>
       <tr>
-        <td><%= payroll.producer %></td>
-        <td><%= payroll.location %></td>
-        <td><%= payroll.user_type %></td>
-        <td><%= payroll.technical %></td>
-        <td><%= payroll.year %></td>
+        <td><%= payroll.estate_id %></td>
+        <td><%= payroll.saved_date %></td>
+        <!-- <td><%= payroll.technical %></td>
         <td><%= payroll.rodeos_main_breed %></td>
-        <td><%= payroll.string, %></td>
         <td><%= payroll.liter_sent %></td>
         <td><%= payroll.liters_of_milk_not_sent %></td>
         <td><%= payroll.cell_count %></td>
@@ -105,7 +100,7 @@
         <td><%= payroll.reproductive_losses %></td>
         <td><%= payroll.cows_with_foot_problems %></td>
         <td><%= payroll.dead_cows %></td>
-        <td><%= payroll.rains %></td>
+        <td><%= payroll.rains %></td> -->
         <td><%= link_to 'Show', payroll %></td>
         <td><%= link_to 'Edit', edit_payroll_path(payroll) %></td>
         <td><%= link_to 'Destroy', payroll, method: :delete, data: { confirm: 'Are you sure?' } %></td>

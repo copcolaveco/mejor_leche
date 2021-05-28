@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<div class="jumbotron">
+  <h1 class="display-4">
+    <%= @estate.name %>  
+  </h1>
+  <p class="lead">
+  	<p>
+  	  <strong>Dicose:</strong>
+  	  <%= @estate.dicose %>
+	 </p>
+   <p>
+  	  <strong>Productor:</strong>
+  	  <%= @estate.user_id %>
+	 </p>
+  </p>
+
+  <%= link_to 'Edit', edit_estate_path(@estate), class:"btn btn-secondary" %> 
+<%= link_to 'Back', estates_path, class:"btn btn-dark" %>
+  <br/>
+</div>

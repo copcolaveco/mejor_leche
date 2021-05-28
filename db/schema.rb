@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_21_122246) do
+ActiveRecord::Schema.define(version: 2021_05_28_142145) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -42,6 +42,15 @@ ActiveRecord::Schema.define(version: 2021_05_21_122246) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "estates", force: :cascade do |t|
+    t.string "name"
+    t.string "dicose"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id", null: false
+    t.index ["user_id"], name: "index_estates_on_user_id"
   end
 
   create_table "payrolls", force: :cascade do |t|
@@ -95,6 +104,8 @@ ActiveRecord::Schema.define(version: 2021_05_21_122246) do
     t.integer "user_id"
     t.string "lactose"
     t.datetime "saved_date"
+    t.integer "estate_id"
+    t.index ["estate_id"], name: "index_payrolls_on_estate_id"
     t.index ["user_id"], name: "index_payrolls_on_user_id"
   end
 
@@ -148,4 +159,5 @@ ActiveRecord::Schema.define(version: 2021_05_21_122246) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "estates", "users"
 end
