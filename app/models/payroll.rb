@@ -1,4 +1,4 @@
 class Payroll < ApplicationRecord
-	belongs_to :User, optional: true
-	belongs_to :Estate, optional: true
+	belongs_to :user, optional: true
+	belongs_to :estate, optional: true
 end

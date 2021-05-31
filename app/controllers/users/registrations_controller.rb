@@ -1,18 +1,20 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  # before_action :configure_sign_up_params, only: [:create]
-  # before_action :configure_account_update_params, only: [:update]
+   before_action :configure_sign_up_params, only: [:create]
+   before_action :configure_account_update_params, only: [:update]
+   
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    @secondary_user_type = SecondaryUserType.all
+    @secondary_user_type = current_user.secondary_user_type.build
+  end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    @post = current_user.secondary_user_type.new(added_attrs)
+  end
 
   # GET /resource/edit
   # def edit

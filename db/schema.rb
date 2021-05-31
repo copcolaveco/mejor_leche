@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_28_142145) do
+ActiveRecord::Schema.define(version: 2021_05_31_113833) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -50,14 +50,12 @@ ActiveRecord::Schema.define(version: 2021_05_28_142145) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id", null: false
+    t.integer "department_id", null: false
+    t.index ["department_id"], name: "index_estates_on_department_id"
     t.index ["user_id"], name: "index_estates_on_user_id"
   end
 
   create_table "payrolls", force: :cascade do |t|
-    t.integer "producer"
-    t.string "location"
-    t.integer "user_type"
-    t.integer "technical"
     t.string "rodeos_main_breed"
     t.integer "liter_sent"
     t.integer "liters_of_milk_not_sent"
@@ -101,10 +99,10 @@ ActiveRecord::Schema.define(version: 2021_05_28_142145) do
     t.integer "rains"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id"
     t.string "lactose"
     t.datetime "saved_date"
-    t.integer "estate_id"
+    t.integer "estate_id", null: false
+    t.integer "user_id", null: false
     t.index ["estate_id"], name: "index_payrolls_on_estate_id"
     t.index ["user_id"], name: "index_payrolls_on_user_id"
   end
@@ -120,7 +118,7 @@ ActiveRecord::Schema.define(version: 2021_05_28_142145) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_type_id"
+    t.integer "user_type_id", null: false
     t.index ["user_type_id"], name: "index_secondary_user_types_on_user_type_id"
   end
 
@@ -147,17 +145,20 @@ ActiveRecord::Schema.define(version: 2021_05_28_142145) do
     t.string "location", default: "", null: false
     t.string "invoice_postal_code", default: "", null: false
     t.string "username"
-    t.integer "department_id"
-    t.integer "secondary_user_types_id"
     t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
-    t.index ["department_id"], name: "index_users_on_department_id"
+    t.integer "secondary_user_type_id", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["secondary_user_types_id"], name: "index_users_on_secondary_user_types_id"
+    t.index ["secondary_user_type_id"], name: "index_users_on_secondary_user_type_id"
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "estates", "departments"
   add_foreign_key "estates", "users"
+  add_foreign_key "payrolls", "estates"
+  add_foreign_key "payrolls", "users"
+  add_foreign_key "secondary_user_types", "user_types"
+  add_foreign_key "users", "secondary_user_types"
 end

@@ -3,15 +3,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-         has_many :payroll
+         has_many :payrolls
          has_many :estates
-         belongs_to :secondary_user_type, optional: true
-         belongs_to :department
+         belongs_to :secondary_user_type,  optional: true
 
   attr_writer :login 
   validate :validate_username
-  accepts_nested_attributes_for :secondary_user_type
-   # validates :body, presence: true
   
   def login
   	@login || username || email
