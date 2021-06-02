@@ -1,9 +1,11 @@
 class EstatesController < ApplicationController
   before_action :set_estate, only: [ :show ,:edit ,:update ,:destroy ]
+  before_action :authenticate_user!, except: [:show, :index]
+  # before_action :correct_user, only: [:edit, :update, :destroy]
 
   # GET /estates or /estates.json
   def index
-    @estates = Estate.all
+    @estates = current_user.estates.order(created_at: :desc)
   end
 
   # GET /estates/1 or /estates/1.json
@@ -12,7 +14,8 @@ class EstatesController < ApplicationController
 
   # GET /estates/new
   def new
-    @estate = Estate.new
+    # estate = Estate.new
+    @estate = current_user.estates.build
   end
 
   # GET /estates/1/edit
@@ -21,11 +24,12 @@ class EstatesController < ApplicationController
 
   # POST /estates or /estates.json
   def create
-    @estate = Estate.new(estate_params)
+    #estate = Estate.new(estate_params)
+    @estate = current_user.estates.build(estate_params)
 
     respond_to do |format|
       if @estate.save
-        format.html { redirect_to @estate, notice: "Estate was successfully created." }
+        format.html { redirect_to @estate, notice: "Predio creado correctamente." }
         format.json { render :show, status: :created, location: @estate }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +42,7 @@ class EstatesController < ApplicationController
   def update
     respond_to do |format|
       if @estate.update(estate_params)
-        format.html { redirect_to @estate, notice: "Estate was successfully updated." }
+        format.html { redirect_to @estate, notice: "Predio modificado correctamente." }
         format.json { render :show, status: :ok, location: @estate }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -51,13 +55,18 @@ class EstatesController < ApplicationController
   def destroy
     @estate.destroy
     respond_to do |format|
-      format.html { redirect_to estates_url, notice: "Estate was successfully destroyed." }
+      format.html { redirect_to estates_url, notice: "Predio eliminado correctamente." }
       format.json { head :no_content }
     end
   end
 
   def from_user
     @user = User.find(params[:user_id])
+  end
+
+  def correct_user
+    @estate = current_user.estates.find_by(user_id: params[:id])
+    redirect_to estates_path, notice: "No esta autorizado a Crear, Editar o Eliminar los Predio" if @user.nil? 
   end
 
   private
@@ -68,7 +77,7 @@ class EstatesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def estate_params
-      params.require(:estate).permit(:name, :dicose, :user_id)
+      params.require(:estate).permit(:name, :dicose, :user_id, :department_id)
     end
 
     def search_params

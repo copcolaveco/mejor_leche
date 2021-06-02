@@ -1,5 +1,5 @@
-<p id="notice"><%= notice %></p>
 
+<br>
 <div class="jumbotron">
   <h1 class="display-4">
     <%= @estate.name %>  
@@ -11,11 +11,11 @@
 	 </p>
    <p>
   	  <strong>Productor:</strong>
-  	  <%= @estate.user_id %>
+  	  <%= @estate.user.username %>
 	 </p>
   </p>
 
-  <%= link_to 'Edit', edit_estate_path(@estate), class:"btn btn-secondary" %> 
-<%= link_to 'Back', estates_path, class:"btn btn-dark" %>
+  <%= link_to 'Editar', edit_estate_path(@estate), class:"btn btn-primary" %> 
+  <%= link_to 'Atras', estates_path, class:"btn btn-secondary" %>
   <br/>
 </div>

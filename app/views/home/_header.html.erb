@@ -14,11 +14,11 @@
             <%= link_to 'Editar Usuario', edit_user_registration_path, class:"nav-link" %>
           </li>   
           <li class="nav-item">
-            <%= link_to 'Ingresar Planilla', payrolls_path, class:"nav-link " %>
-          </li> 
-           <li class="nav-item">
-            <%= link_to 'Predio', estates_url, class:"nav-link " %>
-          </li> 
+            <%= link_to 'Planillas', payrolls_path, class:"nav-link " %>
+          </li>           
+          <li class="nav-item">
+            <%= link_to 'Predios', estates_url, class:"nav-link " %>
+          </li>            
         <% else %>
           <li class="nav-item">
             <%= link_to 'Registrarse', new_user_registration_path, class:"nav-link" %>

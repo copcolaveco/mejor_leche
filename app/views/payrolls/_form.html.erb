@@ -1,21 +1,14 @@
-<div class="mt-5 container">
+
   <%= form_with(model: payroll) do |form| %>
-    <% if payroll.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(payroll.errors.count, "error") %> prohibited this payroll from being saved:</h2>
-
-        <ul>
-          <% payroll.errors.each do |error| %>
-            <li><%= error.full_message %></li>
-          <% end %>
-        </ul>
-      </div>
+    <% if notice %>
+      <div class="alert alert-primary fixed-top" role="alert"><%= notice %></div>
     <% end %>
-
-    <h2 class="modal-title">Planilla mensual de datos</h2><br/>
+    <% if alert %>
+      <div class="alert alert-warning fixed-top" role="alert"><%= alert %></div>
+  <% end %>
 
   <div class="field form-group">
-    <%= collection_select(:payroll, :estate_id, Estate.all.order(:name), :id, :name) %>
+    <%= collection_select(:payroll, :estate_id, @estates, :id, :name) %>
   </div>
 
   <div class="field form-group">
@@ -40,9 +33,8 @@
   </div>
 
   <div class="field form-group">
-    <%= form.label 'Raza principal del rodeo' %>
-    
-    <%= collection_select(:payroll, :rodeos_main_breed, RodeosMainBreed.all.order(:name), :id, :name) %>
+    <%= form.label 'Raza principal del rodeo' %>    
+    <%= collection_select(:payroll, :rodeos_main_breed_id, RodeosMainBreed.all.order(:name), :id, :name) %>
   </div>
 
   <div class="field">
@@ -252,7 +244,7 @@
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Generar / Modificar Planilla', class:"btn btn-primary btn-sm" %>
   </div>
 <% end %>
-</div>
+

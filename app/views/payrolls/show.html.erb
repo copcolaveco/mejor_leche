@@ -1,62 +1,57 @@
-<p id="notice"><%= notice %></p>
+
+
+<p>
+  <h1><%= @payroll.estate.name %></h1>  
+  <p>
+    <strong>Productor: </strong>
+    <%= @payroll.estate.user.username %>
+  </p>
+</p>
+
+<p>
+  <strong>Planilla ingresada por:</strong>
+  <%= @payroll.user.username %> |
+  <%= @payroll.user.secondary_user_type.name %>
+</p>
 
 <p>
   <strong>Fecha:</strong>
   <%= @payroll.saved_date %>
 </p>
 
+<br>
 <p>
-  <strong>Producer:</strong>
-  <%= @payroll.producer %>
+  <strong>Raza principal de los rodeos:</strong>
+  <%= @payroll.rodeos_main_breed.name %>
 </p>
 
 <p>
-  <strong>Location:</strong>
-  <%= @payroll.location %>
-</p>
-
-<p>
-  <strong>User type:</strong>
-  <%= @payroll.user_type %>
-</p>
-
-<p>
-  <strong>Technical:</strong>
-  <%= @payroll.technical %>
-</p>
-
-<p>
-  <strong>Rodeos main breed:</strong>
-  <%= @payroll.rodeos_main_breed %>
-</p>
-
-<p>
-  <strong>Liter sent:</strong>
+  <strong>Litros emitidos:</strong>
   <%= @payroll.liter_sent %>
 </p>
 
 <p>
-  <strong>Liters of milk not sent:</strong>
+  <strong>Litros de leche no emitidos:</strong>
   <%= @payroll.liters_of_milk_not_sent %>
 </p>
 
 <p>
-  <strong>Cell count:</strong>
+  <strong>Conteo de células:</strong>
   <%= @payroll.cell_count %>
 </p>
 
 <p>
-  <strong>Bacterial count:</strong>
+  <strong>Recuento bacteriano:</strong>
   <%= @payroll.bacterial_count %>
 </p>
 
 <p>
-  <strong>Grease:</strong>
+  <strong>Grasa:</strong>
   <%= @payroll.grease %>
 </p>
 
 <p>
-  <strong>Protein:</strong>
+  <strong>Proteina:</strong>
   <%= @payroll.protein %>
 </p>
 
@@ -66,169 +61,169 @@
 </p>
 
 <p>
-  <strong>Cryoscopy:</strong>
+  <strong>Crioscopia:</strong>
   <%= @payroll.cryoscopy %>
 </p>
 
 <p>
-  <strong>Vm surface:</strong>
+  <strong>Superficie VM (ha):</strong>
   <%= @payroll.vm_surface %>
 </p>
 
 <p>
-  <strong>Dairy surface:</strong>
+  <strong>Superficie Lechera:</strong>
   <%= @payroll.dairy_surface %>
 </p>
 
 <p>
-  <strong>Milking cows:</strong>
+  <strong>Vacas en ordeño:</strong>
   <%= @payroll.milking_cows %>
 </p>
 
 <p>
-  <strong>Dry cows:</strong>
+  <strong>Vacas secas:</strong>
   <%= @payroll.dry_cows %>
 </p>
 
 <p>
-  <strong>Cow dough:</strong>
+  <strong>Vaca masa:</strong>
   <%= @payroll.cow_dough %>
 </p>
 
 <p>
-  <strong>Suckling calves:</strong>
+  <strong>Terneros lechales:</strong>
   <%= @payroll.suckling_calves %>
 </p>
 
 <p>
-  <strong>Conc protein:</strong>
+  <strong>Conc. proteico ( kg fresco/VO/día):</strong>
   <%= @payroll.conc_protein %>
 </p>
 
 <p>
-  <strong>Form of supply protein:</strong>
+  <strong>Forma de suministro:</strong>
   <%= @payroll.form_of_supply_protein %>
 </p>
 
 <p>
-  <strong>Conc energy:</strong>
+  <strong>Conc. energético ( kg fresco/VO/día):</strong>
   <%= @payroll.conc_energy %>
 </p>
 
 <p>
-  <strong>Form of supply energy:</strong>
+  <strong>Forma de suministro:</strong>
   <%= @payroll.form_of_supply_energy %>
 </p>
 
 <p>
-  <strong>Wet grain:</strong>
+  <strong>Grano húmedo ( kg fresco/VO/día):</strong>
   <%= @payroll.wet_grain %>
 </p>
 
 <p>
-  <strong>Form of supply grain:</strong>
+  <strong>Forma de suministro:</strong>
   <%= @payroll.form_of_supply_grain %>
 </p>
 
 <p>
-  <strong>Henilages:</strong>
+  <strong>Henilajes ( kg fresco/VO/día):</strong>
   <%= @payroll.henilages %>
 </p>
 
 <p>
-  <strong>Form of supply henilages:</strong>
+  <strong>Forma de suministro:</strong>
   <%= @payroll.form_of_supply_henilages %>
 </p>
 
 <p>
-  <strong>Silo:</strong>
+  <strong>Silo  ( kg fresco/VO/día):</strong>
   <%= @payroll.silo %>
 </p>
 
 <p>
-  <strong>Form of supply:</strong>
+  <strong>Forma de suministro:</strong>
   <%= @payroll.form_of_supply %>
 </p>
 
 <p>
-  <strong>Grams of ration liter:</strong>
+  <strong>Gramos de ración / litro:</strong>
   <%= @payroll.grams_of_ration_liter %>
 </p>
 
 <p>
-  <strong>Mineral salts:</strong>
+  <strong>Sales minerales (g/vo/día):</strong>
   <%= @payroll.mineral_salts %>
 </p>
 
 <p>
-  <strong>Grams of salt liter:</strong>
+  <strong>Gramos de sal/ litro:</strong>
   <%= @payroll.grams_of_salt_liter %>
 </p>
 
 <p>
-  <strong>No grazing days:</strong>
+  <strong>Dias de NO pastoreo (opcional):</strong>
   <%= @payroll.no_grazing_days %>
 </p>
 
 <p>
-  <strong>Childbirth racks:</strong>
+  <strong>Partos vacas:</strong>
   <%= @payroll.childbirth_racks %>
 </p>
 
 <p>
-  <strong>Calving heifers:</strong>
+  <strong>Partos vaquillonas:</strong>
   <%= @payroll.calving_heifers %>
 </p>
 
 <p>
-  <strong>Discarded cows:</strong>
+  <strong>Vacas descartadas:</strong>
   <%= @payroll.discarded_cows %>
 </p>
 
 <p>
-  <strong>Cows served:</strong>
+  <strong>Vacas servidas (opcional):</strong>
   <%= @payroll.cows_served %>
 </p>
 
 <p>
-  <strong>Pregnant cows:</strong>
+  <strong>Vacas preñadas (opcional):</strong>
   <%= @payroll.pregnant_cows %>
 </p>
 
 <p>
-  <strong>Clinical mastitis:</strong>
+  <strong>Mastitis clínica:</strong>
   <%= @payroll.clinical_mastitis %>
 </p>
 
 <p>
-  <strong>Cows on detour:</strong>
+  <strong>Vacas en desvío:</strong>
   <%= @payroll.cows_on_detour %>
 </p>
 
 <p>
-  <strong>Abortions seen:</strong>
+  <strong>Abortos vistos:</strong>
   <%= @payroll.abortions_seen %>
 </p>
 
 <p>
-  <strong>Reproductive losses:</strong>
+  <strong>Perdidas Reproductivas (opcional):</strong>
   <%= @payroll.reproductive_losses %>
 </p>
 
 <p>
-  <strong>Cows with foot problems:</strong>
+  <strong>Vacas con problemas podales:</strong>
   <%= @payroll.cows_with_foot_problems %>
 </p>
 
 <p>
-  <strong>Dead cows:</strong>
+  <strong>Vacas muertas:</strong>
   <%= @payroll.dead_cows %>
 </p>
 
 <p>
-  <strong>Rains:</strong>
+  <strong>Lluvias  (mm):</strong>
   <%= @payroll.rains %>
 </p>
 
-<%= link_to 'Edit', edit_payroll_path(@payroll) %> |
-<%= link_to 'Back', payrolls_path %>
+<%= link_to 'Editar', edit_payroll_path(@payroll), class:"btn btn-primary btn-sm" %> 
+<%= link_to 'Atras', payrolls_path, class:"btn btn-secondary btn-sm" %>

@@ -1,4 +1,3 @@
-<!-- <p id="notice"><%= notice %></p> -->
 
 <br/>
 <h1>Planillas Menuslaes</h1>
@@ -7,49 +6,7 @@
   <thead class="table-dark">
     <tr>
       <th>Predio:</th>
-       <th>Fecha:</th>
-      <!--<th>Technical</th>
-      <th>Rodeos main breed</th>
-      <th>Liter sent</th>
-      <th>Liters of milk not sent</th>
-      <th>Cell count</th>
-      <th>Bacterial count</th>
-      <th>Grease</th>
-      <th>Protein</th>
-      <th>Urea</th>
-      <th>Cryoscopy</th>
-      <th>Vm surface</th>
-      <th>Dairy surface</th>
-      <th>Milking cows</th>
-      <th>Dry cows</th>
-      <th>Cow dough</th>
-      <th>Suckling calves</th>
-      <th>Conc protein</th>
-      <th>Form of supply protein</th>
-      <th>Conc energy</th>
-      <th>Form of supply energy</th>
-      <th>Wet grain</th>
-      <th>Form of supply grain</th>
-      <th>Henilages</th>
-      <th>Form of supply henilages</th>
-      <th>Silo</th>
-      <th>Form of supply</th>
-      <th>Grams of ration liter</th>
-      <th>Mineral salts</th>
-      <th>Grams of salt liter</th>
-      <th>No grazing days</th>
-      <th>Childbirth racks</th>
-      <th>Calving heifers</th>
-      <th>Discarded cows</th>
-      <th>Cows served</th>
-      <th>Pregnant cows</th>
-      <th>Clinical mastitis</th>
-      <th>Cows on detour</th>
-      <th>Abortions seen</th>
-      <th>Reproductive losses</th>
-      <th>Cows with foot problems</th>
-      <th>Dead cows</th>
-      <th>Rains</th> -->
+      <th>Fecha:</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -57,53 +14,9 @@
   <tbody>
     <% @payrolls.each do |payroll| %>
       <tr>
-        <td><%= payroll.estate_id %></td>
+        <td><%= link_to payroll.estate.name, payroll %></td>
         <td><%= payroll.saved_date %></td>
-        <!-- <td><%= payroll.technical %></td>
-        <td><%= payroll.rodeos_main_breed %></td>
-        <td><%= payroll.liter_sent %></td>
-        <td><%= payroll.liters_of_milk_not_sent %></td>
-        <td><%= payroll.cell_count %></td>
-        <td><%= payroll.bacterial_count %></td>
-        <td><%= payroll.grease %></td>
-        <td><%= payroll.protein %></td>
-        <td><%= payroll.urea %></td>
-        <td><%= payroll.cryoscopy %></td>
-        <td><%= payroll.vm_surface %></td>
-        <td><%= payroll.dairy_surface %></td>
-        <td><%= payroll.milking_cows %></td>
-        <td><%= payroll.dry_cows %></td>
-        <td><%= payroll.cow_dough %></td>
-        <td><%= payroll.suckling_calves %></td>
-        <td><%= payroll.conc_protein %></td>
-        <td><%= payroll.form_of_supply_protein %></td>
-        <td><%= payroll.conc_energy %></td>
-        <td><%= payroll.form_of_supply_energy %></td>
-        <td><%= payroll.wet_grain %></td>
-        <td><%= payroll.form_of_supply_grain %></td>
-        <td><%= payroll.henilages %></td>
-        <td><%= payroll.form_of_supply_henilages %></td>
-        <td><%= payroll.silo %></td>
-        <td><%= payroll.form_of_supply %></td>
-        <td><%= payroll.grams_of_ration_liter %></td>
-        <td><%= payroll.mineral_salts %></td>
-        <td><%= payroll.grams_of_salt_liter %></td>
-        <td><%= payroll.no_grazing_days %></td>
-        <td><%= payroll.childbirth_racks %></td>
-        <td><%= payroll.calving_heifers %></td>
-        <td><%= payroll.discarded_cows %></td>
-        <td><%= payroll.cows_served %></td>
-        <td><%= payroll.pregnant_cows %></td>
-        <td><%= payroll.clinical_mastitis %></td>
-        <td><%= payroll.cows_on_detour %></td>
-        <td><%= payroll.abortions_seen %></td>
-        <td><%= payroll.reproductive_losses %></td>
-        <td><%= payroll.cows_with_foot_problems %></td>
-        <td><%= payroll.dead_cows %></td>
-        <td><%= payroll.rains %></td> -->
-        <td><%= link_to 'Show', payroll %></td>
-        <td><%= link_to 'Edit', edit_payroll_path(payroll) %></td>
-        <td><%= link_to 'Destroy', payroll, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Eliminar', payroll, method: :delete, data: { confirm: 'Estas seguro de querer eliminar esta Planilla?' }, class:"btn btn-danger btn-sm" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -111,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Payroll', new_payroll_path %>
+<%= link_to 'Nueva Planilla', new_payroll_path, class:"btn btn-secondary btn-sm" %>

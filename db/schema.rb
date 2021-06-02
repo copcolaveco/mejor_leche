@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_31_113833) do
+ActiveRecord::Schema.define(version: 2021_06_02_132800) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -56,7 +56,6 @@ ActiveRecord::Schema.define(version: 2021_05_31_113833) do
   end
 
   create_table "payrolls", force: :cascade do |t|
-    t.string "rodeos_main_breed"
     t.integer "liter_sent"
     t.integer "liters_of_milk_not_sent"
     t.integer "cell_count"
@@ -103,7 +102,9 @@ ActiveRecord::Schema.define(version: 2021_05_31_113833) do
     t.datetime "saved_date"
     t.integer "estate_id", null: false
     t.integer "user_id", null: false
+    t.integer "rodeos_main_breed_id", null: false
     t.index ["estate_id"], name: "index_payrolls_on_estate_id"
+    t.index ["rodeos_main_breed_id"], name: "index_payrolls_on_rodeos_main_breed_id"
     t.index ["user_id"], name: "index_payrolls_on_user_id"
   end
 
@@ -158,6 +159,7 @@ ActiveRecord::Schema.define(version: 2021_05_31_113833) do
   add_foreign_key "estates", "departments"
   add_foreign_key "estates", "users"
   add_foreign_key "payrolls", "estates"
+  add_foreign_key "payrolls", "rodeos_main_breeds"
   add_foreign_key "payrolls", "users"
   add_foreign_key "secondary_user_types", "user_types"
   add_foreign_key "users", "secondary_user_types"

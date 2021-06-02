@@ -1,6 +1,6 @@
-<!-- <p id="notice"><%= notice %></p> -->
 
-<h1>Predios</h1>
+<br>
+<h1>Predios del cliente - <%= current_user.username %></h1>
  
 <table class="table table table-hover table table-bordered">
   <thead class="table-dark">
@@ -15,12 +15,11 @@
   <tbody>
     <% @estates.each do |estate| %>
       <tr>
-        <td><%= estate.name %></td>
+        <td><%= link_to estate.name , estate %></td>
+        <!-- <td><%= estate.name %></td> -->
         <td><%= estate.dicose %></td>
         <td><%= estate.user.username %></td>
-        <td><%= link_to 'Ver', estate, class:"btn btn-secondary btn-sm" %></td>
-        <td><%= link_to 'Editar', edit_estate_path(estate), class:"btn btn-secondary btn-sm" %></td>
-        <td><%= link_to 'Eliminar', estate, method: :delete, data: { confirm: 'Estas seguro de querer eliminar este Predio?' }, class:"btn btn-danger  btn-sm" %></td>
+        <td><%= link_to 'Eliminar', estate, method: :delete, data: { confirm: 'Estas seguro de querer eliminar este Predio?' }, class:"btn btn-danger btn-sm" %></td>
       </tr>
     <% end %>
   </tbody>

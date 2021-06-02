@@ -1,18 +1,14 @@
 <%= form_with(model: estate) do |form| %>
-  <% if estate.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(estate.errors.count, "error") %> prohibited this estate from being saved:</h2>
-
-      <ul>
-        <% estate.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  
+<% if notice %>
+  <div class="alert alert-primary fixed-top" role="alert"><%= notice %></div>
+<% end %>
+<% if alert %>
+  <div class="alert alert-warning fixed-top" role="alert"><%= alert %></div>
+<% end %>
 
   <div class="field">
-    <%= form.label :name %>
+    <%= form.label 'Nombre' %>
     <%= form.text_field :name %>
   </div>
 
@@ -22,11 +18,15 @@
   </div>
 
   <div class="field">
-    <%= form.label :user_id %>
-    <%= form.number_field :user_id, value:current_user.id %>
+    <%= form.hidden_field :user_id, value:current_user.id %>
+  </div>
+
+  <div class="form-group my-3">
+    <%= form.label 'Departamento' %>
+    <%= collection_select(:estate, :department_id, Department.all.order(:name), :id, :name) %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Crear / Modificar', class:"btn btn-primary" %>
   </div>
 <% end %>
