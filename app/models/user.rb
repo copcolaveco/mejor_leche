@@ -9,6 +9,8 @@ class User < ApplicationRecord
 
   attr_writer :login 
   validate :validate_username
+  has_many :has_estates
+  has_many :estates, through: :has_estates
   
   def login
   	@login || username || email

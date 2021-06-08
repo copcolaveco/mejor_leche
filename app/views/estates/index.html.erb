@@ -19,7 +19,7 @@
         <!-- <td><%= estate.name %></td> -->
         <td><%= estate.dicose %></td>
         <td><%= estate.user.username %></td>
-        <td><%= link_to 'Eliminar', estate, method: :delete, data: { confirm: 'Estas seguro de querer eliminar este Predio?' }, class:"btn btn-danger btn-sm" %></td>
+        <td><%= link_to 'Eliminar', estate, method: :delete, data: { confirm: 'Se eliminaran todas las asociaciones de sus Técnicos, estas seguro de querer eliminar este Predio?, ' }, class:"btn btn-danger btn-sm" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,3 +28,4 @@
 <br>
 
 <%= link_to 'Nuevo Predio', new_estate_path, class:"btn btn-secondary btn-sm" %>
+<%= link_to 'Asociar Técnicos', has_estates_path, class:"btn btn-secondary btn-sm" %>

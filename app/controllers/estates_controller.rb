@@ -13,8 +13,7 @@ class EstatesController < ApplicationController
   end
 
   # GET /estates/new
-  def new
-    # estate = Estate.new
+  def new    
     @estate = current_user.estates.build
   end
 
@@ -22,15 +21,16 @@ class EstatesController < ApplicationController
   def edit
   end
 
-  # POST /estates or /estates.json
-  def create
-    #estate = Estate.new(estate_params)
-    @estate = current_user.estates.build(estate_params)
+  def estates_users
+  end
 
+  def create
+    
+    @estate = current_user.estates.build(estate_params)
     respond_to do |format|
       if @estate.save
         format.html { redirect_to @estate, notice: "Predio creado correctamente." }
-        format.json { render :show, status: :created, location: @estate }
+        format.json { render :show, status: :created, location: @estate }     
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @estate.errors, status: :unprocessable_entity }
@@ -64,10 +64,18 @@ class EstatesController < ApplicationController
     @user = User.find(params[:user_id])
   end
 
+  def set_estate
+    @has_estate = HasEstate.find(params[:id])
+  end
+
   def correct_user
     @estate = current_user.estates.find_by(user_id: params[:id])
     redirect_to estates_path, notice: "No esta autorizado a Crear, Editar o Eliminar los Predio" if @user.nil? 
   end
+
+  def has_estate_params
+      params.require(:estate).permit(:user_id, :estate_id)
+    end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -81,6 +89,6 @@ class EstatesController < ApplicationController
     end
 
     def search_params
-    params.require(:estate).permit(:user_id)
-  end
+      params.require(:estate).permit(:user_id)
+    end
 end

@@ -1,0 +1,32 @@
+<%= form_with(model: estate) do |form| %>
+  
+<% if notice %>
+  <div class="alert alert-primary fixed-top" role="alert"><%= notice %></div>
+<% end %>
+<% if alert %>
+  <div class="alert alert-warning fixed-top" role="alert"><%= alert %></div>
+<% end %>
+
+  <div class="field">
+    <%= form.label 'Nombre' %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dicose %>
+    <%= form.text_field :dicose %>
+  </div>
+
+  <div class="field">
+    <%= form.hidden_field :user_id, value:current_user.id %>
+  </div>
+
+  <div class="form-group my-3">
+    <%= form.label 'Departamento' %>
+    <%= collection_select(:estate, :department_id, Department.all.order(:name), :id, :name) %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Crear / Modificar', class:"btn btn-primary" %>
+  </div>
+<% end %>
