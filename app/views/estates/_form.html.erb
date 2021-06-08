@@ -8,13 +8,13 @@
 <% end %>
 
   <div class="field">
-    <%= form.label 'Nombre' %>
-    <%= form.text_field :name %>
+    <label for="exampleFormControlInput1" class="form-label"><%= form.label 'Nombre' %></label>   
+    <%= form.text_field :name, class:"form-control" %>
   </div>
 
   <div class="field">
-    <%= form.label :dicose %>
-    <%= form.text_field :dicose %>
+    <label for="exampleFormControlInput1" class="form-label"><%= form.label :dicose %></label>
+    <%= form.text_field :dicose, class:"form-control" %>
   </div>
 
   <div class="field">
@@ -22,11 +22,12 @@
   </div>
 
   <div class="form-group my-3">
-    <%= form.label 'Departamento' %>
-    <%= collection_select(:estate, :department_id, Department.all.order(:name), :id, :name) %>
+    <label for="exampleFormControlInput1" class="form-label"><%= form.label 'Departamento' %></label>    
+    <select class="form-select" <%= collection_select(:estate, :department_id, Department.all.order(:name), :id, :name) %></select>
   </div>
 
   <div class="actions">
-    <%= form.submit 'Crear / Modificar', class:"btn btn-primary" %>
+    <%= form.submit 'Crear / Modificar', class:"btn btn-outline-success btn-sm" %>
+    <%= link_to 'Atras', estates_path, class:"btn btn-outline-secondary btn-sm" %>
   </div>
 <% end %>

@@ -7,8 +7,10 @@
       <div class="alert alert-warning fixed-top" role="alert"><%= alert %></div>
   <% end %>
 
+  <br>
   <div class="field form-group">
-    <%= collection_select(:payroll, :estate_id, @estates, :id, :name) %>
+    <label for="exampleFormControlInput1" class="form-label"><%= form.label 'Predio' %></label>
+    <select class="form-select" <%= collection_select(:payroll, :estate_id, @estates, :id, :name) %></select>
   </div>
 
   <div class="field form-group">
@@ -16,20 +18,15 @@
   </div>
 
   <div class="field form-group">
-    <%= form.text_field :producer, class:"form-control", type:"hidden"%>
-  </div>
-   <!-- Cargar los tecnicos que tenga asignado el productor, en caso de ser tecnico cargar si id -->
-  <div class="field form-group">
-    <%= form.text_field :technical, id: :payroll_technical, class:"form-control", type:"hidden"  %> 
-  </div>
-
-  <div class="field form-group">
-    <%= form.text_field :location, id: :payroll_location, class:"form-control", type:"hidden"%>
-  </div> 
-
-  <div class="field form-group">
     <%= form.label 'Fecha de creación' %>
     <%= form.date_select :saved_date, class:"form-control"%> 
+  </div>
+
+  <div class="form-group row">
+    <label for="example-month-input" class="col-2 col-form-label">Fecha de creación</label>
+    <div class="col-10">
+      <input class="form-control" type="month" value="2021-01" id="example-month-input">
+    </div>
   </div>
 
   <div class="field form-group">

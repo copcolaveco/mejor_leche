@@ -1,6 +1,6 @@
 
 <br/>
-<h1>Planillas Menuslaes</h1>
+<h3>Planillas Menuslaes</h3>
 
 <table class="table table table-hover table table-bordered">
   <thead class="table-dark">
@@ -16,7 +16,7 @@
       <tr>
         <td><%= link_to payroll.estate.name, payroll %></td>
         <td><%= payroll.saved_date %></td>
-        <td><%= link_to 'Eliminar', payroll, method: :delete, data: { confirm: 'Estas seguro de querer eliminar esta Planilla?' }, class:"btn btn-danger btn-sm" %></td>
+        <td><%= link_to 'Eliminar', payroll, method: :delete, data: { confirm: 'Estas seguro de querer eliminar esta Planilla?' }, class:"btn btn-outline-danger btn-sm" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +24,4 @@
 
 <br>
 
-<%= link_to 'Nueva Planilla', new_payroll_path, class:"btn btn-secondary btn-sm" %>
+<%= link_to 'Nueva Planilla', new_payroll_path, class:"btn btn-outline-primary btn-sm" %>

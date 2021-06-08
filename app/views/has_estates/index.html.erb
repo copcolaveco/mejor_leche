@@ -2,7 +2,7 @@
 <%= render 'form', has_estate: @has_estate %>
 
 <br>
-<h1>Asociaciones del cliente - <%= current_user.username %></h1>
+<h3>Asociaciones del cliente - <%= current_user.username %></h3>
  
 <table class="table table table-hover table table-bordered">
   <thead class="table-dark">
@@ -19,11 +19,11 @@
       	<% if has_estate.user != current_user %>
         <td><%= has_estate.user.username %></td>
         <td><%= has_estate.estate.name %></td>
-        <td><%= link_to 'Eliminar', has_estate, method: :delete, data: { confirm: 'Estas seguro de querer eliminar esta Asociación?' }, class:"btn btn-danger btn-sm" %></td>
+        <td><%= link_to 'Eliminar', has_estate, method: :delete, data: { confirm: 'Estas seguro de querer eliminar esta Asociación?' }, class:"btn btn-outline-danger btn-sm" %></td>
       	<% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to 'Volver', estates_url, class:"btn btn-secondary btn-sm" %>
+<%= link_to 'Volver', estates_url, class:"btn btn-outline-secondary btn-sm" %>

@@ -2,6 +2,7 @@
 	<section>
 	<% if current_user %>
 		<h3>Bienvenido <%= current_user.username %></h3>
+		<h4><%= current_user.secondary_user_type.name %></h4>
 		<br>
 		<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
 		  <div class="carousel-inner">

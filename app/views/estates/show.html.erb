@@ -1,9 +1,9 @@
 
 <br>
 <div class="jumbotron">
-  <h1 class="display-4">
+  <h3>
     <%= @estate.name %>  
-  </h1>
+  </h3>
   <p class="lead">
   	<p>
   	  <strong>Dicose:</strong>
@@ -15,7 +15,7 @@
 	 </p>
   </p>
 
-  <%= link_to 'Editar', edit_estate_path(@estate), class:"btn btn-primary" %> 
-  <%= link_to 'Atras', estates_path, class:"btn btn-secondary" %>
+  <%= link_to 'Editar', edit_estate_path(@estate), class:"btn btn-outline-warning btn-sm" %> 
+  <%= link_to 'Atras', estates_path, class:"btn btn-outline-secondary btn-sm" %>
   <br/>
 </div>
