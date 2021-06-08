@@ -1,4 +1,6 @@
 class HasEstatesController < ApplicationController
+	before_action :set_has_estate, only: [ :show ,:edit ,:update ,:destroy ]
+  before_action :authenticate_user!, except: [:show, :index]
 
 	def index
 		@has_estates = HasEstate.where(estate_id: current_user.estates)
@@ -34,14 +36,14 @@ class HasEstatesController < ApplicationController
 
   def destroy
     @has_estate.destroy
-    @estate.destroy
     respond_to do |format|
-      format.html { redirect_to estates_url, notice: "Predio eliminado correctamente." }
+      format.html { redirect_to has_estates_path, notice: "Asociacion eliminada correctamente." }
       format.json { head :no_content }
     end
   end
 
-  def set_estate
+	private
+  def set_has_estate
     @has_estate = HasEstate.find(params[:id])
   end
 

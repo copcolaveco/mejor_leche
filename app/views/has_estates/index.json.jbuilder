@@ -1,0 +1,1 @@
+json.array! @has_estates, partial: "has_estates/has_estate", as: :has_estate

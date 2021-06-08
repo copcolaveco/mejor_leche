@@ -8,13 +8,11 @@
 <% end %>
 
   <div class="form-group my-3">
-    <%= form.label 'Técnicos' %>
-    <%= collection_select(:has_estate, :user_id, @users, :id, :username) %>
+    <select class="form-select" <%= collection_select(:has_estate, :user_id, @users, :id, :username ) %></select>
   </div>
 
-  <div class="form-group my-3">
-    <%= form.label 'Predios' %>
-    <%= collection_select(:has_estate, :estate_id, @estates, :id, :name) %>
+  <div class="form-group my-3">    
+     <select class="form-select" <%= collection_select(:has_estate, :estate_id, @estates, :id, :name) %></select>
   </div>
 
   <div class="actions">
