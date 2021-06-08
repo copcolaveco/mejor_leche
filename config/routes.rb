@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
-  resources :estates 
+  resources :estates
   resources :payrolls
+  resources :has_estates
+  delete 'has_estates', action: :delete, controller: 'has_estates', defaults: { format: 'json' }
   devise_for :users, controllers: { sessions: 'users/sessions' }
+
+
   # get 'home/index'
   root 'home#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

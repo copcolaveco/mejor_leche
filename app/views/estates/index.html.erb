@@ -1,6 +1,7 @@
-
+<% if current_user.secondary_user_type_id == 4 or current_user.secondary_user_type_id == 5 or current_user.secondary_user_type_id == 6 %>
 <br>
 <h1>Predios del cliente - <%= current_user.username %></h1>
+<h3><%= current_user.secondary_user_type.name %></h3>
  
 <table class="table table table-hover table table-bordered">
   <thead class="table-dark">
@@ -16,10 +17,9 @@
     <% @estates.each do |estate| %>
       <tr>
         <td><%= link_to estate.name , estate %></td>
-        <!-- <td><%= estate.name %></td> -->
         <td><%= estate.dicose %></td>
         <td><%= estate.user.username %></td>
-        <td><%= link_to 'Eliminar', estate, method: :delete, data: { confirm: 'Estas seguro de querer eliminar este Predio?' }, class:"btn btn-danger btn-sm" %></td>
+        <td><%= link_to 'Eliminar', estate, method: :delete, data: { confirm: 'Se eliminaran todas las asociaciones de sus Técnicos, estas seguro de querer eliminar este Predio?, ' }, class:"btn btn-danger btn-sm" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,3 +28,32 @@
 <br>
 
 <%= link_to 'Nuevo Predio', new_estate_path, class:"btn btn-secondary btn-sm" %>
+<%= link_to 'Asociar Técnicos', has_estates_path, class:"btn btn-secondary btn-sm" %>
+
+<% else %> 
+
+<br>
+<h1>Predios Asociados - <%= current_user.username %></h1>
+<h3><%= current_user.secondary_user_type.name %></h3>
+
+<table class="table table table-hover table table-bordered">
+  <thead class="table-dark">
+    <tr>
+      <th>Nombre</th>
+      <th>Dicose</th>
+      <th>Productor</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @estates.each do |estate| %>
+      <tr>
+        <td><%= estate.name %></td>
+        <td><%= estate.dicose %></td>
+        <td><%= estate.user.username %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% end %>

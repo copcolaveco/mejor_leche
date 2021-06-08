@@ -10,33 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_02_132800) do
-
-  create_table "active_admin_comments", force: :cascade do |t|
-    t.string "namespace"
-    t.text "body"
-    t.string "resource_type"
-    t.integer "resource_id"
-    t.string "author_type"
-    t.integer "author_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author"
-    t.index ["namespace"], name: "index_active_admin_comments_on_namespace"
-    t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource"
-  end
-
-  create_table "admin_users", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["email"], name: "index_admin_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
-  end
+ActiveRecord::Schema.define(version: 2021_06_04_144725) do
 
   create_table "departments", force: :cascade do |t|
     t.string "name"
@@ -53,6 +27,15 @@ ActiveRecord::Schema.define(version: 2021_06_02_132800) do
     t.integer "department_id", null: false
     t.index ["department_id"], name: "index_estates_on_department_id"
     t.index ["user_id"], name: "index_estates_on_user_id"
+  end
+
+  create_table "has_estates", force: :cascade do |t|
+    t.integer "estate_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["estate_id"], name: "index_has_estates_on_estate_id"
+    t.index ["user_id"], name: "index_has_estates_on_user_id"
   end
 
   create_table "payrolls", force: :cascade do |t|
@@ -137,6 +120,7 @@ ActiveRecord::Schema.define(version: 2021_06_02_132800) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "dicose", default: "", null: false
     t.string "business_name", default: "", null: false
     t.string "rut", default: "", null: false
     t.string "address", default: "", null: false
@@ -144,20 +128,22 @@ ActiveRecord::Schema.define(version: 2021_06_02_132800) do
     t.string "phone_one", default: "", null: false
     t.string "phone_two", default: "", null: false
     t.string "location", default: "", null: false
+    t.string "department", default: "", null: false
     t.string "invoice_postal_code", default: "", null: false
     t.string "username"
-    t.string "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
+    t.integer "user_type_id"
     t.integer "secondary_user_type_id", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["secondary_user_type_id"], name: "index_users_on_secondary_user_type_id"
+    t.index ["user_type_id"], name: "index_users_on_user_type_id"
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
   add_foreign_key "estates", "departments"
   add_foreign_key "estates", "users"
+  add_foreign_key "has_estates", "estates"
+  add_foreign_key "has_estates", "users"
   add_foreign_key "payrolls", "estates"
   add_foreign_key "payrolls", "rodeos_main_breeds"
   add_foreign_key "payrolls", "users"
