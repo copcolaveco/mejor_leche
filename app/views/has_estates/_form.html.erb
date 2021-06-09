@@ -2,13 +2,6 @@
 
 <h3>Generar Asociación</h3>
 <%= form_with(model: has_estate) do |form| %>
-  
-<% if notice %>
-  <div class="alert alert-primary fixed-top" role="alert"><%= notice %></div>
-<% end %>
-<% if alert %>
-  <div class="alert alert-warning fixed-top" role="alert"><%= alert %></div>
-<% end %>
 
   <div class="form-group my-3">
     <label for="exampleFormControlInput1" class="form-label"><%= form.label 'Técnico' %></label>

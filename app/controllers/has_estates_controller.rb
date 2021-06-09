@@ -24,7 +24,7 @@ class HasEstatesController < ApplicationController
 	        format.html { redirect_to has_estates_path, notice: "Asociacion creado correctamente." }
 	        format.json { render :show, status: :created, location: @has_estate }
 	      else
-	        format.html { render :new, status: :unprocessable_entity }
+	        format.html { redirect_to has_estates_path, notice: "Esta asociacion ya existe." }
 	        format.json { render json: @has_estate.errors, status: :unprocessable_entity }
 	      end
 	    end

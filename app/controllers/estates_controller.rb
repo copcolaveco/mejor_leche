@@ -6,6 +6,7 @@ class EstatesController < ApplicationController
   # GET /estates or /estates.json
   def index
     @estates = current_user.estates.order(created_at: :desc)
+    @departments = Department.all
   end
 
   # GET /estates/1 or /estates/1.json
