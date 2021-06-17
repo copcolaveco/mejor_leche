@@ -9,6 +9,11 @@ class User < ApplicationRecord
 
   attr_writer :login 
   validate :validate_username
+  validates :business_name, :rut, :address, :identification_document, :phone_two, :location, :username, presence: true
+  validates :identification_document, length: { minimum: 8 }
+  validates :identification_document, length: { maximum: 8 }
+  validates :identification_document, :rut, :phone_two, :phone_one, numericality: { only_integer: true, message: "solo valores numericos"}
+
   has_many :has_estates
   has_many :estates, through: :has_estates
   
