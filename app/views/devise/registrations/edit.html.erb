@@ -40,6 +40,11 @@
       </div><br/>
 
       <div class="field">
+        <%= f.label 'Cedula' %>
+        <%= f.text_field :identification_document, class:"form-control"%>
+      </div><br/>
+
+      <div class="field">
         <%= f.label "Nombre de la empresa" %><br />
         <%= f.text_field :business_name, autocomplete: "business_name", class:"form-control"%>
       </div><br/>

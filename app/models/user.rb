@@ -10,8 +10,10 @@ class User < ApplicationRecord
   attr_writer :login 
   validate :validate_username
   validates :business_name, :rut, :address, :identification_document, :phone_two, :location, :username, presence: true
-  validates :identification_document, length: { minimum: 8 }
-  validates :identification_document, length: { maximum: 8 }
+  validates :identification_document, length: { minimum: 8, message: "Minimo 8 numeros, sin puntos ni guiones." }
+  validates :identification_document, length: { maximum: 8, message: "Maximo 8 numeros, sin puntos ni guiones." }
+  validates :rut, length: { minimum: 12, message: "Minimo 12 numeros." }
+  validates :rut, length: { maximum: 12, message: "Maximo 12 numeros." }
   validates :identification_document, :rut, :phone_two, :phone_one, numericality: { only_integer: true, message: "solo valores numericos"}
 
   has_many :has_estates

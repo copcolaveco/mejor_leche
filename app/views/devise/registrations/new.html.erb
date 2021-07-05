@@ -3,10 +3,10 @@
   <div class="card-header">
     <h5 class="modal-title text-primary">Registrarse</h5>
   </div>
-  <div class="card-body">
+<div class="card-body">
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <%= render "devise/shared/error_messages", resource: f.object %>
 
   <div class="field"><br />
     <%= f.label 'Email' %>
@@ -74,7 +74,7 @@
   <div class="field"><br />
     <%= f.label 'Codigo Postal' %>
     <%= f.text_field :invoice_postal_code, autofocus: true, class:"form-control" %>
-  </div>  
+  </div> <br> 
 
   <div class="actions">
       <%= f.submit "Registrase", class: 'btn btn-primary'%>
