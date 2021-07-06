@@ -5,7 +5,9 @@ class HasEstatesController < ApplicationController
 	def index
 		@has_estates = HasEstate.where(estate_id: current_user.estates)
 		@estates = current_user.estates.order(created_at: :desc)
-		@users = User.where(secondary_user_type_id: ['3','2','1'])
+		@user_type = UserType.find_by(typename: 'Técnico')
+		@sec = SecondaryUserType.where(user_type_id: @user_type.id)
+		@users = User.where(secondary_user_type: @sec)
 	end
 	
   def new
@@ -45,6 +47,14 @@ class HasEstatesController < ApplicationController
 	private
   def set_has_estate
     @has_estate = HasEstate.find(params[:id])
+  end
+
+  def from_user_user_type
+	@secondary_user_type = SecondaryUserTypes.find(params[:secondary_user_type_id])
+  end
+
+  def from_user_type
+	@user_type = UserType.find_by(typename: 'Técnico')
   end
 
   def from_user
