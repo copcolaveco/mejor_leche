@@ -14,6 +14,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'addressable', '~> 2.7'
 gem 'simple_calendar', '~> 2.4', '>= 2.4.2'
 gem "bootstrap_form", "~> 4.0"
+gem 'pg', '~> 1.2', '>= 1.2.3'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -26,7 +27,7 @@ group :development do
 end
 
 group :production do
-  gem 'pg', '~> 1.2', '>= 1.2.3'
+  
   #gem 'rails_12factor', '0.0.2'
 end
 

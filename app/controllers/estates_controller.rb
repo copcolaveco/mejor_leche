@@ -7,6 +7,7 @@ class EstatesController < ApplicationController
   def index
     @estates = current_user.estates.order(created_at: :desc)
     @departments = Department.all
+    @user_type = UserType.find_by(typename: 'Productor')
   end
 
   # GET /estates/1 or /estates/1.json
@@ -82,6 +83,10 @@ class EstatesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_estate
       @estate = Estate.find(params[:id])
+    end
+
+    def from_user_user_type
+      @secondary_user_type = SecondaryUserTypes.find(params[:secondary_user_type_id])
     end
 
     # Only allow a list of trusted parameters through.

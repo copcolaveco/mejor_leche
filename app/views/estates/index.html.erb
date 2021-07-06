@@ -1,4 +1,4 @@
-<% if current_user.secondary_user_type_id == 4 or current_user.secondary_user_type_id == 5 or current_user.secondary_user_type_id == 6 %>
+<% if current_user.secondary_user_type.user_type == @user_type %>
 <br>
 <h3>Predios del cliente - <%= current_user.username %></h3>
 <h4><%= current_user.secondary_user_type.name %></h4>

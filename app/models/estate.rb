@@ -7,7 +7,7 @@ class Estate < ApplicationRecord
 	after_save :add_has_estate
 	before_destroy :destroy_has_estate
 
-	validates :name, :dicose, presence: true
+	validates :name, :dicose, :department_id, presence: true
 	validates :dicose, length: { minimum: 9 }
 	validates :dicose, length: { maximum: 9 }
 	validates :name, length: { maximum: 50 }	

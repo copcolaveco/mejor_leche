@@ -1,7 +1,35 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+
+Department.create(name: 'Artigas')
+Department.create(name: 'Salto')
+Department.create(name: 'Paysandú')
+Department.create(name: 'Río Negro')
+Department.create(name: 'Soriano')
+Department.create(name: 'Rivera')
+Department.create(name: 'Colonia')
+Department.create(name: 'Tacuarembó')
+Department.create(name: 'Durazno')
+Department.create(name: 'Flores')
+Department.create(name: 'Florida')
+Department.create(name: 'San José')
+Department.create(name: 'Montevideo')
+Department.create(name: 'Canelones')
+Department.create(name: 'Cerro Largo')
+Department.create(name: 'Treinta y Tres')
+Department.create(name: 'Lavalleja')
+Department.create(name: 'Maldonado')
+Department.create(name: 'Rocha')
+
+RodeosMainBreed.create(name: 'Holando')
+RodeosMainBreed.create(name: 'Jersey')
+RodeosMainBreed.create(name: 'Cruza')
+RodeosMainBreed.create(name: 'Normando')
+
+UserType.create(typename: 'Productor')
+UserType.create(typename: 'Técnico')
+
+SecondaryUserType.create(name: "Productor - Remitente", user_type_id: 1)
+SecondaryUserType.create(name: 'Productor - Quesero', user_type_id: 1)
+SecondaryUserType.create(name: 'Productor - Mixto', user_type_id: 1)
+SecondaryUserType.create(name: 'Técnico - Veterinario', user_type_id: 2)
+SecondaryUserType.create(name: 'Técnico - Lechero', user_type_id: 2)
+SecondaryUserType.create(name: 'Técnico - Ingeniero Agrónomo', user_type_id: 2)
