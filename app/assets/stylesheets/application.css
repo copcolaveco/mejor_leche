@@ -1,2 +1,16 @@
-* =  requiere  rails_bootstrap_forms
+/* * =  requiere  rails_bootstrap_forms */
+ 
+@font-face {
+    font-family: 'Roboto Condensed', sans-serif;
+    src: url(/app/assets/stylesheets/fonts/RobotoCondensed-Light.ttf);
+}
+
+h3{
+     color: blue;
+     font-family: 'Roboto Condensed', sans-serif;
+ }
+
+h3:hover{
+    color: cadetblue;
+}
 
