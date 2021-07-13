@@ -5,12 +5,17 @@
     src: url(/app/assets/stylesheets/fonts/RobotoCondensed-Light.ttf);
 }
 
-h3{
-     color: blue;
+h4{
+     color: rgb(159, 159, 163);
      font-family: 'Roboto Condensed', sans-serif;
  }
 
-h3:hover{
-    color: cadetblue;
+h3{
+    color: rgb(87, 87, 90);
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+th{
+    font-family: 'Roboto Condensed', sans-serif;
 }
 

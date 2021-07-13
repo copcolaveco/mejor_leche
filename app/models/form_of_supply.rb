@@ -1,0 +1,2 @@
+class FormOfSupply < ApplicationRecord
+end

@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_04_144725) do
+ActiveRecord::Schema.define(version: 2021_07_12_144523) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "departments", force: :cascade do |t|
     t.string "name"
@@ -29,6 +32,12 @@ ActiveRecord::Schema.define(version: 2021_06_04_144725) do
     t.index ["user_id"], name: "index_estates_on_user_id"
   end
 
+  create_table "form_of_supplies", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "has_estates", force: :cascade do |t|
     t.integer "estate_id", null: false
     t.integer "user_id", null: false
@@ -45,7 +54,6 @@ ActiveRecord::Schema.define(version: 2021_06_04_144725) do
     t.integer "bacterial_count"
     t.integer "grease"
     t.integer "protein"
-    t.integer "urea"
     t.integer "cryoscopy"
     t.integer "vm_surface"
     t.integer "dairy_surface"
@@ -86,6 +94,7 @@ ActiveRecord::Schema.define(version: 2021_06_04_144725) do
     t.integer "estate_id", null: false
     t.integer "user_id", null: false
     t.integer "rodeos_main_breed_id", null: false
+    t.float "mun"
     t.index ["estate_id"], name: "index_payrolls_on_estate_id"
     t.index ["rodeos_main_breed_id"], name: "index_payrolls_on_rodeos_main_breed_id"
     t.index ["user_id"], name: "index_payrolls_on_user_id"

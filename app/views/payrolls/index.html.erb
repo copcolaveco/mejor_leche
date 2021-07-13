@@ -1,11 +1,12 @@
 
 <br/>
-<h3>Planillas Mensulaes</h3>
+<h3>Planillas Mensuales</h3>
 
 <table class="table table table-hover table table-bordered">
   <thead class="table-dark">
     <tr>
       <th>Predio:</th>
+      <th>Departamento:</th>>
       <th>Fecha:</th>
       <th colspan="1"></th>
     </tr>
@@ -15,7 +16,8 @@
     <% @payrolls.each do |payroll| %>
       <tr>
         <td><%= link_to payroll.estate.name, payroll %></td>
-        <td><%= payroll.saved_date %></td>
+        <td><%= payroll.estate.department.name %></td>
+        <td><%= payroll.saved_date.strftime("%Y %m %d") %></td>
         <td><%= link_to 'Eliminar', payroll, method: :delete, data: { confirm: 'Estas seguro de querer eliminar esta Planilla?' }, class:"btn btn-outline-danger btn-sm" %></td>
       </tr>
     <% end %>
