@@ -1,7 +1,7 @@
 <div class="mt-5 container">
 	<section>
 	<% if current_user %>
-		<h3>Bienvenido <%= current_user.username %></h3>
+		<h3 id="titulo">Bienvenido <%= current_user.username %></h3>
 		<h4><%= current_user.secondary_user_type.name %></h4>
 		<br>
 	<% else %>
@@ -32,5 +32,4 @@
 	</section>
 		
 </div>
-
 

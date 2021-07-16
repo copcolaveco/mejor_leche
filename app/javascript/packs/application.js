@@ -12,4 +12,3 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
-// alert("Hola Pedro1");

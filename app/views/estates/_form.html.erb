@@ -19,12 +19,12 @@
 
   <div class="field">
     <label for="exampleFormControlInput1" class="form-label"><%= form.label 'Nombre' %></label>   
-    <%= form.text_field :name, class:"form-control" %>
+    <%= form.text_field :name, class:"form-control", presence: true %>
   </div>
 
   <div class="field">
     <label for="exampleFormControlInput1" class="form-label"><%= form.label :dicose %></label>
-    <%= form.text_field :dicose, class:"form-control" %>
+    <%= form.text_field :dicose, class:"form-control", type:"number", presence: true %>
   </div>
 
   <div class="field">
@@ -37,7 +37,7 @@
   </div>
 
   <div class="actions">
-    <%= form.submit 'Crear / Modificar', class:"btn btn-outline-success btn-sm" %>
+    <%= form.submit 'Crear / Modificar', class:"btn btn-outline-success btn-sm", data: { disable_with: "Guardando..." } %>
     <%= link_to 'Atras', estates_path, class:"btn btn-outline-secondary btn-sm" %>
   </div>
 <% end %>

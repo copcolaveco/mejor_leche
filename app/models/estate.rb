@@ -8,9 +8,9 @@ class Estate < ApplicationRecord
 	before_destroy :destroy_has_estate
 
 	validates :name, :dicose, :department_id, presence: true
-	validates :dicose, length: { minimum: 9 }
-	validates :dicose, length: { maximum: 9 }
-	validates :name, length: { maximum: 50 }	
+	validates :dicose, length: { minimum: 9, message: " lo componen 9 caracteres." }
+	validates :dicose, length: { maximum: 9, message:" lo componen 9 caracteres." }
+	validates :name, length: { maximum: 50, message:"Maximo de 50 caracteres." }	
   	validates :dicose, numericality: { only_integer: true, message: "solo valores numericos"}
 
 	  def add_has_estate
