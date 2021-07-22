@@ -1,37 +1,74 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid">
-    <%= link_to 'Mejor Leche', '/', class:"navbar-brand text-white" %>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <% if user_signed_in? %>
-          <li class="nav-item mx-2 text-white">
-            <%= link_to 'Desconectar', destroy_user_session_path, method: :delete, class:"nav-link" %>
-          </li>
-          <li class="nav-item right">
-            <%= link_to 'Editar Usuario', edit_user_registration_path, class:"nav-link" %>
-          </li>   
-          <li class="nav-item">
-            <%= link_to 'Planillas', payrolls_path, class:"nav-link " %>
-          </li>           
-          <li class="nav-item">
-            <%= link_to 'Predios', estates_url, class:"nav-link " %>
-          </li>            
-        <% else %>
-          <li class="nav-item">
-            <%= link_to 'Registrarse', new_user_registration_path, class:"nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to 'Iniciar Sesión',  new_user_session_path, class:"nav-link " %>
-          </li>          
-        <% end %> 
-      </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-    </div>
+
+
+<div class="menu-principal">
+  <div class="logo" id="logo">
+    <%= link_to root_path do %>
+      <%= image_tag("mejorleche.png", :alt => "rss feed") %>
+    <% end %>
   </div>
-</nav>
+
+  <% if user_signed_in? %>
+
+    <div class="menu-bar" id="menuBar">
+      <i class="fas fa-angle-right" id="btnMenuClose"></i>
+
+      <nav class="enlaces">
+      </nav>
+
+      <nav class="enlaces" id="enlaces">
+        <ul>
+          <li><a href=""><%= link_to 'Predios', estates_url, class:"nav-link " %></a></li>
+          <li><a href=""><%= link_to 'Planillas', payrolls_path, class:"nav-link " %></a></li>
+          <li><a href=""><%= link_to 'Cerrar Sesión', destroy_user_session_path, method: :delete, class:"nav-link" %></a></li>
+          <li><a href=""><%= link_to 'Editar Usuario', edit_user_registration_path, class:"nav-link" %></a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <i class="fas fa-bars" id="btnMenuOpen"></i>
+
+  <% else %>
+
+    <div class="menu-bar" id="menuBar">
+      <i class="fas fa-angle-right" id="btnMenuClose"></i>
+
+      <nav class="enlaces">
+      </nav>
+
+      <nav class="enlaces" id="enlaces">
+        <ul>
+          <li><a href=""><%= link_to 'Registrarse', new_user_registration_path, class:"nav-link" %></a></li>
+          <li><a href=""><%= link_to 'Iniciar Sesión',  new_user_session_path, class:"nav-link " %></a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <i class="fas fa-bars" id="btnMenuOpen"></i>
+  <% end %> 
+</div>
+
+<script>
+
+// MENU RESPONSIVE
+var  btnMenuOpen = document.getElementById("btnMenuOpen"),
+     btnMenuClose = document.getElementById("btnMenuClose"),
+     menuResponsive = document.getElementById("menuBar"),
+     enlaces = document.getElementById("enlaces");
+
+     // Click abrir
+     btnMenuOpen.addEventListener("click", function () {
+          menuResponsive.classList.add("active");
+     });
+
+     // Click cerrar
+     btnMenuClose.addEventListener("click", function () {
+          menuResponsive.classList.remove("active");
+     });
+
+     // Cerrar menu con elementos de enlace
+     enlaces.addEventListener("click", function () {
+          menuResponsive.style.transitionDelay = "0.5s";
+          menuResponsive.classList.remove("active");
+     });
+
+</script>

@@ -1,35 +1,290 @@
-<div class="mt-5 container">
-	<section>
-	<% if current_user %>
-		<h3 id="titulo">Bienvenido <%= current_user.username %></h3>
-		<h4><%= current_user.secondary_user_type.name %></h4>
-		<br>
-	<% else %>
-		<h3>Ingrese a Mejor Leche</h3>
-		<br>
-		<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-		  <div class="carousel-inner">
-		    <div class="carousel-item active">
-		      <img src="assets/mj1.jpg" class="d-block w-100" alt="" width="500" height="350">
-		    </div>
-		    <div class="carousel-item">
-		      <img src="assets/mj2.jpg" class="d-block w-100" alt="..." width="500" height="350">
-		    </div>
-		    <div class="carousel-item">
-		      <img src="assets/vaca5.jpg" class="d-block w-100" alt="..." width="500" height="350">
-		    </div>
-		  </div>
-		  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-		    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-		    <span class="visually-hidden">Previous</span>
-		  </button>
-		  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-		    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-		    <span class="visually-hidden">Next</span>
-		  </button>
-		</div>
-	<% end %>	
-	</section>
+
+<% if current_user %>
+
+	<!-- BOTON DE IR ARRIBA -->
+    <div id="btn-top">
+        <span class="fas fa-angle-up"></span>
+    </div>
+
+	<!-- SLIDER DE PRODUCTOS -->
+	<section id="menu-productos">
 		
-</div>
+		<h1 class="titulos" id="titulo-nombre">Bienvenido <%= current_user.username %></h1>
+		<h2 class="subtitulos" id="tipo-usuario"><%= current_user.secondary_user_type.name %></h2>
+		
+		<div class="contenedor-principal">
+			
+			<button id="btn-izquierda"><span class="fas fa-angle-left"></span></button>
+
+			<div class="slider">
+				<div class="container-productos">
+					<div class="descripcion-productos">
+						<h2>Información <b>general</b></h2>
+						<h1>Objetivos</h1>
+						<p>Promover el uso de información analítica como tecnología de apoyo a la  sustentabilidad de la producción lechera (en lo económico y productivo).</p>
+						<h2>Por más información</h2>
+						<button class="btn"> ¡Solicitala aquí! <span class="fas fa-bar-chart"></span></button>
+					</div>	
+					<div class="imagen-productos">
+						<%= image_tag("Vaca2.png", :alt => "rss feed") %>
+					</div>
+				</div>
+				<div class="container-productos">
+					<div class="descripcion-productos">
+						<h2>MONITOREO  <b>RODEO</b></h2>
+						<h1>Graficas</h1>
+						<p>PRODUCCION, CALIDAD, MANEJO Y SANIDAD..</p>
+						<h2>Por más información</h2>
+						<button class="btn"> ¡Solicitala aquí! <span class="fas fa-angle-right"></span></button>
+					</div>
+
+					<div class="imagen-productos">
+						<%= image_tag("Vaca1.png", :alt => "rss feed") %>
+					</div>
+				</div>
+			</div>
+
+			<button id="btn-derecha"><span class="fas fa-angle-right"></span></button>
+		</div>
+	</section>
+
+	<!-- SECCION CONTACTO -->
+     <section id="contacto">
+          <div class="titulo-contacto">
+               <h2 class="subtitulos">Queremos conocer tu opinión</h2>
+               <h1 class="titulos">Contáctanos</h1>
+          </div>
+
+          <form action="" id="formulario">
+               <div class="two-fiels">
+                    <div class="inputConIcon">
+                         <input type="text" id="nombre" name="nombre" class="input-text" placeholder="Nombre">
+                         <i class="fas fa-user"></i>
+                    </div>
+
+                    <div class="inputConIcon">
+                         <input type="email" id="email" name="email" class="input-email" placeholder="Email">
+                         <i class="fas fa-envelope"></i>
+                    </div>
+               </div>
+
+
+               <div class="fiels">
+                    <div class="inputConIcon textareaIcon">
+                         <textarea name="comentarios" id="comentarios" class="textarea" placeholder="Ingrese su mensaje"></textarea>
+                         <i class="fas fa-comments"></i>
+                    </div>
+               </div>
+
+               <div class="fiels-btn">
+                    <input type="submit" class="btn btn-input" value="Enviar">
+               </div>
+          </form>
+     </section>
+
+
+     <!-- ALERTAS -->
+     <div class="alertas">
+          <div id="alertError" class="alert hide">
+               <span class="icono-alert fas fa-exclamation-circle"></span>
+               <span class="msg">Error:campos de entrada vacios.</span>
+          </div>
+
+          <div id="alertSuccess" class="alert hide">
+               <span class="icono-alert fas fa-check-circle"></span>
+               <span class="msg">¡Datos enviados! Gracias por contactarnos.</span>
+          </div>
+     </div>
+
+<% else %>
+
+	<!-- BOTON DE IR ARRIBA -->
+    <div id="btn-top">
+        <span class="fas fa-angle-up"></span>
+    </div>
+
+	<!-- SLIDER DE PRODUCTOS -->
+	<section id="menu-productos">
+		
+		<h1 class="titulos" id="titulo-nombre">Ingrese a Mejor Leche</h1>
+		
+		<div class="contenedor-principal">
+			
+			<button id="btn-izquierda"><span class="fas fa-angle-left"></span></button>
+
+			<div class="slider">
+				<div class="container-productos">
+					<div class="descripcion-productos">
+						<h2>Información <b>general</b></h2>
+						<h1>Objetivos</h1>
+						<p>Promover el uso de información analítica como tecnología de apoyo a la  sustentabilidad de la producción lechera (en lo económico y productivo).</p>
+						<h2>Por más información</h2>
+						<button class="btn"> ¡Solicitala aquí! <span class="fas fa-angle-right"></span></button>
+					</div>
+
+					<div class="imagen-productos">
+						<%= image_tag("Vaca2.png", :alt => "rss feed") %>
+					</div>
+				</div>
+				<div class="container-productos">
+					<div class="descripcion-productos">
+						<h2>Información <b>general</b></h2>
+						<h1>Objetivos</h1>
+						<p>Promover el uso de información analítica como tecnología de apoyo a la  sustentabilidad de la producción lechera (en lo económico y productivo).</p>
+						<h2>Por más información</h2>
+						<button class="btn"> ¡Solicitala aquí! <span class="fas fa-angle-right"></span></button>
+					</div>
+
+					<div class="imagen-productos">
+						<%= image_tag("Vaca1.png", :alt => "rss feed") %>
+					</div>
+				</div>
+			</div>
+
+			<button id="btn-derecha"><span class="fas fa-angle-right"></span></button>
+		</div>		
+	</section>
+
+	<!-- SECCION CONTACTO -->
+     <section id="contacto">
+		<div class="titulo-contacto">
+			<h2 class="subtitulos">Queremos conocer tu opinión</h2>
+			<h1 class="titulos">Contáctanos</h1>
+		</div>
+
+		<form action="" id="formulario">
+			<div class="two-fiels">
+				<div class="inputConIcon">
+						<input type="text" id="nombre" name="nombre" class="input-text" placeholder="Nombre">
+						<i class="fas fa-user"></i>
+				</div>
+
+				<div class="inputConIcon">
+						<input type="email" id="email" name="email" class="input-email" placeholder="Email">
+						<i class="fas fa-envelope"></i>
+				</div>
+			</div>
+
+
+			<div class="fiels">
+				<div class="inputConIcon textareaIcon">
+						<textarea name="comentarios" id="comentarios" class="textarea" placeholder="Ingrese su mensaje"></textarea>
+						<i class="fas fa-comments"></i>
+				</div>
+			</div>
+
+			<div class="fiels-btn">
+				<input type="submit" class="btn btn-input" value="Enviar">
+			</div>
+		</form>
+     </section>
+
+
+     <!-- ALERTAS -->
+     <div class="alertas">
+		<div id="alertError" class="alert hide">
+			<span class="icono-alert fas fa-exclamation-circle"></span>
+			<span class="msg">Error:campos de entrada vacios.</span>
+		</div>
+
+		<div id="alertSuccess" class="alert hide">
+			<span class="icono-alert fas fa-check-circle"></span>
+			<span class="msg">¡Datos enviados! Gracias por contactarnos.</span>
+		</div>
+     </div>
+<% end %>
+
+<script>
+
+// SLIDER DE PRODUCTOS
+var  contenedor = document.querySelector('.slider'),
+     btnIzquierdo = document.getElementById("btn-izquierda"),
+     btnDerecho = document.getElementById("btn-derecha");
+
+     // EVENTO PARA EL BOTON DERECHO
+     btnDerecho.addEventListener("click", function () {
+          contenedor.scrollLeft += contenedor.offsetWidth;  
+     });
+
+     // EVENTO PARA EL BOTON IZQUIERDO
+     btnIzquierdo.addEventListener("click", function () {
+          contenedor.scrollLeft -= contenedor.offsetWidth;  
+     });
+
+	 // VALIDACION DE FORMULARIO
+var formulario = document.getElementById("formulario");
+
+     function validar(e) {
+          var  inputNombre = document.getElementById("nombre"),
+               inputEmail = document.getElementById("email"),
+               inpuComents = document.getElementById("comentarios"),
+               alertSuccess = document.getElementById("alertSuccess"),
+               alertError = document.getElementById("alertError");
+
+          if (inputNombre.value == 0 || inputEmail.value == 0 || inpuComents.value == 0) {
+               e.preventDefault();
+               alertError.classList.remove("hide");
+               alertError.classList.add("show");
+
+               setTimeout(function() {
+                    alertError.classList.remove("show");
+                    alertError.classList.add("hide"); 
+               }, 2000);     
+          }else{
+               e.preventDefault();
+               alertSuccess.classList.remove("hide");
+               alertSuccess.classList.add("show");
+
+               setTimeout(function() {
+                    alertSuccess.classList.remove("show");
+                    alertSuccess.classList.add("hide"); 
+               }, 2000);               
+               inputNombre.value = "";
+               inputEmail.value = "";
+               inpuComents.value = "";
+          }
+     }
+
+
+// Eventos del formulario
+formulario.addEventListener("submit", validar);
+
+// BOTON SCROLL TOP
+var  btnTop = document.getElementById("btn-top"),
+     logo = document.getElementById("logo");
+
+
+// DETECTAMOS SCROLL EN NUESTRA PAGINA WEB
+window.addEventListener("scroll", function (){
+     var  scroll = document.documentElement.scrollTop,
+          fullSize = document.documentElement.offsetHeight,
+          sizeVP = document.documentElement.clientHeight;
+
+
+     if (scroll > 100) {
+          btnTop.classList.add("show");
+     }else{
+          btnTop.classList.remove("show");
+     }
+
+     // MODIFICAR ELEMENTO CUANDO LLEGUE A FINAL DE PAGINA
+     if (fullSize == (scroll + sizeVP)) {
+         btnTop.classList.add("scrollFinal"); 
+     }else{
+          btnTop.classList.remove("scrollFinal");
+     }
+});
+
+
+// DETECTAMOS EVENTO CLICK EN EL BOTON
+btnTop.addEventListener("click", function () {
+     window.scrollTo(0,0);
+});
+
+// DETECTAR EVENTO CLIC EN EL LOGO
+logo.addEventListener("click", function () {
+     window.scrollTo(0,0);
+});
+
+</script>
 
