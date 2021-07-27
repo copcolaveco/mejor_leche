@@ -4,7 +4,7 @@ class PayrollsController < ApplicationController
 
   # GET /payrolls or /payrolls.json
   def index
-    @payrolls = Payroll.all
+    @payrolls = current_user.payrolls.order(created_at: :desc)
     @estates = current_user.estates.order(created_at: :desc)
   end
 
