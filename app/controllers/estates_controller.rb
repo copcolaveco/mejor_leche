@@ -12,6 +12,12 @@ class EstatesController < ApplicationController
 
   # GET /estates/1 or /estates/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "#{@estate.name}", template: "estates/show.html.erb", layout: 'pdf.html'
+      end
+    end
   end
 
   # GET /estates/new

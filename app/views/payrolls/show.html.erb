@@ -1,229 +1,236 @@
-
-
-<p>
-  <h1><%= @payroll.estate.name %></h1>  
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+</html>
+<body>
   <p>
-    <strong>Productor: </strong>
-    <%= @payroll.estate.user.username %>
+    <h1><%= @payroll.estate.name %></h1>  
+    <p>
+      <strong>Productor: </strong>
+      <%= @payroll.estate.user.username %>
+    </p>
   </p>
-</p>
 
-<p>
-  <strong>Planilla ingresada por:</strong>
-  <%= @payroll.user.username %> |
-  <%= @payroll.user.secondary_user_type.name %>
-</p>
+  <p>
+    <strong>Planilla ingresada por:</strong>
+    <%= @payroll.user.username %> |
+    <%= @payroll.user.secondary_user_type.name %>
+  </p>
 
-<p>
-  <strong>Fecha:</strong>
-  <%= @payroll.saved_date %>
-</p>
+  <p>
+    <strong>Fecha:</strong>
+    <%= @payroll.saved_date %>
+  </p>
 
-<br>
-<p>
-  <strong>Raza principal de los rodeos:</strong>
-  <%= @payroll.rodeos_main_breed.name %>
-</p>
+  <br>
+  <p>
+    <strong>Raza principal de los rodeos:</strong>
+    <%= @payroll.rodeos_main_breed.name %>
+  </p>
 
-<p>
-  <strong>Litros emitidos:</strong>
-  <%= @payroll.liter_sent %>
-</p>
+  <p>
+    <strong>Litros emitidos:</strong>
+    <%= @payroll.liter_sent %>
+  </p>
 
-<p>
-  <strong>Litros de leche no emitidos:</strong>
-  <%= @payroll.liters_of_milk_not_sent %>
-</p>
+  <p>
+    <strong>Litros de leche no emitidos:</strong>
+    <%= @payroll.liters_of_milk_not_sent %>
+  </p>
 
-<p>
-  <strong>Conteo de células:</strong>
-  <%= @payroll.cell_count %>
-</p>
+  <p>
+    <strong>Conteo de células:</strong>
+    <%= @payroll.cell_count %>
+  </p>
 
-<p>
-  <strong>Recuento bacteriano:</strong>
-  <%= @payroll.bacterial_count %>
-</p>
+  <p>
+    <strong>Recuento bacteriano:</strong>
+    <%= @payroll.bacterial_count %>
+  </p>
 
-<p>
-  <strong>Grasa:</strong>
-  <%= @payroll.grease %>
-</p>
+  <p>
+    <strong>Grasa:</strong>
+    <%= @payroll.grease %>
+  </p>
 
-<p>
-  <strong>Proteina:</strong>
-  <%= @payroll.protein %>
-</p>
+  <p>
+    <strong>Proteina:</strong>
+    <%= @payroll.protein %>
+  </p>
 
-<p>
-  <strong>Urea:</strong>
-  <%= @payroll.mun %>
-</p>
+  <p>
+    <strong>Urea:</strong>
+    <%= @payroll.mun %>
+  </p>
 
-<p>
-  <strong>Crioscopia:</strong>
-  <%= @payroll.cryoscopy %>
-</p>
+  <p>
+    <strong>Crioscopia:</strong>
+    <%= @payroll.cryoscopy %>
+  </p>
 
-<p>
-  <strong>Superficie VM (ha):</strong>
-  <%= @payroll.vm_surface %>
-</p>
+  <p>
+    <strong>Superficie VM (ha):</strong>
+    <%= @payroll.vm_surface %>
+  </p>
 
-<p>
-  <strong>Superficie Lechera:</strong>
-  <%= @payroll.dairy_surface %>
-</p>
+  <p>
+    <strong>Superficie Lechera:</strong>
+    <%= @payroll.dairy_surface %>
+  </p>
 
-<p>
-  <strong>Vacas en ordeño:</strong>
-  <%= @payroll.milking_cows %>
-</p>
+  <p>
+    <strong>Vacas en ordeño:</strong>
+    <%= @payroll.milking_cows %>
+  </p>
 
-<p>
-  <strong>Vacas secas:</strong>
-  <%= @payroll.dry_cows %>
-</p>
+  <p>
+    <strong>Vacas secas:</strong>
+    <%= @payroll.dry_cows %>
+  </p>
 
-<p>
-  <strong>Vaca masa:</strong>
-  <%= @payroll.cow_dough %>
-</p>
+  <p>
+    <strong>Vaca masa:</strong>
+    <%= @payroll.cow_dough %>
+  </p>
 
-<p>
-  <strong>Terneros lechales:</strong>
-  <%= @payroll.suckling_calves %>
-</p>
+  <p>
+    <strong>Terneros lechales:</strong>
+    <%= @payroll.suckling_calves %>
+  </p>
 
-<p>
-  <strong>Conc. proteico ( kg fresco/VO/día):</strong>
-  <%= @payroll.conc_protein %>
-</p>
+  <p>
+    <strong>Conc. proteico ( kg fresco/VO/día):</strong>
+    <%= @payroll.conc_protein %>
+  </p>
 
-<p>
-  <strong>Forma de suministro:</strong>
-  <%= @payroll.form_of_supply_protein %>
-</p>
+  <p>
+    <strong>Forma de suministro:</strong>
+    <%= @payroll.form_of_supply_protein %>
+  </p>
 
-<p>
-  <strong>Conc. energético ( kg fresco/VO/día):</strong>
-  <%= @payroll.conc_energy %>
-</p>
+  <p>
+    <strong>Conc. energético ( kg fresco/VO/día):</strong>
+    <%= @payroll.conc_energy %>
+  </p>
 
-<p>
-  <strong>Forma de suministro:</strong>
-  <%= @payroll.form_of_supply_energy %>
-</p>
+  <p>
+    <strong>Forma de suministro:</strong>
+    <%= @payroll.form_of_supply_energy %>
+  </p>
 
-<p>
-  <strong>Grano húmedo ( kg fresco/VO/día):</strong>
-  <%= @payroll.wet_grain %>
-</p>
+  <p>
+    <strong>Grano húmedo ( kg fresco/VO/día):</strong>
+    <%= @payroll.wet_grain %>
+  </p>
 
-<p>
-  <strong>Forma de suministro:</strong>
-  <%= @payroll.form_of_supply_grain %>
-</p>
+  <p>
+    <strong>Forma de suministro:</strong>
+    <%= @payroll.form_of_supply_grain %>
+  </p>
 
-<p>
-  <strong>Henilajes ( kg fresco/VO/día):</strong>
-  <%= @payroll.henilages %>
-</p>
+  <p>
+    <strong>Henilajes ( kg fresco/VO/día):</strong>
+    <%= @payroll.henilages %>
+  </p>
 
-<p>
-  <strong>Forma de suministro:</strong>
-  <%= @payroll.form_of_supply_henilages %>
-</p>
+  <p>
+    <strong>Forma de suministro:</strong>
+    <%= @payroll.form_of_supply_henilages %>
+  </p>
 
-<p>
-  <strong>Silo  ( kg fresco/VO/día):</strong>
-  <%= @payroll.silo %>
-</p>
+  <p>
+    <strong>Silo  ( kg fresco/VO/día):</strong>
+    <%= @payroll.silo %>
+  </p>
 
-<p>
-  <strong>Forma de suministro:</strong>
-  <%= @payroll.form_of_supply %>
-</p>
+  <p>
+    <strong>Forma de suministro:</strong>
+    <%= @payroll.form_of_supply %>
+  </p>
 
-<p>
-  <strong>Gramos de ración / litro:</strong>
-  <%= @payroll.grams_of_ration_liter %>
-</p>
+  <p>
+    <strong>Gramos de ración / litro:</strong>
+    <%= @payroll.grams_of_ration_liter %>
+  </p>
 
-<p>
-  <strong>Sales minerales (g/vo/día):</strong>
-  <%= @payroll.mineral_salts %>
-</p>
+  <p>
+    <strong>Sales minerales (g/vo/día):</strong>
+    <%= @payroll.mineral_salts %>
+  </p>
 
-<p>
-  <strong>Gramos de sal/ litro:</strong>
-  <%= @payroll.grams_of_salt_liter %>
-</p>
+  <p>
+    <strong>Gramos de sal/ litro:</strong>
+    <%= @payroll.grams_of_salt_liter %>
+  </p>
 
-<p>
-  <strong>Dias de NO pastoreo (opcional):</strong>
-  <%= @payroll.no_grazing_days %>
-</p>
+  <p>
+    <strong>Dias de NO pastoreo (opcional):</strong>
+    <%= @payroll.no_grazing_days %>
+  </p>
 
-<p>
-  <strong>Partos vacas:</strong>
-  <%= @payroll.childbirth_racks %>
-</p>
+  <p>
+    <strong>Partos vacas:</strong>
+    <%= @payroll.childbirth_racks %>
+  </p>
 
-<p>
-  <strong>Partos vaquillonas:</strong>
-  <%= @payroll.calving_heifers %>
-</p>
+  <p>
+    <strong>Partos vaquillonas:</strong>
+    <%= @payroll.calving_heifers %>
+  </p>
 
-<p>
-  <strong>Vacas descartadas:</strong>
-  <%= @payroll.discarded_cows %>
-</p>
+  <p>
+    <strong>Vacas descartadas:</strong>
+    <%= @payroll.discarded_cows %>
+  </p>
 
-<p>
-  <strong>Vacas servidas (opcional):</strong>
-  <%= @payroll.cows_served %>
-</p>
+  <p>
+    <strong>Vacas servidas (opcional):</strong>
+    <%= @payroll.cows_served %>
+  </p>
 
-<p>
-  <strong>Vacas preñadas (opcional):</strong>
-  <%= @payroll.pregnant_cows %>
-</p>
+  <p>
+    <strong>Vacas preñadas (opcional):</strong>
+    <%= @payroll.pregnant_cows %>
+  </p>
 
-<p>
-  <strong>Mastitis clínica:</strong>
-  <%= @payroll.clinical_mastitis %>
-</p>
+  <p>
+    <strong>Mastitis clínica:</strong>
+    <%= @payroll.clinical_mastitis %>
+  </p>
 
-<p>
-  <strong>Vacas en desvío:</strong>
-  <%= @payroll.cows_on_detour %>
-</p>
+  <p>
+    <strong>Vacas en desvío:</strong>
+    <%= @payroll.cows_on_detour %>
+  </p>
 
-<p>
-  <strong>Abortos vistos:</strong>
-  <%= @payroll.abortions_seen %>
-</p>
+  <p>
+    <strong>Abortos vistos:</strong>
+    <%= @payroll.abortions_seen %>
+  </p>
 
-<p>
-  <strong>Perdidas Reproductivas (opcional):</strong>
-  <%= @payroll.reproductive_losses %>
-</p>
+  <p>
+    <strong>Perdidas Reproductivas (opcional):</strong>
+    <%= @payroll.reproductive_losses %>
+  </p>
 
-<p>
-  <strong>Vacas con problemas podales:</strong>
-  <%= @payroll.cows_with_foot_problems %>
-</p>
+  <p>
+    <strong>Vacas con problemas podales:</strong>
+    <%= @payroll.cows_with_foot_problems %>
+  </p>
 
-<p>
-  <strong>Vacas muertas:</strong>
-  <%= @payroll.dead_cows %>
-</p>
+  <p>
+    <strong>Vacas muertas:</strong>
+    <%= @payroll.dead_cows %>
+  </p>
 
-<p>
-  <strong>Lluvias  (mm):</strong>
-  <%= @payroll.rains %>
-</p>
+  <p>
+    <strong>Lluvias  (mm):</strong>
+    <%= @payroll.rains %>
+  </p>
 
-<%= link_to 'Editar', edit_payroll_path(@payroll), class:"btn btn-primary btn-sm" %> 
-<%= link_to 'Atras', payrolls_path, class:"btn btn-secondary btn-sm" %>
+  <%= link_to 'Editar', edit_payroll_path(@payroll), class:"btn btn-primary btn-sm" %> 
+  <%= link_to 'Atras', payrolls_path, class:"btn btn-secondary btn-sm" %>
+</body>
