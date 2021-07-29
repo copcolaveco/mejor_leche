@@ -5,7 +5,7 @@ class PayrollsController < ApplicationController
   # GET /payrolls or /payrolls.json
   def index
     @payrolls = current_user.payrolls.order(created_at: :desc)
-    @estates = current_user.estates.order(created_at: :desc) 
+    @estates = current_user.estates.order(created_at: :desc)     
   end
 
   # GET /payrolls/1 or /payrolls/1.json
@@ -13,7 +13,7 @@ class PayrollsController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        render pdf: "#{@payroll.saved_date.strftime("%Y %m %d")}, #{@payroll.estate.name}", template: "payrolls/show.html.erb", layout: 'pdf.html'
+        render pdf: "#{@payroll.saved_date.strftime("%Y %m %d")}, #{@payroll.estate}.pdf", template: "payrolls/show.html.erb", layout: 'pdf.html', type: "application/pdf"
       end
     end
   end

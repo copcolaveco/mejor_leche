@@ -7,7 +7,6 @@
       <div class="alert alert-warning fixed-top" role="alert"><%= alert %></div>
     <% end %>
 
-  <br>
   <div class="field form-group">
     <label class="form-label"><%= form.label 'Predio' %></label>
     <select class="form-select" <%= collection_select(:payroll, :estate_id, @estates, :id, :name) %></select>
@@ -29,7 +28,7 @@
     </div>
   <br>
 
-  <h4>LECHE PRODUCIDA</h4>
+  <h4 class="subtitulos">LECHE PRODUCIDA</h4>
   <hr>
 
   <div class="field">
@@ -42,8 +41,7 @@
     <%= form.text_field :liters_of_milk_not_sent, class:"form-control", placeholder:"Litros totales producidos en el mes", :required => true, type:"number" %>
   </div><br>
 
-  <h4>COMPOSICIÓN DE LA LECHE</h4>
-  <hr>
+  <h4 class="subtitulos">COMPOSICIÓN DE LA LECHE</h4>
 
   <div class="field">
     <%= form.label 'Recuento celular (en miles), Empresa, en queseros 2 al mes (1 prod, 1 CLV)' %>
@@ -80,8 +78,7 @@
     <%= form.text_field :cryoscopy, class:"form-control", type:"number" %>
   </div><BR>
 
-  <h4>SUPERFICIE</h4>
-  <hr>
+  <h4 class="subtitulos">SUPERFICIE</h4>
 
   <div class="field">
     <%= form.label 'Superficie VM (ha), incluye el área que ocupa los vo y las vs' %>
@@ -93,8 +90,7 @@
     <%= form.text_field :dairy_surface, class:"form-control", type:"number" %>
   </div>
 
-  <h4>RODEO LECHERO</h4>
-  <hr>
+  <h4 class="subtitulos">RODEO LECHERO</h4>
 
   <div class="field">
     <%= form.label 'Vacas en ordeño, tomamos el numero de vacas del dia del control lechero' %>
@@ -116,8 +112,7 @@
     <%= form.text_field :suckling_calves, class:"form-control", type:"number" %>
   </div><br>
 
-  <h4>ALIMENTACIÓN</h4>
-  <hr>
+  <h4 class="subtitulos">ALIMENTACIÓN</h4>
 
   <div class="field">
     <%= form.label 'Conc proteico ( kg fresco/VO/día), Expresado en base fresca, tal cual
@@ -190,8 +185,7 @@
     <%= form.text_field :no_grazing_days, class:"form-control", type:"number" %>
   </div><br>
 
-  <h4>DATOS REPRODUCTIVOS</h4>
-  <hr>
+  <h4 class="subtitulos">DATOS REPRODUCTIVOS</h4>
 
   <div class="field">
     <%= form.label 'Partos vacas, total de partos de vacas en el mes' %>
@@ -218,8 +212,7 @@
     <%= form.text_field :pregnant_cows, class:"form-control", type:"number" %>
   </div><br>
 
-  <h4>SANIDAD ANIMAL</h4>
-  <hr>
+  <h4 class="subtitulos">SANIDAD ANIMAL</h4>
 
   <div class="field">
     <%= form.label 'Mastitis clínica, cantidad de vacas con tratamiento de mastitis' %>
@@ -257,7 +250,7 @@
   </div><br>
 
   <div class="actions">
-    <%= form.submit 'Generar / Modificar Planilla', class:"btn btn-primary btn-sm" %> | 
+    <%= form.submit 'Generar / Modificar Planilla', class:"btn btn-secondary btn-sm" %> | 
     <%= link_to 'Atras', payrolls_path, class:"btn btn-secondary btn-sm" %>
   </div>
   <br>

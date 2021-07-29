@@ -6,6 +6,7 @@
   </head>
 </html>
 <body>
+<td>
   <p>
     <h1><%= @payroll.estate.name %></h1>  
     <p>
@@ -233,4 +234,5 @@
 
   <%= link_to 'Editar', edit_payroll_path(@payroll), class:"btn btn-primary btn-sm" %> 
   <%= link_to 'Atras', payrolls_path, class:"btn btn-secondary btn-sm" %>
+  <%= link_to "PDF", payroll_path(format: "pdf"), :class => "btn btn-secondary btn-sm",:method => :get,target: '_blank'  %>
 </body>

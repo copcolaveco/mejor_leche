@@ -237,7 +237,7 @@ DEPENDENCIES
   byebug
   capybara (>= 3.26)
   devise (~> 4.7, >= 4.7.3)
-  font-awesome-rails
+  font-awesome-rails (~> 4.7, >= 4.7.0.7)
   jbuilder (~> 2.7)
   kaminari (~> 1.2, >= 1.2.1)
   pg (~> 1.2, >= 1.2.3)

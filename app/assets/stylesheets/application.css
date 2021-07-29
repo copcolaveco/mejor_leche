@@ -1,6 +1,8 @@
-/* 
-* = requiere font-awesome 
-*/
+
+#= require font_awesome5
+
+@import '@fortawesome/fontawesome-free';
+@import 'font_awesome5';
 
 @font-face {
     font-family: 'Roboto Condensed', sans-serif;
@@ -75,6 +77,29 @@ body{
     padding: 15px 45px;
 }
 
+/* FORMULARIOS */
+.form-formulario{
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    height: 75px;
+    padding: 0 100px;
+    margin-top: 10px;
+    background: var(--color-background);
+    z-index: 1;   
+    font-size: 14px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--color-texto); 
+    font-weight: 600;
+}
+
+.form-titulo{
+    margin-top: 50px;
+}
+
+/* TABLAS */
+
 /* MENU PRINCIPAL */
 .menu-principal{
     width: 100%;
@@ -147,6 +172,20 @@ body{
 
 .menu-principal i:hover{
     color: var(--color-secundario);
+}
+
+/* LOGIN */
+
+.login {
+    color: var(--color-texto);
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+.login-titulo{
+    color: var(--color-texto);
+    font-size: 26px;
+    text-transform: uppercase;
 }
 
 /* SLIDER DE PRODUCTOS */

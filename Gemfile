@@ -15,10 +15,10 @@ gem 'addressable', '~> 2.7'
 gem 'simple_calendar', '~> 2.4', '>= 2.4.2'
 gem "bootstrap_form", "~> 4.0"
 gem 'pg', '~> 1.2', '>= 1.2.3'
-gem "font-awesome-rails"
 gem 'kaminari', '~> 1.2', '>= 1.2.1'
 gem 'wicked_pdf', '~> 2.1'
 gem 'wkhtmltopdf-binary', '~> 0.12.6.5'
+gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.7'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
