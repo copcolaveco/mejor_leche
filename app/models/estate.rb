@@ -1,7 +1,7 @@
 class Estate < ApplicationRecord
 	belongs_to :user,  optional: true
 	belongs_to :department,  optional: true
-	has_many :payroll
+	has_many :payroll 
 	has_many :has_estates
 	has_many :users, through: :has_estates
 	after_save :add_has_estate
@@ -20,7 +20,12 @@ class Estate < ApplicationRecord
 
 	  def destroy_has_estate
 	  	@estate = self
-	  	@has = HasEstate.where(estate_id: @estate.id)
-	  	HasEstate.destroy(@has.ids)
+	  	@estate_id = HasEstate.where(estate_id: @estate.id)
+		@payrolls = Payroll.where(estate_id: @estate.id)
+	  	HasEstate.destroy(@estate_id.ids)
+
+		@payrolls.each do |p|
+			Payroll.destroy(p.id)
+		end
 	  end
 end

@@ -16,7 +16,7 @@
       <tr>
         <td><%= link_to payroll.estate.name, payroll %></td>
         <td><%= payroll.estate.department.name %></td>
-        <td><%= payroll.saved_date.strftime("%Y %m %d") %></td>
+        <td><%= payroll.saved_date.strftime("%Y %m") %></td>
         <td>
           <%= link_to(payroll, method: :delete, data: { confirm: 'Estas seguro de querer eliminar esta Planilla?' } ) do %>
             <i class="fas fa-trash"></i>
@@ -29,4 +29,4 @@
 
 <br>
 
-<%= link_to 'Nueva Planilla', new_payroll_path, class:"btn btn-outline-primary btn-sm" %>
+<%= link_to 'Nueva Planilla', new_payroll_path, class:"btn" %>

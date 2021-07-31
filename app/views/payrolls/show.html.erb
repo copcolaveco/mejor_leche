@@ -1,14 +1,7 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-</html>
-<body>
+
 <td>
   <p>
-    <h1><%= @payroll.estate.name %></h1>  
+    <h1 class="titulos"><%= @payroll.estate.name %></h1>  
     <p>
       <strong>Productor: </strong>
       <%= @payroll.estate.user.username %>
@@ -23,7 +16,7 @@
 
   <p>
     <strong>Fecha:</strong>
-    <%= @payroll.saved_date %>
+    <%= @payroll.saved_date.strftime("%Y %m") %>
   </p>
 
   <br>
@@ -232,7 +225,6 @@
     <%= @payroll.rains %>
   </p>
 
-  <%= link_to 'Editar', edit_payroll_path(@payroll), class:"btn btn-primary btn-sm" %> 
-  <%= link_to 'Atras', payrolls_path, class:"btn btn-secondary btn-sm" %>
-  <%= link_to "PDF", payroll_path(format: "pdf"), :class => "btn btn-secondary btn-sm",:method => :get,target: '_blank'  %>
-</body>
+  <%= link_to 'Editar', edit_payroll_path(@payroll), class:"btn" %> 
+  <%= link_to 'Atras', payrolls_path, class:"btn" %>
+  <%= link_to "PDF", payroll_path(format: "pdf"), :class => "btn",:method => :get,target: '_blank'  %>

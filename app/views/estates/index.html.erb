@@ -18,8 +18,11 @@
       <tr>
         <td><%= link_to estate.name , estate %></td>
         <td><%= estate.dicose %></td>
-        <td><%= estate.user.username %></td>
-        <td><%= link_to 'Eliminar', estate, method: :delete, data: { confirm: 'Se eliminaran todas las asociaciones de sus Técnicos, estas seguro de querer eliminar este Predio?, ' }, class:"btn btn-outline-danger btn-sm" %></td>
+        <td><%= estate.user.username %></td><td>
+          <%= link_to(estate, method: :delete, data: { confirm: 'Se eliminaran todas las asociaciones de sus Técnicos como tambien las Planillas que tenga de este Predio, estas seguro de querer eliminar este Predio?' } ) do %>
+            <i class="fas fa-trash"></i>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
