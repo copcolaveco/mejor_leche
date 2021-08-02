@@ -36,7 +36,7 @@ Rails.application.configure do
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
 
-  config.action_mailer.perform_caching = false
+  #config.action_mailer.perform_caching = false
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -73,5 +73,23 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_url_options = 
+  { :host => 'localhost:3000' }
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default :charset => "utf-8"
+  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.default_options = { from: "it.colaveco@gmail.com" }
+
+  config.action_mailer.smtp_settings = {
+    address: "smtp.gmail.com",
+    port: 587,
+    authentication: "plain",
+    enable_starttls_auto: true,
+    user_name: ENV['GMAIL_USERNAME'],
+    password: ENV['GMAIL_PASSWORD'],
+    openssl_verify_mode: 'none'
+    }
+    config.action_mailer.perform_caching = false
+
 end
