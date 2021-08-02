@@ -2,9 +2,6 @@
 * = requiere font-awesome 
 */
 
-@import '@fortawesome/fontawesome-free';
-@import 'font_awesome5';
-
 @font-face {
     font-family: 'Roboto Condensed', sans-serif;
     src: url(/app/assets/stylesheets/fonts/RobotoCondensed-Light.ttf);
