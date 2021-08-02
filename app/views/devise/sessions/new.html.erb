@@ -24,8 +24,8 @@
         </div>
       </div>
       <div class="modal-footer">
-        <%= link_to 'Recuperar contraseña', new_password_path(resource_name), class: 'btn btn-input' %>
-        <%= f.submit 'Ingresar', class: 'btn btn-input' %>
+        <%= link_to 'Recuperar contraseña', new_password_path(resource_name), class: 'btn btn-input'%>
+        <%= f.submit 'Ingresar', class: 'btn btn-input', data: { disable_with: "Ingresando..." } %>
       </div>
     <% end %>
   </div>

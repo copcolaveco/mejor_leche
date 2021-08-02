@@ -1,7 +1,7 @@
 <% if current_user.secondary_user_type.user_type == @user_type %>
 <br>
-<h3>Predios del cliente - <%= current_user.username %></h3>
-<h4><%= current_user.secondary_user_type.name %></h4>
+<h3 class="titulos">Predios del cliente - <%= current_user.username %></h3>
+<h4 class="subtitulos"><%= current_user.secondary_user_type.name %></h4>
  
 <table class="table table table-hover table table-bordered">
   <thead class="table-dark">
@@ -30,8 +30,8 @@
 
 <br>
 
-<%= link_to 'Nuevo Predio', new_estate_path, class:"btn btn-outline-primary btn-sm" %>
-<%= link_to 'Asociar Técnicos', has_estates_path, class:"btn btn-outline-primary btn-sm" %>
+<%= link_to 'Nuevo Predio', new_estate_path, class:"btn" %>
+<%= link_to 'Asociar Técnicos', has_estates_path, class:"btn" %>
 
 <% else %> 
 

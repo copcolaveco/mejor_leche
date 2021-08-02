@@ -1,7 +1,7 @@
 
 <br>
 <div class="jumbotron">
-  <h3>
+  <h3 class="titulos">
     <%= @estate.name %>  
   </h3>
   <p class="lead">
@@ -15,7 +15,8 @@
 	 </p>
   </p>
 
-  <%= link_to 'Editar', edit_estate_path(@estate), class:"btn btn-outline-warning btn-sm" %> 
-  <%= link_to 'Atras', estates_path, class:"btn btn-outline-secondary btn-sm" %>
+  <%= link_to 'Editar', edit_estate_path(@estate), class:"btn", data: { disable_with: "Guardando..." } %> 
+  <%= link_to 'Atras', estates_path, class:"btn" %>
+  <%= link_to "PDF", estate_path(format: "pdf"), :class => "btn",:method => :get,target: '_blank' %>
   <br/>
 </div>

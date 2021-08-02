@@ -8,6 +8,7 @@
     </ul>
   </div>
 <% end %>
+
 <%= form_with(model: estate) do |form| %>
   
 <% if notice %>
@@ -37,8 +38,12 @@
   </div>
 
   <div class="actions">
-    <%= form.submit 'Crear / Modificar', class:"btn btn-outline-success btn-sm", data: { disable_with: "Guardando..." } %>
-    <%= link_to 'Atras', estates_path, class:"btn btn-outline-secondary btn-sm" %>
+    <%= form.submit 'Crear / Modificar', class:"btn", data: { disable_with: "Guardando..." } %>
+    <%= link_to 'Atras', estates_path, class:"btn" %>
   </div>
 <% end %>
+
+
+
+
 

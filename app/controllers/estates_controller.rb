@@ -15,7 +15,7 @@ class EstatesController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        render pdf: "#{@estate.name}", template: "estates/show.html.erb", layout: 'pdf.html'
+        render pdf: "Predio.pdf", template: "estates/show.html.erb", layout: 'pdf.html', type: "application/pdf"
       end
     end
   end

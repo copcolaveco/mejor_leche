@@ -9,6 +9,9 @@
     src: url(/app/assets/stylesheets/fonts/RobotoCondensed-Light.ttf);
 }
 
+body{
+    padding: 0 30px;
+}
 
 :root{
     --color-primario: #FCB03B;

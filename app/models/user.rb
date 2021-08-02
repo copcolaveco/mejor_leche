@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  before_destroy :destroy_estate
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
@@ -37,4 +38,13 @@ class User < ApplicationRecord
   		errors.add(:username, :invalid)
   	end
   end
+
+  def destroy_estate
+    @user = self
+    @estates = Estate.where(user_id: @user.id)
+    @estates.each do |e|
+      Estate.destroy(e.id)
+    end
+  end
+
 end
