@@ -1,7 +1,7 @@
 class EstatesController < ApplicationController
   before_action :set_estate, only: [ :show ,:edit ,:update ,:destroy ]
   before_action :authenticate_user!, except: [:show, :index]
-  # before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :user_autorization, only: [ :show ,:edit ,:update ,:destroy, :new ]
 
   # GET /estates or /estates.json
   def index
@@ -72,6 +72,14 @@ class EstatesController < ApplicationController
     @user = User.find(params[:user_id])
   end
 
+  def from_department
+    @department = Department.find(params[:department_id])
+  end
+
+  def from_productive_area
+    @productive_area = ProductiveArea.find(params[:productive_areas_id])
+  end
+
   def set_estate
     @has_estate = HasEstate.find(params[:id])
   end
@@ -82,8 +90,14 @@ class EstatesController < ApplicationController
   end
 
   def has_estate_params
-      params.require(:estate).permit(:user_id, :estate_id)
-    end
+    params.require(:estate).permit(:user_id, :estate_id)
+  end
+
+  def user_autorization
+    unless current_user.user_type_id != 2 and current_user.user_type_id != 4
+      redirect_to root_path, notice: "No tienes los permisos necesarios para crear un Predio."
+    end  
+  end 
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -97,7 +111,7 @@ class EstatesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def estate_params
-      params.require(:estate).permit(:name, :dicose, :user_id, :department_id)
+      params.require(:estate).permit(:name, :dicose, :user_id, :department_id, :productive_area_id)
     end
 
     def search_params

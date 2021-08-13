@@ -7,10 +7,11 @@ class User < ApplicationRecord
          has_many :payrolls
          has_many :estates
          belongs_to :secondary_user_type,  optional: true
+         belongs_to :user_type,  optional: true
 
   attr_writer :login 
   validate :validate_username
-  validates :business_name, :rut, :address, :identification_document, :phone_two, :location, :username, presence: true
+  validates :business_name, :rut, :address, :identification_document, :phone_two, :location, :username, :user_type_id, presence: true
   validates :identification_document, length: { minimum: 8, message: "Minimo 8 numeros, sin puntos ni guiones." }
   validates :identification_document, length: { maximum: 8, message: "Maximo 8 numeros, sin puntos ni guiones." }
   validates :rut, length: { minimum: 12, message: "Minimo 12 numeros." }

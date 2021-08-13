@@ -1,6 +1,7 @@
 class Estate < ApplicationRecord
 	belongs_to :user,  optional: true
 	belongs_to :department,  optional: true
+	belongs_to :productive_area,  optional: true
 	has_many :payroll 
 	has_many :has_estates
 	has_many :users, through: :has_estates

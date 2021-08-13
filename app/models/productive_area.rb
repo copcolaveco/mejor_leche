@@ -1,0 +1,2 @@
+class ProductiveArea < ApplicationRecord
+end

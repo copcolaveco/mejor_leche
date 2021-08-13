@@ -29,7 +29,7 @@
 
   <div class="field form-group">
     <%= form.label 'Fecha de creación' %>
-    <%= form.datetime_local_field :saved_date, class:"form-control" , :required => true %> 
+    <%= form.month_field :saved_date, class:"form-control" , :required => true %> 
   </div>
 
   <br>
@@ -44,12 +44,12 @@
 
   <div class="field">
     <%= form.label 'LITROS REMITIDOS, salen de la remisión oficial del mes anterior/actual o procesados en el mes' %>
-    <%= form.text_field :liter_sent , class:"form-control" , type:"number", :required => true %> 
+    <%= form.text_field :liter_sent , class:"form-control" , type:"decimal", :required => true, type:"number" %> 
   </div>
 
   <div class="field">
     <%= form.label 'Litros leche no remitidos, todo lo que no va al tanque (consumo terneros, consumo propio, consumo cerdos).' %>
-    <%= form.text_field :liters_of_milk_not_sent, class:"form-control", placeholder:"Litros totales producidos en el mes", :required => true, type:"number" %>
+    <%= form.text_field :liters_of_milk_not_sent, class:"form-control", :required => true, type:"number" %>
   </div><br>
 
   <h4 class="subtitulos">COMPOSICIÓN DE LA LECHE</h4>
@@ -126,7 +126,7 @@
   <h4 class="subtitulos">ALIMENTACIÓN</h4>
 
   <div class="field">
-    <%= form.label 'Conc proteico ( kg fresco/VO/día), Expresado en base fresca, tal cual
+    <%= form.label 'Concentrado proteico ( kg fresco/VO/día), Expresado en base fresca, tal cual
  Pesar lo que se da en el día ' %>
     <%= form.text_field :conc_protein, class:"form-control", type:"number" %>
   </div>
@@ -137,7 +137,7 @@
   </div><br>
 
   <div class="field">
-    <%= form.label 'Conc energético ( kg fresco/VO/día)' %>
+    <%= form.label 'Concentrado energético ( kg fresco/VO/día)' %>
     <%= form.text_field :conc_energy, class:"form-control", type:"number" %>
   </div>
 

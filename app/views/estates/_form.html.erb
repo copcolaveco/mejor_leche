@@ -37,6 +37,11 @@
     <select class="form-select" <%= collection_select(:estate, :department_id, Department.all.order(:name), :id, :name) %></select>
   </div>
 
+  <div class="form-group my-3">
+    <label for="exampleFormControlInput1" class="form-label"><%= form.label 'Rubro Productivo' %></label>    
+    <select class="form-select" <%= collection_select(:estate, :productive_area_id, ProductiveArea.all.order(:name), :id, :name) %></select>
+  </div>
+
   <div class="actions">
     <%= form.submit 'Crear / Modificar', class:"btn", data: { disable_with: "Guardando..." } %>
     <%= link_to 'Atras', estates_path, class:"btn" %>

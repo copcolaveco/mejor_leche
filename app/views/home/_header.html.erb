@@ -8,6 +8,7 @@
   </div>
 
   <% if user_signed_in? %>
+    <% if current_user.user_type_id != 4 %>
 
     <div class="menu-bar" id="menuBar">
       <i class="fas fa-angle-right" id="btnMenuClose"></i>
@@ -27,6 +28,25 @@
 
     <i class="fas fa-bars" id="btnMenuOpen"></i>
 
+    <% else %>
+
+      <div class="menu-bar" id="menuBar">
+      <i class="fas fa-angle-right" id="btnMenuClose"></i>
+
+      <nav class="enlaces">
+      </nav>
+
+      <nav class="enlaces" id="enlaces">
+        <ul>
+          <li><a href=""><%= link_to 'Cerrar Sesión', destroy_user_session_path, method: :delete, class:"nav-link" %></a></li>
+          <li><a href=""><%= link_to 'Editar Usuario', edit_user_registration_path, class:"nav-link" %></a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <i class="fas fa-bars" id="btnMenuOpen"></i>
+
+    <% end %>
   <% else %>
 
     <div class="menu-bar" id="menuBar">

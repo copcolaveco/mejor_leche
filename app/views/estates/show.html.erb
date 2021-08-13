@@ -13,6 +13,15 @@
   	  <strong>Productor:</strong>
   	  <%= @estate.user.username %>
 	 </p>
+   <p>
+  	  <strong>Departamento:</strong>
+  	  <%= @estate.department.name %>
+	 </p>
+   <p>
+  	  <strong>Rubro Productivo:</strong>
+  	  <%= @estate.productive_area.name %>
+	 </p>
+    
   </p>
 
   <%= link_to 'Editar', edit_estate_path(@estate), class:"btn", data: { disable_with: "Guardando..." } %> 

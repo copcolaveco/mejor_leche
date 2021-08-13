@@ -10,7 +10,7 @@
 
   <div class="field"><br />
     <%= f.label 'Email' %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", placeholder:"ejemplo@ejemplo.com" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", placeholder:"ejemplo@ejemplo.com", :required => true %>
   </div><br/>
 
   <div class="field">
@@ -28,52 +28,52 @@
 
   <div class="form-group my-3">
     <%= f.label 'Tipo de Usuario' %>
-    <%= collection_select(:user, :secondary_user_type_id, SecondaryUserType.all.order(:name), :id, :name) %>
+    <%= collection_select(:user, :user_type_id, UserType.where(public: 1), :id, :typename) %>
   </div>
 
   <div class="field"><br/>
     <%= f.label 'Nombre completo' %>
-    <%= f.text_field :username, autofocus: true, class:"form-control"%>
+    <%= f.text_field :username, autofocus: true, class:"form-control", :required => true %>
   </div>
 
   <div class="field"><br/>
     <%= f.label 'Cedula' %>
-    <%= f.text_field :identification_document, class:"form-control"%>
+    <%= f.text_field :identification_document, class:"form-control", type:"number", :required => true %>
   </div>
 
   <div class="field"><br />
     <%= f.label 'Nombre de empresa' %>
-    <%= f.text_field :business_name, autofocus: true, class:"form-control" %>
+    <%= f.text_field :business_name, autofocus: true, class:"form-control", :required => true %>
   </div>
 
   <div class="field"><br />
     <%= f.label 'RUT' %>
-    <%= f.text_field :rut, autofocus: true, class:"form-control"%>
+    <%= f.text_field :rut, autofocus: true, class:"form-control", type:"number", :required => true %>
   </div>
 
   <div class="field"><br />
-    <%= f.label 'Direcciòn' %>
-    <%= f.text_field :address, autofocus: true, class:"form-control"%>
+    <%= f.label 'Dirección' %>
+    <%= f.text_field :address, autofocus: true, class:"form-control",  :required => true %>
   </div>
 
   <div class="field"><br />
-    <%= f.label 'Telefono' %>
-    <%= f.text_field :phone_one, autofocus: true, class:"form-control"%>
+    <%= f.label 'Teléfono' %>
+    <%= f.text_field :phone_one, autofocus: true, class:"form-control", :required => true %>
   </div>
 
   <div class="field"><br />
     <%= f.label 'Celular' %>
-    <%= f.text_field :phone_two, autofocus: true, class:"form-control"%>
+    <%= f.text_field :phone_two, autofocus: true, class:"form-control", type:"number", :required => true %>
   </div>
 
   <div class="field"><br />
     <%= f.label 'Ciudad' %>
-    <%= f.text_field :location, autofocus: true, class:"form-control"%>
+    <%= f.text_field :location, autofocus: true, class:"form-control" , :required => true %>
   </div>
 
   <div class="field"><br />
     <%= f.label 'Codigo Postal' %>
-    <%= f.text_field :invoice_postal_code, autofocus: true, class:"form-control" %>
+    <%= f.text_field :invoice_postal_code, autofocus: true, class:"form-control", type:"number", :required => true %>
   </div> <br> 
 
   <div class="actions">

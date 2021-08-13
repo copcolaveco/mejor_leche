@@ -7,7 +7,7 @@ class HasEstatesController < ApplicationController
 		@estates = current_user.estates.order(created_at: :desc)
 		@user_type = UserType.find_by(typename: 'Técnico')
 		@sec = SecondaryUserType.where(user_type_id: @user_type.id)
-		@users = User.where(secondary_user_type: @sec)
+		@users = User.where(user_type: @user_type)
 	end
 	
   def new

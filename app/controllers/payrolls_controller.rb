@@ -82,6 +82,7 @@ class PayrollsController < ApplicationController
     @department = Department.find(params[:department_id])
   end
 
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_payroll
@@ -90,6 +91,6 @@ class PayrollsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def payroll_params
-      params.require(:payroll).permit( :user_type, :liter_sent, :liters_of_milk_not_sent, :cell_count, :bacterial_count, :grease, :protein, :mun, :cryoscopy, :vm_surface, :dairy_surface, :milking_cows, :dry_cows, :cow_dough, :suckling_calves, :conc_protein, :form_of_supply_protein, :conc_energy, :form_of_supply_energy, :wet_grain, :form_of_supply_grain, :henilages, :form_of_supply_henilages, :silo, :form_of_supply, :grams_of_ration_liter, :mineral_salts, :grams_of_salt_liter, :no_grazing_days, :childbirth_racks, :calving_heifers, :discarded_cows, :cows_served, :pregnant_cows, :clinical_mastitis, :cows_on_detour, :abortions_seen, :reproductive_losses, :cows_with_foot_problems, :dead_cows, :rains, :user_id, :lactose, :saved_date, :estate_id, :rodeos_main_breed_id)
+      params.require(:payroll).permit( :user_type, :liter_sent, :liters_of_milk_not_sent, :cell_count, :bacterial_count, :grease, :protein, :mun, :cryoscopy, :vm_surface, :dairy_surface, :milking_cows, :dry_cows, :cow_dough, :suckling_calves, :conc_protein, :form_of_supply_protein, :conc_energy, :form_of_supply_energy, :wet_grain, :form_of_supply_grain, :henilages, :form_of_supply_henilages, :silo, :form_of_supply, :grams_of_ration_liter, :mineral_salts, :grams_of_salt_liter, :no_grazing_days, :childbirth_racks, :calving_heifers, :discarded_cows, :cows_served, :pregnant_cows, :clinical_mastitis, :cows_on_detour, :abortions_seen, :reproductive_losses, :cows_with_foot_problems, :dead_cows, :rains, :user_id, :lactose, :saved_date, :estate_id, :rodeos_main_breed_id, :balanced_ration )
     end
 end

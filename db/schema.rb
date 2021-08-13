@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_12_144523) do
+ActiveRecord::Schema.define(version: 2021_08_13_154644) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,9 +26,11 @@ ActiveRecord::Schema.define(version: 2021_07_12_144523) do
     t.string "dicose"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id", null: false
-    t.integer "department_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "department_id", null: false
+    t.bigint "productive_area_id", null: false
     t.index ["department_id"], name: "index_estates_on_department_id"
+    t.index ["productive_area_id"], name: "index_estates_on_productive_area_id"
     t.index ["user_id"], name: "index_estates_on_user_id"
   end
 
@@ -39,8 +41,8 @@ ActiveRecord::Schema.define(version: 2021_07_12_144523) do
   end
 
   create_table "has_estates", force: :cascade do |t|
-    t.integer "estate_id", null: false
-    t.integer "user_id", null: false
+    t.bigint "estate_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["estate_id"], name: "index_has_estates_on_estate_id"
@@ -48,28 +50,28 @@ ActiveRecord::Schema.define(version: 2021_07_12_144523) do
   end
 
   create_table "payrolls", force: :cascade do |t|
-    t.integer "liter_sent"
-    t.integer "liters_of_milk_not_sent"
-    t.integer "cell_count"
-    t.integer "bacterial_count"
-    t.integer "grease"
-    t.integer "protein"
-    t.integer "cryoscopy"
-    t.integer "vm_surface"
-    t.integer "dairy_surface"
-    t.integer "milking_cows"
-    t.integer "dry_cows"
-    t.string "cow_dough"
+    t.integer "liter_sent", null: false
+    t.integer "liters_of_milk_not_sent", null: false
+    t.integer "cell_count", null: false
+    t.integer "bacterial_count", null: false
+    t.integer "grease", null: false
+    t.integer "protein", null: false
+    t.integer "cryoscopy", null: false
+    t.integer "vm_surface", null: false
+    t.integer "dairy_surface", null: false
+    t.integer "milking_cows", null: false
+    t.integer "dry_cows", null: false
+    t.integer "cow_dough", null: false
     t.integer "suckling_calves"
-    t.integer "conc_protein"
-    t.string "form_of_supply_protein"
-    t.integer "conc_energy"
-    t.string "form_of_supply_energy"
-    t.integer "wet_grain"
-    t.string "form_of_supply_grain"
-    t.integer "henilages"
-    t.string "form_of_supply_henilages"
-    t.integer "silo"
+    t.float "conc_protein"
+    t.integer "form_of_supply_protein"
+    t.float "conc_energy"
+    t.integer "form_of_supply_energy"
+    t.float "wet_grain"
+    t.integer "form_of_supply_grain"
+    t.float "henilages"
+    t.integer "form_of_supply_henilages"
+    t.float "silo"
     t.integer "form_of_supply"
     t.integer "grams_of_ration_liter"
     t.integer "mineral_salts"
@@ -89,15 +91,22 @@ ActiveRecord::Schema.define(version: 2021_07_12_144523) do
     t.integer "rains"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "lactose"
+    t.integer "lactose", null: false
     t.datetime "saved_date"
-    t.integer "estate_id", null: false
-    t.integer "user_id", null: false
-    t.integer "rodeos_main_breed_id", null: false
+    t.bigint "estate_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "rodeos_main_breed_id", null: false
     t.float "mun"
+    t.float "balanced_ration"
     t.index ["estate_id"], name: "index_payrolls_on_estate_id"
     t.index ["rodeos_main_breed_id"], name: "index_payrolls_on_rodeos_main_breed_id"
     t.index ["user_id"], name: "index_payrolls_on_user_id"
+  end
+
+  create_table "productive_areas", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "rodeos_main_breeds", force: :cascade do |t|
@@ -111,7 +120,7 @@ ActiveRecord::Schema.define(version: 2021_07_12_144523) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_type_id", null: false
+    t.bigint "user_type_id", null: false
     t.index ["user_type_id"], name: "index_secondary_user_types_on_user_type_id"
   end
 
@@ -119,6 +128,7 @@ ActiveRecord::Schema.define(version: 2021_07_12_144523) do
     t.string "typename"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "public"
   end
 
   create_table "users", force: :cascade do |t|
@@ -129,7 +139,6 @@ ActiveRecord::Schema.define(version: 2021_07_12_144523) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "dicose", default: "", null: false
     t.string "business_name", default: "", null: false
     t.string "rut", default: "", null: false
     t.string "address", default: "", null: false
@@ -137,11 +146,10 @@ ActiveRecord::Schema.define(version: 2021_07_12_144523) do
     t.string "phone_one", default: "", null: false
     t.string "phone_two", default: "", null: false
     t.string "location", default: "", null: false
-    t.string "department", default: "", null: false
     t.string "invoice_postal_code", default: "", null: false
-    t.string "username"
-    t.integer "user_type_id"
-    t.integer "secondary_user_type_id", null: false
+    t.string "username", null: false
+    t.bigint "user_type_id", null: false
+    t.bigint "secondary_user_type_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["secondary_user_type_id"], name: "index_users_on_secondary_user_type_id"
@@ -150,12 +158,18 @@ ActiveRecord::Schema.define(version: 2021_07_12_144523) do
   end
 
   add_foreign_key "estates", "departments"
+  add_foreign_key "estates", "productive_areas"
   add_foreign_key "estates", "users"
   add_foreign_key "has_estates", "estates"
   add_foreign_key "has_estates", "users"
   add_foreign_key "payrolls", "estates"
+  add_foreign_key "payrolls", "form_of_supplies", column: "form_of_supply_energy"
+  add_foreign_key "payrolls", "form_of_supplies", column: "form_of_supply_grain"
+  add_foreign_key "payrolls", "form_of_supplies", column: "form_of_supply_henilages"
+  add_foreign_key "payrolls", "form_of_supplies", column: "form_of_supply_protein"
   add_foreign_key "payrolls", "rodeos_main_breeds"
   add_foreign_key "payrolls", "users"
   add_foreign_key "secondary_user_types", "user_types"
   add_foreign_key "users", "secondary_user_types"
+  add_foreign_key "users", "user_types"
 end

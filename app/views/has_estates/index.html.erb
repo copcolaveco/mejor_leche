@@ -18,9 +18,13 @@
       <tr>
       	<% if has_estate.user != current_user %>
         <td><%= has_estate.user.username %></td>
-        <td><%= has_estate.estate.name %></td>
-        <td><%= link_to 'Eliminar', has_estate, method: :delete, data: { confirm: 'Estas seguro de querer eliminar esta Asociación?' }, class:"btn btn-outline-danger btn-sm" %></td>
-      	<% end %>
+        <td><%= has_estate.estate.name %></td>        
+      	<td>
+          <%= link_to(has_estate, method: :delete, data: { confirm: 'Estas seguro de querer eliminar esta Asociación?' } ) do %>
+            <i class="fas fa-trash"></i>
+          <% end %>
+        </td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
