@@ -20,7 +20,7 @@
 
   <div class="field form-group">
     <label class="form-label"><%= form.label 'Predio' %></label>
-    <select class="form-select" <%= collection_select(:payroll, :estate_id, @estates, :id, :name) %></select>
+    <select class="form-select" <%= collection_select(:payroll, :estate_id, current_user.estates.order(created_at: :desc) , :id, :name) %></select>
   </div><br>
 
   <div class="field form-group">
@@ -29,7 +29,7 @@
 
   <div class="field form-group">
     <%= form.label 'Fecha de creación' %>
-    <%= form.month_field :saved_date, class:"form-control" , :required => true %> 
+    <%= form.date_select :saved_date, discard_day: true %> 
   </div>
 
   <br>
@@ -44,7 +44,7 @@
 
   <div class="field">
     <%= form.label 'LITROS REMITIDOS, salen de la remisión oficial del mes anterior/actual o procesados en el mes' %>
-    <%= form.text_field :liter_sent , class:"form-control" , type:"decimal", :required => true, type:"number" %> 
+    <%= form.text_field :liter_sent , class:"form-control" , type:"decimal", :required => true, type:"number", :step => "0.01" %> 
   </div>
 
   <div class="field">
@@ -55,13 +55,13 @@
   <h4 class="subtitulos">COMPOSICIÓN DE LA LECHE</h4>
 
   <div class="field">
-    <%= form.label 'Recuento celular (en miles), Empresa, en queseros 2 al mes (1 prod, 1 CLV)' %>
-    <%= form.text_field :cell_count, class:"form-control", placeholder:"ej: 350.000 se expresa: 350" , :required => true, type:"number"  %>
+    <%= form.label 'Recuento celular , Empresa, en queseros 2 al mes (1 prod, 1 CLV)' %>
+    <%= form.text_field :cell_count, class:"form-control", placeholder:"ej: 350000" , :required => true, type:"number" %>
   </div>
 
   <div class="field">
     <%= form.label 'Recuento bacteriano (en miles), promedio del mes anterior informado por la Empresa IDEM parte de Composicion, 3 a mes ()' %>
-    <%= form.text_field :bacterial_count, class:"form-control", type:"number", placeholder:"ej: 8.000 se expresa: 8", :required => true, type:"number" %>
+    <%= form.text_field :bacterial_count, class:"form-control", type:"number", placeholder:"ej: 8.000", :required => true, type:"number" %>
   </div>
 
   <div class="field">
@@ -86,8 +86,8 @@
 
   <div class="field">
     <%= form.label 'Crioscopía (° C )' %>
-    <%= form.text_field :cryoscopy, class:"form-control", type:"number" %>
-  </div><BR>
+    <%= form.text_field :cryoscopy, class:"form-control", type:"number", :step => "0.01" %>
+  </div><br>
 
   <h4 class="subtitulos">SUPERFICIE</h4>
 
@@ -105,17 +105,17 @@
 
   <div class="field">
     <%= form.label 'Vacas en ordeño, tomamos el numero de vacas del dia del control lechero' %>
-    <%= form.text_field :milking_cows, class:"form-control", :required => true, type:"number" %>
+    <%= form.number_field  :milking_cows, class:"form-control", :required => true, type:"number", :id => 'milking_cows', :onblur  => 'pro()'  %>
   </div>
 
   <div class="field">
     <%= form.label 'Vacas secas, numero de vacas secas al dia del control lechero (no incluye vaquillonas)' %>
-    <%= form.text_field :dry_cows, class:"form-control", :required => true, type:"number" %>
+    <%= form.number_field  :dry_cows, class:"form-control", :required => true, type:"number", :id => 'dry_cows', :onblur  => 'pro()' %>
   </div>
 
   <div class="field">
-    <%= form.label 'Vacas masa, sumatoria de vs + vo' %>
-    <%= form.text_field :cow_dough, class:"form-control", :required => true, type:"number" %>
+    <%= form.label 'Vacas masa, sumatoria de vs + vo' %> 
+    <%= form.text_field :cow_dough, class:"form-control", :id => "cow_dough" , type:'hidden' %>
   </div>
 
   <div class="field">
@@ -128,7 +128,7 @@
   <div class="field">
     <%= form.label 'Concentrado proteico ( kg fresco/VO/día), Expresado en base fresca, tal cual
  Pesar lo que se da en el día ' %>
-    <%= form.text_field :conc_protein, class:"form-control", type:"number" %>
+    <%= form.text_field :conc_protein, class:"form-control", type:"number", :id => 'conc_protein', :onblur => 'pro2()' %>
   </div>
 
   <div class="field form-group">
@@ -138,10 +138,15 @@
 
   <div class="field">
     <%= form.label 'Concentrado energético ( kg fresco/VO/día)' %>
-    <%= form.text_field :conc_energy, class:"form-control", type:"number" %>
+    <%= form.text_field :conc_energy, class:"form-control", type:"number", :id => 'conc_energy', :onblur => 'pro2()' %>
   </div>
 
-  <div class="field form-group">
+  <div class="field">
+    <%= form.label 'Ración Balanceada' %>
+    <%= form.text_field :balanced_ration, class:"form-control", type:"number" %>
+  </div><br>
+
+  <div class="field">
     <%= form.label 'Forma de suministro' %>    
     <%= collection_select(:payroll, :form_of_supply_energy, FormOfSupply.all.order(:name), :id, :name) %>
   </div><br>
@@ -178,7 +183,7 @@
 
   <div class="field">
     <%= form.label 'Gramos de ración / litro, tener en cuenta que algunas raciones ya tienen las sales adicinadas, en este caso ponerlas en el item de sales minerales' %>
-    <%= form.text_field :grams_of_ration_liter, class:"form-control", type:"number" %>
+    <%= form.text_field :grams_of_ration_liter, class:"form-control", type:"hidden", :id => 'grams_of_ration_liter' %>
   </div>
 
   <div class="field">
@@ -187,7 +192,7 @@
   </div>
 
   <div class="field">
-    <%= form.label 'Gramos de sal/ litroDias de NO pastoreo (opcional)' %>
+    <%= form.label 'Gramos de sal/ litro Dias de NO pastoreo (opcional)' %>
     <%= form.text_field :grams_of_salt_liter, class:"form-control", type:"number" %>
   </div>
 
@@ -266,3 +271,18 @@
   </div>
   <br>
 <% end %>
+
+<script>
+
+   function pro(){
+        
+        var primer = document.getElementById('milking_cows').value;
+        var segun = document.getElementById('dry_cows').value;
+      
+        var total= (parseInt(primer) + parseInt(segun));
+     
+        document.getElementById('cow_dough').value = total;
+   }
+  
+</script>
+  

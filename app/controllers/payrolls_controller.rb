@@ -20,8 +20,7 @@ class PayrollsController < ApplicationController
 
   # GET /payrolls/new
   def new
-    @estates = current_user.estates.order(created_at: :desc)
-    @payroll = Payroll.new
+    @payroll = current_user.payrolls.build
   end
 
   # GET /payrolls/1/edit
@@ -31,7 +30,7 @@ class PayrollsController < ApplicationController
 
   # POST /payrolls or /payrolls.json
   def create
-    @payroll = Payroll.new(payroll_params)
+    @payroll = current_user.payrolls.build(payroll_params)
 
     respond_to do |format|
       if @payroll.save

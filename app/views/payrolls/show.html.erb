@@ -24,6 +24,9 @@
     <%= @payroll.rodeos_main_breed.name %>
   </p>
 
+  <h4 class="subtitulos">LECHE PRODUCIDA</h4>
+  <hr>
+
   <p>
     <strong>Litros emitidos:</strong>
     <%= @payroll.liter_sent %>
@@ -33,6 +36,8 @@
     <strong>Litros de leche no emitidos:</strong>
     <%= @payroll.liters_of_milk_not_sent %>
   </p>
+
+  <h4 class="subtitulos">COMPOSICIÓN DE LA LECHE</h4>
 
   <p>
     <strong>Conteo de células:</strong>
@@ -64,6 +69,8 @@
     <%= @payroll.cryoscopy %>
   </p>
 
+  <h4 class="subtitulos">SUPERFICIE</h4>
+
   <p>
     <strong>Superficie VM (ha):</strong>
     <%= @payroll.vm_surface %>
@@ -73,6 +80,8 @@
     <strong>Superficie Lechera:</strong>
     <%= @payroll.dairy_surface %>
   </p>
+
+  <h4 class="subtitulos">RODEO LECHERO</h4>
 
   <p>
     <strong>Vacas en ordeño:</strong>
@@ -94,8 +103,10 @@
     <%= @payroll.suckling_calves %>
   </p>
 
+    <h4 class="subtitulos">ALIMENTACIÓN</h4>
+
   <p>
-    <strong>Conc. proteico ( kg fresco/VO/día):</strong>
+    <strong>Concentrado proteico ( kg fresco/VO/día):</strong>
     <%= @payroll.conc_protein %>
   </p>
 
@@ -105,8 +116,13 @@
   </p>
 
   <p>
-    <strong>Conc. energético ( kg fresco/VO/día):</strong>
+    <strong>Concentrado energético ( kg fresco/VO/día):</strong>
     <%= @payroll.conc_energy %>
+  </p>
+
+  <p>
+    <strong>Ración Balanceada:</strong>
+    <%= @payroll.balanced_ration %>
   </p>
 
   <p>
@@ -164,6 +180,8 @@
     <%= @payroll.no_grazing_days %>
   </p>
 
+  <h4 class="subtitulos">DATOS REPRODUCTIVOS</h4>
+
   <p>
     <strong>Partos vacas:</strong>
     <%= @payroll.childbirth_racks %>
@@ -188,6 +206,8 @@
     <strong>Vacas preñadas (opcional):</strong>
     <%= @payroll.pregnant_cows %>
   </p>
+
+  <h4 class="subtitulos">SANIDAD ANIMAL</h4>
 
   <p>
     <strong>Mastitis clínica:</strong>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_13_154644) do
+ActiveRecord::Schema.define(version: 2021_08_18_151749) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,54 +50,54 @@ ActiveRecord::Schema.define(version: 2021_08_13_154644) do
   end
 
   create_table "payrolls", force: :cascade do |t|
-    t.integer "liter_sent", null: false
-    t.integer "liters_of_milk_not_sent", null: false
-    t.integer "cell_count", null: false
-    t.integer "bacterial_count", null: false
-    t.integer "grease", null: false
-    t.integer "protein", null: false
-    t.integer "cryoscopy", null: false
-    t.integer "vm_surface", null: false
-    t.integer "dairy_surface", null: false
-    t.integer "milking_cows", null: false
-    t.integer "dry_cows", null: false
-    t.integer "cow_dough", null: false
-    t.integer "suckling_calves"
-    t.float "conc_protein"
-    t.integer "form_of_supply_protein"
-    t.float "conc_energy"
-    t.integer "form_of_supply_energy"
-    t.float "wet_grain"
-    t.integer "form_of_supply_grain"
-    t.float "henilages"
-    t.integer "form_of_supply_henilages"
-    t.float "silo"
-    t.integer "form_of_supply"
-    t.integer "grams_of_ration_liter"
-    t.integer "mineral_salts"
-    t.integer "grams_of_salt_liter"
-    t.integer "no_grazing_days"
-    t.integer "childbirth_racks"
-    t.integer "calving_heifers"
-    t.integer "discarded_cows"
-    t.integer "cows_served"
-    t.integer "pregnant_cows"
-    t.integer "clinical_mastitis"
-    t.integer "cows_on_detour"
-    t.integer "abortions_seen"
-    t.integer "reproductive_losses"
-    t.integer "cows_with_foot_problems"
-    t.integer "dead_cows"
-    t.integer "rains"
+    t.integer "liter_sent", default: 0, null: false
+    t.integer "liters_of_milk_not_sent", default: 0, null: false
+    t.integer "cell_count", default: 0, null: false
+    t.integer "bacterial_count", default: 0, null: false
+    t.integer "grease", default: 0, null: false
+    t.integer "protein", default: 0, null: false
+    t.float "cryoscopy", default: 0.0, null: false
+    t.integer "vm_surface", default: 0, null: false
+    t.integer "dairy_surface", default: 0, null: false
+    t.integer "milking_cows", default: 0, null: false
+    t.integer "dry_cows", default: 0, null: false
+    t.integer "cow_dough", default: 0, null: false
+    t.integer "suckling_calves", default: 0
+    t.float "conc_protein", default: 0.0
+    t.integer "form_of_supply_protein", default: 0
+    t.float "conc_energy", default: 0.0
+    t.integer "form_of_supply_energy", default: 0
+    t.float "wet_grain", default: 0.0
+    t.integer "form_of_supply_grain", default: 0
+    t.float "henilages", default: 0.0
+    t.integer "form_of_supply_henilages", default: 0
+    t.float "silo", default: 0.0
+    t.integer "form_of_supply", default: 0
+    t.integer "grams_of_ration_liter", default: 0
+    t.integer "mineral_salts", default: 0
+    t.integer "grams_of_salt_liter", default: 0
+    t.integer "no_grazing_days", default: 0
+    t.integer "childbirth_racks", default: 0
+    t.integer "calving_heifers", default: 0
+    t.integer "discarded_cows", default: 0
+    t.integer "cows_served", default: 0
+    t.integer "pregnant_cows", default: 0
+    t.integer "clinical_mastitis", default: 0
+    t.integer "cows_on_detour", default: 0
+    t.integer "abortions_seen", default: 0
+    t.integer "reproductive_losses", default: 0
+    t.integer "cows_with_foot_problems", default: 0
+    t.integer "dead_cows", default: 0
+    t.integer "rains", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "lactose", null: false
-    t.datetime "saved_date"
+    t.integer "lactose", default: 0, null: false
+    t.date "saved_date", null: false
     t.bigint "estate_id", null: false
     t.bigint "user_id", null: false
     t.bigint "rodeos_main_breed_id", null: false
-    t.float "mun"
-    t.float "balanced_ration"
+    t.float "mun", default: 0.0
+    t.float "balanced_ration", default: 0.0
     t.index ["estate_id"], name: "index_payrolls_on_estate_id"
     t.index ["rodeos_main_breed_id"], name: "index_payrolls_on_rodeos_main_breed_id"
     t.index ["user_id"], name: "index_payrolls_on_user_id"
