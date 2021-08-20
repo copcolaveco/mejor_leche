@@ -134,17 +134,32 @@
   <div class="field form-group">
     <%= form.label 'Forma de suministro' %>    
     <%= collection_select(:payroll, :form_of_supply_protein, FormOfSupply.all.order(:name), :id, :name) %>
+  </div><br>  
+
+  <div class="field">
+    <%= form.label 'Ración Balanceada' %>
+    <%= form.text_field :balanced_ration, class:"form-control", type:"number" %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label 'Forma de suministro' %>    
+    <%= collection_select(:payroll, :form_of_supply_balanced_ration, FormOfSupply.all.order(:name), :id, :name) %>
+  </div><br>
+
+  <div class="field">
+    <%= form.label 'Silo' %>
+    <%= form.text_field :bale, class:"form-control", type:"number" %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label 'Forma de suministro' %>    
+    <%= collection_select(:payroll, :form_of_supply_bale, FormOfSupply.all.order(:name), :id, :name) %>
   </div><br>
 
   <div class="field">
     <%= form.label 'Concentrado energético ( kg fresco/VO/día)' %>
     <%= form.text_field :conc_energy, class:"form-control", type:"number", :id => 'conc_energy', :onblur => 'pro2()' %>
   </div>
-
-  <div class="field">
-    <%= form.label 'Ración Balanceada' %>
-    <%= form.text_field :balanced_ration, class:"form-control", type:"number" %>
-  </div><br>
 
   <div class="field">
     <%= form.label 'Forma de suministro' %>    
@@ -182,7 +197,6 @@
   </div><br>
 
   <div class="field">
-    <%= form.label 'Gramos de ración / litro, tener en cuenta que algunas raciones ya tienen las sales adicinadas, en este caso ponerlas en el item de sales minerales' %>
     <%= form.text_field :grams_of_ration_liter, class:"form-control", type:"hidden", :id => 'grams_of_ration_liter' %>
   </div>
 
@@ -199,7 +213,12 @@
   <div class="field">
     <%= form.label 'Dias de NO pastoreo (opcional)' %>
     <%= form.text_field :no_grazing_days, class:"form-control", type:"number" %>
-  </div><br>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Nitrógeno ureico en leche mg/dl' %>
+    <%= form.text_field :urea_nitrogen_in_milk, class:"form-control", type:"number" %>
+  </div><br>  
 
   <h4 class="subtitulos">DATOS REPRODUCTIVOS</h4>
 
