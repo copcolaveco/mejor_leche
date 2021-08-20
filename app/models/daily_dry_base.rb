@@ -1,0 +1,2 @@
+class DailyDryBase < ApplicationRecord
+end

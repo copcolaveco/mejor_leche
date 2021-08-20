@@ -1,0 +1,2 @@
+class DailyProtein < ApplicationRecord
+end

@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  payroll_id: 1
+  energy_concentrate: 1.5
+  protein_concentrate: 1.5
+  balanced_ration: 1.5
+  wet_grain_silo: 1.5
+  henilaje: 1.5
+  silo: 1.5
+  bale: 1.5
+  total_without_pasture: 1.5
+  total: 1.5
+  pasture_consumption: 1.5
+
+two:
+  payroll_id: 1
+  energy_concentrate: 1.5
+  protein_concentrate: 1.5
+  balanced_ration: 1.5
+  wet_grain_silo: 1.5
+  henilaje: 1.5
+  silo: 1.5
+  bale: 1.5
+  total_without_pasture: 1.5
+  total: 1.5
+  pasture_consumption: 1.5

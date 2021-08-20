@@ -10,10 +10,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_18_151749) do
+ActiveRecord::Schema.define(version: 2021_08_20_162833) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "daily_dry_bases", force: :cascade do |t|
+    t.integer "payroll_id"
+    t.float "energy_concentrate", default: 0.0
+    t.float "protein_concentrate", default: 0.0
+    t.float "balanced_ration", default: 0.0
+    t.float "wet_grain_silo", default: 0.0
+    t.float "henilaje", default: 0.0
+    t.float "silo", default: 0.0
+    t.float "bale", default: 0.0
+    t.float "total_without_pasture", default: 0.0
+    t.float "total", default: 0.0
+    t.float "pasture_consumption", default: 0.0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "daily_proteins", force: :cascade do |t|
+    t.integer "payroll_id"
+    t.float "energy_concentrate"
+    t.float "protein_concentrate"
+    t.float "balanced_ration"
+    t.float "wet_grain_silo"
+    t.float "henilaje"
+    t.float "silo"
+    t.float "bale"
+    t.float "total_without_pasture"
+    t.float "total"
+    t.float "pasture_consumption"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "departments", force: :cascade do |t|
     t.string "name"
@@ -38,6 +70,7 @@ ActiveRecord::Schema.define(version: 2021_08_18_151749) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.float "losses"
   end
 
   create_table "has_estates", force: :cascade do |t|
@@ -50,19 +83,19 @@ ActiveRecord::Schema.define(version: 2021_08_18_151749) do
   end
 
   create_table "payrolls", force: :cascade do |t|
-    t.integer "liter_sent", default: 0, null: false
-    t.integer "liters_of_milk_not_sent", default: 0, null: false
-    t.integer "cell_count", default: 0, null: false
-    t.integer "bacterial_count", default: 0, null: false
-    t.integer "grease", default: 0, null: false
-    t.integer "protein", default: 0, null: false
+    t.float "liter_sent", default: 0.0, null: false
+    t.float "liters_of_milk_not_sent", default: 0.0, null: false
+    t.float "cell_count", default: 0.0, null: false
+    t.float "bacterial_count", default: 0.0, null: false
+    t.float "grease", default: 0.0, null: false
+    t.float "protein", default: 0.0, null: false
     t.float "cryoscopy", default: 0.0, null: false
-    t.integer "vm_surface", default: 0, null: false
-    t.integer "dairy_surface", default: 0, null: false
-    t.integer "milking_cows", default: 0, null: false
-    t.integer "dry_cows", default: 0, null: false
-    t.integer "cow_dough", default: 0, null: false
-    t.integer "suckling_calves", default: 0
+    t.float "vm_surface", default: 0.0, null: false
+    t.float "dairy_surface", default: 0.0, null: false
+    t.float "milking_cows", default: 0.0, null: false
+    t.float "dry_cows", default: 0.0, null: false
+    t.float "cow_dough", default: 0.0, null: false
+    t.float "suckling_calves", default: 0.0
     t.float "conc_protein", default: 0.0
     t.integer "form_of_supply_protein", default: 0
     t.float "conc_energy", default: 0.0
@@ -72,32 +105,48 @@ ActiveRecord::Schema.define(version: 2021_08_18_151749) do
     t.float "henilages", default: 0.0
     t.integer "form_of_supply_henilages", default: 0
     t.float "silo", default: 0.0
-    t.integer "form_of_supply", default: 0
-    t.integer "grams_of_ration_liter", default: 0
-    t.integer "mineral_salts", default: 0
-    t.integer "grams_of_salt_liter", default: 0
-    t.integer "no_grazing_days", default: 0
-    t.integer "childbirth_racks", default: 0
-    t.integer "calving_heifers", default: 0
-    t.integer "discarded_cows", default: 0
-    t.integer "cows_served", default: 0
-    t.integer "pregnant_cows", default: 0
-    t.integer "clinical_mastitis", default: 0
-    t.integer "cows_on_detour", default: 0
-    t.integer "abortions_seen", default: 0
-    t.integer "reproductive_losses", default: 0
-    t.integer "cows_with_foot_problems", default: 0
-    t.integer "dead_cows", default: 0
-    t.integer "rains", default: 0
+    t.float "form_of_supply", default: 0.0
+    t.float "grams_of_ration_liter", default: 0.0
+    t.float "mineral_salts", default: 0.0
+    t.float "grams_of_salt_liter", default: 0.0
+    t.float "no_grazing_days", default: 0.0
+    t.float "childbirth_racks", default: 0.0
+    t.float "calving_heifers", default: 0.0
+    t.float "discarded_cows", default: 0.0
+    t.float "cows_served", default: 0.0
+    t.float "pregnant_cows", default: 0.0
+    t.float "clinical_mastitis", default: 0.0
+    t.float "cows_on_detour", default: 0.0
+    t.float "abortions_seen", default: 0.0
+    t.float "reproductive_losses", default: 0.0
+    t.float "cows_with_foot_problems", default: 0.0
+    t.float "dead_cows", default: 0.0
+    t.float "rains", default: 0.0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "lactose", default: 0, null: false
+    t.float "lactose", default: 0.0, null: false
     t.date "saved_date", null: false
     t.bigint "estate_id", null: false
     t.bigint "user_id", null: false
     t.bigint "rodeos_main_breed_id", null: false
-    t.float "mun", default: 0.0
+    t.integer "mun", default: 0
     t.float "balanced_ration", default: 0.0
+    t.integer "form_of_supply_balanced_ration"
+    t.float "bale", default: 0.0
+    t.integer "form_of_supply_bale"
+    t.float "proportion_NR_NP", default: 0.0
+    t.float "liters_produced", default: 0.0
+    t.float "liters_day_VO", default: 0.0
+    t.float "concentrated_liters_kg", default: 0.0
+    t.float "relationship_grase_protein", default: 0.0
+    t.float "number_of_cow_mass", default: 0.0
+    t.float "relationship_VO_VM", default: 0.0
+    t.float "carga_VM_VMha", default: 0.0
+    t.float "protein_produced_in_milk", default: 0.0
+    t.float "nitrogen_use_efficiency", default: 0.0
+    t.float "daily_excretion", default: 0.0
+    t.float "monthly_excretion", default: 0.0
+    t.float "urea_nitrogen_in_milk", default: 0.0
     t.index ["estate_id"], name: "index_payrolls_on_estate_id"
     t.index ["rodeos_main_breed_id"], name: "index_payrolls_on_rodeos_main_breed_id"
     t.index ["user_id"], name: "index_payrolls_on_user_id"
@@ -122,6 +171,14 @@ ActiveRecord::Schema.define(version: 2021_08_18_151749) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_type_id", null: false
     t.index ["user_type_id"], name: "index_secondary_user_types_on_user_type_id"
+  end
+
+  create_table "type_of_foods", force: :cascade do |t|
+    t.string "name"
+    t.float "ms"
+    t.float "protein"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "user_types", force: :cascade do |t|
@@ -157,12 +214,16 @@ ActiveRecord::Schema.define(version: 2021_08_18_151749) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "daily_dry_bases", "payrolls"
+  add_foreign_key "daily_proteins", "payrolls"
   add_foreign_key "estates", "departments"
   add_foreign_key "estates", "productive_areas"
   add_foreign_key "estates", "users"
   add_foreign_key "has_estates", "estates"
   add_foreign_key "has_estates", "users"
   add_foreign_key "payrolls", "estates"
+  add_foreign_key "payrolls", "form_of_supplies", column: "form_of_supply_balanced_ration"
+  add_foreign_key "payrolls", "form_of_supplies", column: "form_of_supply_bale"
   add_foreign_key "payrolls", "form_of_supplies", column: "form_of_supply_energy"
   add_foreign_key "payrolls", "form_of_supplies", column: "form_of_supply_grain"
   add_foreign_key "payrolls", "form_of_supplies", column: "form_of_supply_henilages"
