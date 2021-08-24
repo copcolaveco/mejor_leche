@@ -84,11 +84,6 @@ class EstatesController < ApplicationController
     @has_estate = HasEstate.find(params[:id])
   end
 
-  def correct_user
-    @estate = current_user.estates.find_by(user_id: params[:id])
-    redirect_to estates_path, notice: "No esta autorizado a Crear, Editar o Eliminar los Predio" if @user.nil? 
-  end
-
   def has_estate_params
     params.require(:estate).permit(:user_id, :estate_id)
   end
@@ -102,7 +97,7 @@ class EstatesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_estate
-      @estate = Estate.find(params[:id])
+      @estate = current_user.estates.find(params[:id])
     end
 
     def from_user_user_type

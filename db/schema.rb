@@ -10,42 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_20_162833) do
+ActiveRecord::Schema.define(version: 2021_08_24_131719) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "daily_dry_bases", force: :cascade do |t|
-    t.integer "payroll_id"
-    t.float "energy_concentrate", default: 0.0
-    t.float "protein_concentrate", default: 0.0
-    t.float "balanced_ration", default: 0.0
-    t.float "wet_grain_silo", default: 0.0
-    t.float "henilaje", default: 0.0
-    t.float "silo", default: 0.0
-    t.float "bale", default: 0.0
-    t.float "total_without_pasture", default: 0.0
-    t.float "total", default: 0.0
-    t.float "pasture_consumption", default: 0.0
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "daily_proteins", force: :cascade do |t|
-    t.integer "payroll_id"
-    t.float "energy_concentrate"
-    t.float "protein_concentrate"
-    t.float "balanced_ration"
-    t.float "wet_grain_silo"
-    t.float "henilaje"
-    t.float "silo"
-    t.float "bale"
-    t.float "total_without_pasture"
-    t.float "total"
-    t.float "pasture_consumption"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
 
   create_table "departments", force: :cascade do |t|
     t.string "name"
@@ -147,6 +115,26 @@ ActiveRecord::Schema.define(version: 2021_08_20_162833) do
     t.float "daily_excretion", default: 0.0
     t.float "monthly_excretion", default: 0.0
     t.float "urea_nitrogen_in_milk", default: 0.0
+    t.float "daily_dry_bases_energy_conc"
+    t.float "daily_dry_bases_protein_conc"
+    t.float "daily_dry_bases_balanced_ration"
+    t.float "daily_dry_bases_total"
+    t.float "daily_dry_bases_wet_grain_silo"
+    t.float "daily_dry_bases_henilaje"
+    t.float "daily_dry_bases_silo"
+    t.float "daily_dry_bases_bale"
+    t.float "daily_dry_bases_total_without_pasture"
+    t.float "daily_dry_bases_pasture_consumption"
+    t.float "daily_proteins_energy_conc"
+    t.float "daily_proteins_protein_conc"
+    t.float "daily_proteins_balanced_ration"
+    t.float "daily_proteins_total"
+    t.float "daily_proteins_wet_grain_silo"
+    t.float "daily_proteins_henilaje"
+    t.float "daily_proteins_silo"
+    t.float "daily_proteins_bale"
+    t.float "daily_proteins_total_without_pasture"
+    t.float "daily_proteins_pasture_consumption"
     t.index ["estate_id"], name: "index_payrolls_on_estate_id"
     t.index ["rodeos_main_breed_id"], name: "index_payrolls_on_rodeos_main_breed_id"
     t.index ["user_id"], name: "index_payrolls_on_user_id"
@@ -214,8 +202,6 @@ ActiveRecord::Schema.define(version: 2021_08_20_162833) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
-  add_foreign_key "daily_dry_bases", "payrolls"
-  add_foreign_key "daily_proteins", "payrolls"
   add_foreign_key "estates", "departments"
   add_foreign_key "estates", "productive_areas"
   add_foreign_key "estates", "users"

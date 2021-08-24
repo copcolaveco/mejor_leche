@@ -44,83 +44,78 @@
 
   <div class="field">
     <%= form.label 'LITROS REMITIDOS, salen de la remisión oficial del mes anterior/actual o procesados en el mes' %>
-    <%= form.text_field :liter_sent , class:"form-control" , type:"decimal", :required => true, type:"number", :step => "0.01" %> 
+    <%= form.text_field :liter_sent , class:"form-control" , type:"decimal", :required => true, type:"number", :step => "0.01", :id => "liter_sent" %> 
   </div>
 
   <div class="field">
     <%= form.label 'Litros leche no remitidos, todo lo que no va al tanque (consumo terneros, consumo propio, consumo cerdos).' %>
-    <%= form.text_field :liters_of_milk_not_sent, class:"form-control", :required => true, type:"number" %>
+    <%= form.text_field :liters_of_milk_not_sent, class:"form-control", :required => true, type:"number", :id => "liters_of_milk_not_sent" %>
   </div><br>
 
   <h4 class="subtitulos">COMPOSICIÓN DE LA LECHE</h4>
 
   <div class="field">
     <%= form.label 'Recuento celular (en miles)' %>
-    <%= form.text_field :cell_count, class:"form-control", placeholder:"ej: 350" , :required => true, type:"number" %>
+    <%= form.text_field :cell_count, class:"form-control", :required => true, type:"number", :id => "cell_count" %>
   </div>
 
   <div class="field">
     <%= form.label 'Recuento bacteriano (en miles)' %>
-    <%= form.text_field :bacterial_count, class:"form-control", type:"number", placeholder:"ej: 8", :required => true, type:"number" %>
+    <%= form.text_field :bacterial_count, class:"form-control", type:"number", placeholder:"ej: 8", :required => true, type:"number", :id => "bacterial_count" %>
   </div>
 
   <div class="field">
     <%= form.label 'Grasa %' %>
-    <%= form.text_field :grease, class:"form-control", :required => true, type:"number" %>
+    <%= form.text_field :grease, class:"form-control", :required => true, type:"number", :id => "grease" %>
   </div>
 
   <div class="field">
     <%= form.label "Proteína %" %>
-    <%= form.text_field :protein, class:"form-control", :required => true, type:"number" %>
+    <%= form.text_field :protein, class:"form-control", :required => true, type:"number", :id => "protein" %>
   </div>
 
   <div class="field">
     <%= form.label "Lactosa %" %>
-    <%= form.text_field :lactose, class:"form-control", :required => true, type:"number" %>
+    <%= form.text_field :lactose, class:"form-control", :required => true, type:"number", :id => "lactose" %>
   </div>
 
   <div class="field">
     <%= form.label "MUN ( mg/dl)" %>
-    <%= form.text_field :mun, class:"form-control", placeholder:"MUN = urea x 0,466", type:"number" %>
+    <%= form.text_field :mun, class:"form-control", placeholder:"MUN = urea x 0,466", type:"number", :id => "mun" %>
   </div>
 
   <div class="field">
     <%= form.label 'Crioscopía (° C )' %>
-    <%= form.text_field :cryoscopy, class:"form-control", type:"number", :step => "0.001" %>
+    <%= form.text_field :cryoscopy, class:"form-control", type:"number", :step => "0.001", :id => "cryoscopy" %>
   </div><br>
 
   <h4 class="subtitulos">SUPERFICIE</h4>
 
   <div class="field">
     <%= form.label 'Superficie vaca masa (ha), incluye el área que ocupa las vaca ordeñe y las vacas secas' %>
-    <%= form.text_field :vm_surface, class:"form-control", type:"number" %>
+    <%= form.text_field :vm_surface, class:"form-control", type:"number", :id => "vm_surface" %>
   </div>
 
   <div class="field">
     <%= form.label 'Superficie total dedicada a la lecheria (ha)' %>
-    <%= form.text_field :dairy_surface, class:"form-control", type:"number" %>
+    <%= form.text_field :dairy_surface, class:"form-control", type:"number", :id => "dairy_surface" %>
   </div>
 
   <h4 class="subtitulos">RODEO LECHERO</h4>
 
   <div class="field">
     <%= form.label 'Vacas en ordeño, tomamos el numero de vacas del dia del control lechero' %>
-    <%= form.number_field  :milking_cows, class:"form-control", :required => true, type:"number", :id => 'milking_cows', :onblur  => 'pro()'  %>
+    <%= form.number_field  :milking_cows, class:"form-control", :required => true, type:"number", :id => 'milking_cows', :onblur  => 'vaca_masa()'  %>
   </div>
 
   <div class="field">
     <%= form.label 'Vacas secas, numero de vacas secas al dia del control lechero (no incluye vaquillonas)' %>
-    <%= form.number_field  :dry_cows, class:"form-control", :required => true, type:"number", :id => 'dry_cows', :onblur  => 'pro()' %>
-  </div>
-
-  <div class="field">
-    <%# <%= form.label 'Vacas masa, sumatoria de vs + vo' %> 
-    <%= form.text_field :cow_dough, class:"form-control", :id => "cow_dough" , type:'hidden' %>
+    <%= form.number_field  :dry_cows, class:"form-control", :required => true, type:"number", :id => 'dry_cows', :onblur  => 'vaca_masa()' %>
   </div>
 
   <div class="field">
     <%= form.label 'Terneros lechales, número de terneros el dia del control lechero.' %>
-    <%= form.text_field :suckling_calves, class:"form-control", type:"number" %>
+    <%= form.text_field :suckling_calves, class:"form-control", type:"number", :id => "suckling_calves" %>
   </div><br>
 
   <h4 class="subtitulos">ALIMENTACIÓN</h4>
@@ -128,7 +123,7 @@
   <div class="field">
     <%= form.label 'Concentrado proteico ( kg fresco/VO/día), Expresado en base fresca, tal cual
  Pesar lo que se da en el día ' %>
-    <%= form.text_field :conc_protein, class:"form-control", type:"number", :id => 'conc_protein', :onblur => 'pro2()' %>
+    <%= form.text_field :conc_protein, class:"form-control", type:"float", :id => 'conc_protein', :onblur => 'concentrado_proteico()' %>
   </div>
 
   <div class="field form-group">
@@ -138,7 +133,7 @@
 
   <div class="field">
     <%= form.label 'Ración Balanceada' %>
-    <%= form.text_field :balanced_ration, class:"form-control", type:"number" %>
+    <%= form.text_field :balanced_ration, class:"form-control", type:"float", :id => "balanced_ration", :onblur => 'racion_valanceada()' %>
   </div>
 
   <div class="field form-group">
@@ -147,8 +142,8 @@
   </div><br>
 
   <div class="field">
-    <%= form.label 'Silo' %>
-    <%= form.text_field :bale, class:"form-control", type:"number" %>
+    <%= form.label 'Fardo' %>
+    <%= form.text_field :bale, class:"form-control", type:"float", :id => "bale" %>
   </div>
 
   <div class="field form-group">
@@ -158,7 +153,7 @@
 
   <div class="field">
     <%= form.label 'Concentrado energético ( kg fresco/VO/día)' %>
-    <%= form.text_field :conc_energy, class:"form-control", type:"number", :id => 'conc_energy', :onblur => 'pro2()' %>
+    <%= form.text_field :conc_energy, class:"form-control", type:"float", :id => 'conc_energy', :onblur => 'concentrado_energetico()' %>
   </div>
 
   <div class="field">
@@ -168,7 +163,7 @@
 
   <div class="field">
     <%= form.label 'Grano húmedo ( kg fresco/VO/día)' %>
-    <%= form.text_field :wet_grain, class:"form-control", type:"number" %>
+    <%= form.text_field :wet_grain, class:"form-control", type:"float", :id => "wet_grain", :onblur => 'grano_humedo()' %>
   </div>
 
   <div class="field form-group">
@@ -178,7 +173,7 @@
 
   <div class="field">
     <%= form.label 'Henilajes ( kg fresco/VO/día)' %>
-    <%= form.text_field :henilages, class:"form-control", type:"number" %>
+    <%= form.text_field :henilages, class:"form-control", type:"float", :id => "henilages", :onblur => 'henilaje()' %>
   </div>
 
   <div class="field form-group">
@@ -188,7 +183,7 @@
 
   <div class="field">
     <%= form.label 'Silo  ( kg fresco/VO/día)' %>
-    <%= form.text_field :silo, class:"form-control", type:"number" %>
+    <%= form.text_field :silo, class:"form-control", type:"float", :id => "silo", :onblur => 'silo_diaria()' %>
   </div>
 
   <div class="field form-group">
@@ -202,86 +197,86 @@
 
   <div class="field">
     <%= form.label 'Sales minerales (g/vo/día)' %>
-    <%= form.text_field :mineral_salts, class:"form-control", type:"number" %>
+    <%= form.text_field :mineral_salts, class:"form-control", type:"float", :id => "mineral_salts" %>
   </div>
 
   <div class="field">
     <%= form.label 'Gramos de sal/ litro Dias de NO pastoreo (opcional)' %>
-    <%= form.text_field :grams_of_salt_liter, class:"form-control", type:"number" %>
+    <%= form.text_field :grams_of_salt_liter, class:"form-control", type:"float", :id => "grams_of_salt_liter" %>
   </div>
 
   <div class="field">
     <%= form.label 'Dias de NO pastoreo (opcional)' %>
-    <%= form.text_field :no_grazing_days, class:"form-control", type:"number" %>
+    <%= form.text_field :no_grazing_days, class:"form-control", type:"float", :id => "no_grazing_days" %>
   </div>
 
   <div class="field">
     <%= form.label 'Nitrógeno ureico en leche mg/dl' %>
-    <%= form.text_field :urea_nitrogen_in_milk, class:"form-control", type:"number" %>
+    <%= form.text_field :urea_nitrogen_in_milk, class:"form-control", type:"float", :id => "urea_nitrogen_in_milk" %>
   </div><br>  
 
   <h4 class="subtitulos">DATOS REPRODUCTIVOS</h4>
 
   <div class="field">
     <%= form.label 'Partos vacas, total de partos de vacas en el mes' %>
-    <%= form.text_field :childbirth_racks, class:"form-control", type:"number" %>
+    <%= form.text_field :childbirth_racks, class:"form-control", type:"number", :id => "childbirth_racks" %>
   </div>
 
   <div class="field">
     <%= form.label 'Partos vaquillonas, total de partos de vaquillonas en el mes (primera cria)' %>
-    <%= form.text_field :calving_heifers, class:"form-control", type:"number" %>
+    <%= form.text_field :calving_heifers, class:"form-control", type:"number", :id => "calving_heifers" %>
   </div>
 
   <div class="field">
     <%= form.label 'Vacas descartadas, total de ventas en el mes (ventas/consumo)' %>
-    <%= form.text_field :discarded_cows, class:"form-control" , type:"number"%>
+    <%= form.text_field :discarded_cows, class:"form-control" , type:"number", :id => "discarded_cows" %>
   </div>
 
   <div class="field">
     <%= form.label 'Vacas servidas (opcional), Numero de servicios - IA): total de servicios; vacas inseminadas en el mes (considerar solamente vacas en ordeño' %>
-    <%= form.text_field :cows_served, class:"form-control", type:"number" %>
+    <%= form.text_field :cows_served, class:"form-control", type:"number", :id => "cows_served" %>
   </div>
 
   <div class="field">
     <%= form.label 'Vacas preñadas (opcional)' %>
-    <%= form.text_field :pregnant_cows, class:"form-control", type:"number" %>
+    <%= form.text_field :pregnant_cows, class:"form-control", type:"number", :id => "pregnant_cows" %>
   </div><br>
 
   <h4 class="subtitulos">SANIDAD ANIMAL</h4>
 
   <div class="field">
     <%= form.label 'Mastitis clínica, cantidad de vacas con tratamiento de mastitis' %>
-    <%= form.text_field :clinical_mastitis, class:"form-control", type:"number" %>
+    <%= form.text_field :clinical_mastitis, class:"form-control", type:"float", :id => "clinical_mastitis" %>
   </div>
 
   <div class="field">
     <%= form.label 'Vacas en desvío, numero total de VO en desvío para el mes.' %>
-    <%= form.text_field :cows_on_detour, class:"form-control", type:"number" %>
+    <%= form.text_field :cows_on_detour, class:"form-control", type:"number", :id => "cows_on_detour" %>
   </div>
 
   <div class="field">
     <%= form.label 'Abortos vistos' %>
-    <%= form.text_field :abortions_seen, class:"form-control", type:"number" %>
+    <%= form.text_field :abortions_seen, class:"form-control", type:"number", :id => "abortions_seen" %>
   </div>
 
   <div class="field">
     <%= form.label 'Perdidas Reproductivas (opcional), los abortos vistos+las vacas preñadas que se hizo tacto y resulto vacia' %>
-    <%= form.text_field :reproductive_losses, class:"form-control", type:"number" %>
+    <%= form.text_field :reproductive_losses, class:"form-control", type:"number", :id => "reproductive_losses" %>
   </div>
 
   <div class="field">
     <%= form.label 'Vacas con problemas podales, vacas rengas' %>
-    <%= form.text_field :cows_with_foot_problems, class:"form-control", type:"number" %>
+    <%= form.text_field :cows_with_foot_problems, class:"form-control", type:"number", :id => "cows_with_foot_problems" %>
   </div>
 
   <div class="field">
     <%= form.label 'Vacas muertas' %>
-    <%= form.text_field :dead_cows, class:"form-control", type:"number" %>
+    <%= form.text_field :dead_cows, class:"form-control", type:"number", :id => "dead_cows" %>
   </div>
 
   <div class="field">
     <%= form.label 'Lluvias  (mm), total de milímetros caídos en el mes' %>
-    <%= form.number_field :rains, class:"form-control", type:"number" %>
+    <%= form.number_field :rains, class:"form-control", type:"float", :id => "rains" %>
   </div><br>
 
   <div class="actions">
@@ -289,19 +284,160 @@
     <%= link_to 'Atras', payrolls_path, class:"btn" %>
   </div>
   <br>
+
+  <div class="field">
+    <%# <%= form.label 'Vacas masa, sumatoria de vs + vo' %> 
+    <%= form.text_field :cow_dough, class:"form-control", :id => "cow_dough" , type:'hidden' %>
+  </div>
+  <div class="field">
+    <%# <%= form.label 'base seca diaria' %> 
+    <%= form.text_field :daily_dry_bases_energy_conc, class:"form-control", :id => "daily_dry_bases_energy_conc" , type:'hidden', :onblur => 'concentrado_energetico_proteico()' %>
+  </div>
+  <div class="field">
+    <%# <%= form.label 'base seca diaria' %> 
+    <%= form.text_field :daily_dry_bases_protein_conc, class:"form-control", :id => "daily_dry_bases_protein_conc" , type:'hidden' %>
+  </div>
+  <div class="field">
+    <%# <%= form.label 'base seca diaria' %> 
+    <%= form.text_field :daily_dry_bases_balanced_ration, class:"form-control", :id => "daily_dry_bases_balanced_ration" , type:'hidden' %>
+  </div>
+  <div class="field">
+    <%# <%= form.label 'base seca diaria' %> 
+    <%= form.text_field :daily_dry_bases_total, class:"form-control", :id => "daily_dry_bases_total" , type:'hidden' %>
+  </div>
+  <div class="field">
+    <%# <%= form.label 'base seca diaria' %> 
+    <%= form.text_field :daily_dry_bases_wet_grain_silo, class:"form-control", :id => "daily_dry_bases_wet_grain_silo" , type:'hidden' %>
+  </div>
+  <div class="field">
+    <%# <%= form.label 'base seca diaria' %> 
+    <%= form.text_field :daily_dry_bases_henilaje, class:"form-control", :id => "daily_dry_bases_henilaje" , type:'hidden' %>
+  </div>
+  <div class="field">
+    <%# <%= form.label 'base seca diaria' %> 
+    <%= form.text_field :daily_dry_bases_silo, class:"form-control", :id => "daily_dry_bases_silo" , type:'hidden' %>
+  </div>
+  <div class="field">
+    <%# <%= form.label 'base seca diaria' %> 
+    <%= form.text_field :daily_dry_bases_bale, class:"form-control", :id => "daily_dry_bases_bale" , type:'hidden' %>
+  </div>
+   <div class="field">
+    <%# <%= form.label 'base seca diaria' %> 
+    <%= form.text_field :daily_dry_bases_total_without_pasture, class:"form-control", :id => "daily_dry_bases_total_without_pasture" , type:'hidden' %>
+  </div>
+  <div class="field">
+    <%# <%= form.label 'base seca diaria' %> 
+    <%= form.text_field :daily_dry_bases_pasture_consumption, class:"form-control", :id => "daily_dry_bases_pasture_consumption" , type:'hidden' %>
+  </div>
+  <div class="field">
+    <%# <%= form.label 'proteinas diaria' %> 
+    <%= form.text_field :daily_proteins_energy_conc, class:"form-control", :id => "daily_proteins_energy_conc" , type:'hidden' %>
+  </div>
+  <div class="field">
+    <%# <%= form.label 'proteinas diaria' %> 
+    <%= form.text_field :daily_proteins_protein_conc, class:"form-control", :id => "daily_proteins_protein_conc" , type:'hidden' %>
+  </div>
+   <div class="field">
+    <%# <%= form.label 'proteinas diaria' %> 
+    <%= form.text_field :daily_proteins_balanced_ration, class:"form-control", :id => "daily_proteins_balanced_ration" , type:'hidden' %>
+  </div>
+  <div class="field">
+    <%# <%= form.label 'proteinas diaria' %> 
+    <%= form.text_field :daily_proteins_total, class:"form-control", :id => "daily_proteins_total" , type:'hidden' %>
+  </div>
+  <div class="field">
+    <%# <%= form.label 'proteinas diaria' %> 
+    <%= form.text_field :daily_proteins_wet_grain_silo, class:"form-control", :id => "daily_proteins_wet_grain_silo" , type:'hidden' %>
+  </div>
+  <div class="field">
+    <%# <%= form.label 'proteinas diaria' %> 
+    <%= form.text_field :daily_proteins_henilaje, class:"form-control", :id => "daily_proteins_henilaje" , type:'hidden' %>
+  </div>
+  <div class="field">
+    <%# <%= form.label 'proteinas diaria' %> 
+    <%= form.text_field :daily_proteins_silo, class:"form-control", :id => "daily_proteins_silo" , type:'hidden' %>
+  </div>
+  <div class="field">
+    <%# <%= form.label 'proteinas diaria' %> 
+    <%= form.text_field :daily_proteins_total_without_pasture, class:"form-control", :id => "daily_proteins_total_without_pasture" , type:'hidden' %>
+  </div>
+  <div class="field">
+    <%# <%= form.label 'proteinas diaria' %> 
+    <%= form.text_field :daily_proteins_pasture_consumption, class:"form-control", :id => "daily_proteins_pasture_consumption" , type:'hidden' %>
+  </div>
+  <div class="field">
+    <%# <%= form.label 'proporcion no remitidos no procesados' %> 
+    <%= form.text_field :relationship_VO_VM, class:"form-control", :id => "relationship_VO_VM" , type:'hidden' %>
+  </div>
+
+
+  
 <% end %>
 
 <script>
 
-   function pro(){
-        
-        var primer = document.getElementById('milking_cows').value;
-        var segun = document.getElementById('dry_cows').value;
-      
-        var total= (parseInt(primer) + parseInt(segun));
-     
-        document.getElementById('cow_dough').value = total;
+   function vaca_masa(){        
+      var primer = document.getElementById('milking_cows').value;
+      var segun = document.getElementById('dry_cows').value;      
+      var total= (parseInt(primer) + parseInt(segun));     
+      document.getElementById('cow_dough').value = total;
    }
-  
+
+   function concentrado_energetico(){
+      var conc_energy = document.getElementById('conc_energy').value;
+      var daily_dry_bases_energy_conc = (conc_energy * 0.89) * 0.90;
+      document.getElementById('daily_dry_bases_energy_conc').value = daily_dry_bases_energy_conc;
+      var daily_proteins_energy_conc = parseFloat(daily_dry_bases_energy_conc) * 0.12;
+      document.getElementById('daily_proteins_energy_conc').value = daily_proteins_energy_conc;
+   }
+
+   function concentrado_proteico() {
+      var conc_protein = document.getElementById('conc_protein').value;
+      var daily_dry_bases_protein_conc = (conc_protein * 0.89) * 0.90;
+      document.getElementById('daily_dry_bases_protein_conc').value = daily_dry_bases_protein_conc;
+      var daily_proteins_protein_conc = parseFloat(daily_dry_bases_protein_conc) * 0.20;
+      document.getElementById('daily_proteins_protein_conc').value = daily_proteins_protein_conc;
+   }
+
+   function racion_valanceada() {
+     var balanced_ration = document.getElementById('balanced_ration').value;
+     var daily_dry_bases_balanced_ration = (balanced_ration * 0.89) * 0.90;
+     document.getElementById('daily_dry_bases_balanced_ration').value = daily_dry_bases_balanced_ration;
+     var daily_proteins_balanced_ration = daily_dry_bases_balanced_ration * 0.18
+     document.getElementById('daily_proteins_balanced_ration').value = daily_proteins_balanced_ration;
+   }
+
+   function racion_valanceada() {
+     var balanced_ration = document.getElementById('balanced_ration').value;
+     var daily_dry_bases_balanced_ration = (balanced_ration * 0.89) * 0.90;
+     document.getElementById('daily_dry_bases_balanced_ration').value = daily_dry_bases_balanced_ration;
+     var daily_proteins_balanced_ration = daily_dry_bases_balanced_ration * 0.18
+     document.getElementById('daily_proteins_balanced_ration').value = daily_proteins_balanced_ration;
+   }
+
+  function grano_humedo() {
+     var wet_grain = document.getElementById('wet_grain').value;
+     var daily_dry_bases_wet_grain_silo = (wet_grain * 0.70) * 0.90;
+     document.getElementById('daily_dry_bases_wet_grain_silo').value = daily_dry_bases_wet_grain_silo;
+     var daily_proteins_wet_grain_silo = daily_dry_bases_wet_grain_silo * 0.09
+     document.getElementById('daily_proteins_wet_grain_silo').value = daily_proteins_wet_grain_silo;
+   }
+
+   function henilaje() {
+     var henilages = document.getElementById('henilages').value;
+     var daily_dry_bases_henilaje = (henilages * 0.50) * 0.90;
+     document.getElementById('daily_dry_bases_henilaje').value = daily_dry_bases_henilaje;
+     var daily_proteins_henilaje = daily_dry_bases_henilaje * 0.16
+     document.getElementById('daily_proteins_henilaje').value = daily_proteins_henilaje;
+   }
+
+   function silo_diaria() {
+     var silo = document.getElementById('silo').value;
+     var daily_dry_bases_silo = (silo * 0.30) * 0.90;
+     document.getElementById('daily_dry_bases_silo').value = daily_dry_bases_silo;
+     var daily_proteins_silo = daily_dry_bases_silo * 0.15
+     document.getElementById('daily_proteins_silo').value = daily_proteins_silo;
+   }
+
 </script>
   

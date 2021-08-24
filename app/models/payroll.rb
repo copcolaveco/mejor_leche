@@ -11,7 +11,8 @@ class Payroll < ApplicationRecord
 	:cell_count, 
 	:bacterial_count, 
 	:grease, 
-	:protein, :lactose, 
+	:protein, 
+    :lactose, 
 	:milking_cows, 
 	:dry_cows, 
 	:cow_dough, 
@@ -21,7 +22,7 @@ class Payroll < ApplicationRecord
 	numericality: {
         greater_than_or_equal_to: 1,
         less_than_or_equal_to: 1000000,
-        only_integer: true, # or false to accept decimals
+        only_integer: false, # or false to accept decimals
 		message:", Litros remitidos debe ser mayor a 0." 
     }
 
@@ -29,7 +30,7 @@ class Payroll < ApplicationRecord
     numericality: {
         greater_than_or_equal_to: 1,
         less_than_or_equal_to: 1500,
-        only_integer: true, # or false to accept decimals
+        only_integer: false, # or false to accept decimals
 		message:", Recuento celular va hasta 1500" 
     }
 
@@ -37,7 +38,7 @@ class Payroll < ApplicationRecord
     numericality: {
         greater_than_or_equal_to: 1,
         less_than_or_equal_to: 400,
-        only_integer: true, # or false to accept decimals
+        only_integer: false, # or false to accept decimals
 		message:", Recuento celular va hasta 1500" 
     }
 
@@ -45,7 +46,7 @@ class Payroll < ApplicationRecord
     numericality: {
         greater_than_or_equal_to: 1,
         less_than_or_equal_to: 10,
-        only_integer: true, # or false to accept decimals
+        only_integer: false, # or false to accept decimals
 		message:", Valores entre 1 y 10" 
     }
 
