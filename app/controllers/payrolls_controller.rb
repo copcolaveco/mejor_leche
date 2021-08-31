@@ -1,6 +1,7 @@
 class PayrollsController < ApplicationController
   before_action :set_payroll, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, except: [:show, :index]
+  before_action :set_form_of_supp, only: [ :show ,:edit ,:update ,:destroy ]
 
   # GET /payrolls or /payrolls.json
   def index
@@ -15,6 +16,28 @@ class PayrollsController < ApplicationController
       format.pdf do
         render pdf: "#{@payroll.saved_date.strftime("%Y %m %d")}, #{@payroll.estate}.pdf", template: "payrolls/show.html.erb", layout: 'pdf.html', type: "application/pdf"
       end
+    end
+    
+  end
+
+  def set_form_of_supp
+    if !@payroll.form_of_supply_protein.nil?
+      @form_of_supply_protein = FormOfSupply.find( @payroll.form_of_supply_protein)
+    end
+    if !@payroll.form_of_supply_energy.nil?
+      @form_of_supply_energy = FormOfSupply.find( @payroll.form_of_supply_energy)
+    end
+    if !@payroll.form_of_supply_grain.nil?
+      @form_of_supply_grain = FormOfSupply.find( @payroll.form_of_supply_grain)
+    end
+    if !@payroll.form_of_supply_henilages.nil?
+      @form_of_supply_henilages = FormOfSupply.find( @payroll.form_of_supply_henilages)
+    end
+    if !@payroll.form_of_supply.nil?
+      @form_of_supply = FormOfSupply.find( @payroll.form_of_supply)
+    end
+    if !@payroll.form_of_supply_balanced_ration.nil?
+      @form_of_supply_balanced_ration = FormOfSupply.find( @payroll.form_of_supply_balanced_ration)
     end
   end
 
@@ -81,7 +104,6 @@ class PayrollsController < ApplicationController
     @department = Department.find(params[:department_id])
   end
 
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_payroll
@@ -114,7 +136,8 @@ class PayrollsController < ApplicationController
         :form_of_supply_grain, 
         :henilages, 
         :form_of_supply_henilages, 
-        :silo, :form_of_supply, 
+        :silo, 
+        :form_of_supply, 
         :grams_of_ration_liter, 
         :mineral_salts, 
         :grams_of_salt_liter, 

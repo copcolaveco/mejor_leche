@@ -18,7 +18,6 @@
     <%= @payroll.saved_date.strftime("%Y %m") %>
   </p>
 
-  <br>
   <p>
     <strong>Raza principal de los rodeos:</strong>
     <%= @payroll.rodeos_main_breed.name %>
@@ -37,7 +36,22 @@
     <%= @payroll.liters_of_milk_not_sent %>
   </p>
 
-  <h4 class="subtitulos">COMPOSICIÓN DE LA LECHE</h4>
+  <p id ="proportion_NR_NP">
+    <strong>Proporción no remitidos no procesados / litro:</strong>
+    <%= @payroll.proportion_NR_NP.round(0) %>
+  </p>
+
+  <p>
+    <strong>Litros producidos / mes:</strong>
+    <%= @payroll.liters_produced %>
+  </p>
+
+  <p>
+    <strong>Litros vaca ordeño por dia:</strong>
+    <%= @payroll.liters_day_VO %>
+  </p>
+
+  <h4 class="subtitulos">COMPOSICIÓN DE LA LECHE</h4><hr>
 
   <p>
     <strong>Conteo de células:</strong>
@@ -69,7 +83,12 @@
     <%= @payroll.cryoscopy %>
   </p>
 
-  <h4 class="subtitulos">SUPERFICIE</h4>
+  <p id="relationship_grase_protein">
+    <strong>Relación proteína - grasa:</strong>
+    <%= @payroll.relationship_grase_protein %>
+  </p>  
+
+  <h4 class="subtitulos">SUPERFICIE</h4><hr>
 
   <p>
     <strong>Superficie VM (ha):</strong>
@@ -81,7 +100,7 @@
     <%= @payroll.dairy_surface %>
   </p>
 
-  <h4 class="subtitulos">RODEO LECHERO</h4>
+  <h4 class="subtitulos">RODEO LECHERO</h4><hr>
 
   <p>
     <strong>Vacas en ordeño:</strong>
@@ -103,63 +122,64 @@
     <%= @payroll.suckling_calves %>
   </p>
 
-    <h4 class="subtitulos">ALIMENTACIÓN</h4>
-
   <p>
-    <strong>Concentrado proteico ( kg fresco/VO/día):</strong>
-    <%= @payroll.conc_protein %>
+    <strong>Relación vaca ordeño - vaca masa:</strong>
+    <%= @payroll.relationship_VO_VM %>
   </p>
 
   <p>
-    <strong>Forma de suministro:</strong>
-    <%= @payroll.form_of_supply_protein %>
+    <strong>Carga vaca masa/ha - vaca masa:</strong>
+    <%= @payroll.carga_VM_VMha %>
   </p>
 
-  <p>
-    <strong>Concentrado energético ( kg fresco/VO/día):</strong>
-    <%= @payroll.conc_energy %>
-  </p>
+    <h4 class="subtitulos">ALIMENTACIÓN</h4><hr>
 
-  <p>
-    <strong>Ración Balanceada:</strong>
-    <%= @payroll.balanced_ration %>
-  </p>
+    <p>
+      <strong>Concentrado proteico ( kg fresco/VO/día):</strong>
+      <%= @payroll.conc_protein %>
+      <% if !@form_of_supply_protein.nil?%>
+        <strong> / </strong>
+        <%= @form_of_supply_protein.name %>
+      <% end %>
+    </p>
+  
+    <p>
+      <strong>Concentrado energético ( kg fresco/VO/día):</strong>
+      <%= @payroll.conc_energy %>
+      <% if !@form_of_supply_energy.nil?%>
+        <strong> / </strong>
+        <%= @form_of_supply_energy.name %>
+       <% end %>
+    </p>
+ 
+    <p>
+      <strong>Grano húmedo ( kg fresco/VO/día):</strong>
+      <%= @payroll.wet_grain %>
+      <% if !@form_of_supply_grain.nil?%>
+        <strong> / </strong>
+        <%= @form_of_supply_grain.name %>
+      <% end %>
+    </p>
 
-  <p>
-    <strong>Forma de suministro:</strong>
-    <%= @payroll.form_of_supply_energy %>
-  </p>
-
-  <p>
-    <strong>Grano húmedo ( kg fresco/VO/día):</strong>
-    <%= @payroll.wet_grain %>
-  </p>
-
-  <p>
-    <strong>Forma de suministro:</strong>
-    <%= @payroll.form_of_supply_grain %>
-  </p>
-
-  <p>
-    <strong>Henilajes ( kg fresco/VO/día):</strong>
-    <%= @payroll.henilages %>
-  </p>
-
-  <p>
-    <strong>Forma de suministro:</strong>
-    <%= @payroll.form_of_supply_henilages %>
-  </p>
-
-  <p>
-    <strong>Silo  ( kg fresco/VO/día):</strong>
-    <%= @payroll.silo %>
-  </p>
-
-  <p>
-    <strong>Forma de suministro:</strong>
-    <%= @payroll.form_of_supply %>
-  </p>
-
+    <p>
+      <% if @payroll.henilages > 0 %>
+        <strong>Henilajes ( kg fresco/VO/día):</strong>
+        <%= @payroll.henilages %>
+        <% if !@form_of_supply_henilages.nil?%>
+          <strong> / </strong>
+          <%= @form_of_supply_henilages.name %>
+        <% end %>
+      <% end %>
+    </p>
+  
+    <p>
+      <strong>Silo  ( kg fresco/VO/día):</strong>
+      <%= @payroll.silo %>
+      <% if !@form_of_supply.nil?%>
+        <strong> / </strong>
+        <%= @form_of_supply.name %>
+      <% end %>
+    </p>
   <p>
     <strong>Gramos de ración / litro:</strong>
     <%= @payroll.grams_of_ration_liter %>
@@ -180,7 +200,33 @@
     <%= @payroll.no_grazing_days %>
   </p>
 
-  <h4 class="subtitulos">DATOS REPRODUCTIVOS</h4>
+  <p>
+    <strong>Kg concentrado / litro:</strong>
+    <%= @payroll.concentrated_liters_kg %>
+  </p>
+
+  <p id="nitrogen_use_efficiency">
+    <strong>Eficiencia de uso de nitrógeno:</strong>
+    <%= @payroll.nitrogen_use_efficiency.round(0) %>
+  </p>
+
+  <p>
+    <strong>Excreción diaria nitrógeno Kg / vaca ordeño / días:</strong>
+    <%= @payroll.daily_excretion %>
+  </p>
+
+  <p>
+    <strong>Excreción mensual:</strong>
+    <%= @payroll.monthly_excretion %>
+  </p>
+
+  <p id="urea_nitrogen_in_milk">
+    <strong>Nitrógeno ureico:</strong>
+    <%= @payroll.urea_nitrogen_in_milk %>
+  </p>
+
+
+  <h4 class="subtitulos">DATOS REPRODUCTIVOS</h4><hr>
 
   <p>
     <strong>Partos vacas:</strong>
@@ -207,7 +253,7 @@
     <%= @payroll.pregnant_cows %>
   </p>
 
-  <h4 class="subtitulos">SANIDAD ANIMAL</h4>
+  <h4 class="subtitulos">SANIDAD ANIMAL</h4><hr>
 
   <p>
     <strong>Mastitis clínica:</strong>
@@ -247,3 +293,42 @@
   <%= link_to 'Editar', edit_payroll_path(@payroll), class:"btn" %> 
   <%= link_to 'Atras', payrolls_path, class:"btn" %>
   <%= link_to "PDF", payroll_path(format: "pdf"), :class => "btn",:method => :get,target: '_blank' %>
+
+<script>
+
+  var proportion_NR_NP = document.getElementById("proportion_NR_NP")
+  if (<%= @payroll.proportion_NR_NP.round(0) %> <= 5) {
+    proportion_NR_NP.style.backgroundColor = "#199f49"
+  }
+  if (<%= @payroll.proportion_NR_NP.round(0) %> > 5) {
+    proportion_NR_NP.style.backgroundColor = "#f7df1e"
+  }
+
+  var relationship_grase_protein = document.getElementById("relationship_grase_protein")
+  if (<%= @payroll.relationship_grase_protein %> > 0.75) {
+    relationship_grase_protein.style.backgroundColor = "#199f49"
+  }
+  if (<%= @payroll.relationship_grase_protein %> <= 0.75) {
+    relationship_grase_protein.style.backgroundColor = "#f7df1e"
+  }  
+
+  var nitrogen_use_efficiency = document.getElementById("nitrogen_use_efficiency")
+  if (<%= @payroll.nitrogen_use_efficiency %> >= 30) {
+    nitrogen_use_efficiency.style.backgroundColor = "#199f49"
+  }
+  if (<%= @payroll.nitrogen_use_efficiency %> > 20 && <%= @payroll.nitrogen_use_efficiency %> < 30 ) {
+    nitrogen_use_efficiency.style.backgroundColor = "#f7df1e"
+  } 
+  if (<%= @payroll.nitrogen_use_efficiency %> <= 20 ) {
+    nitrogen_use_efficiency.style.backgroundColor = "#f71d35"
+  }   
+
+  var urea_nitrogen_in_milk = document.getElementById("urea_nitrogen_in_milk")
+  if (<%= @payroll.urea_nitrogen_in_milk %> >= 12 && <%= @payroll.urea_nitrogen_in_milk %> <= 18 ) {
+    urea_nitrogen_in_milk.style.backgroundColor = "#199f49"
+  }
+  if (<%= @payroll.urea_nitrogen_in_milk %> < 12 || <%= @payroll.urea_nitrogen_in_milk %> > 18 ) {
+    urea_nitrogen_in_milk.style.backgroundColor = "#f7df1e"
+  }      
+      
+</script>

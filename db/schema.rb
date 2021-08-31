@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_24_131719) do
+ActiveRecord::Schema.define(version: 2021_08_30_175050) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -118,23 +118,23 @@ ActiveRecord::Schema.define(version: 2021_08_24_131719) do
     t.float "daily_dry_bases_energy_conc"
     t.float "daily_dry_bases_protein_conc"
     t.float "daily_dry_bases_balanced_ration"
-    t.float "daily_dry_bases_total"
+    t.float "daily_dry_bases_total", default: 0.0
     t.float "daily_dry_bases_wet_grain_silo"
     t.float "daily_dry_bases_henilaje"
     t.float "daily_dry_bases_silo"
     t.float "daily_dry_bases_bale"
-    t.float "daily_dry_bases_total_without_pasture"
-    t.float "daily_dry_bases_pasture_consumption"
+    t.float "daily_dry_bases_total_without_pasture", default: 0.0
+    t.float "daily_dry_bases_pasture_consumption", default: 0.0
     t.float "daily_proteins_energy_conc"
     t.float "daily_proteins_protein_conc"
     t.float "daily_proteins_balanced_ration"
-    t.float "daily_proteins_total"
+    t.float "daily_proteins_total", default: 0.0
     t.float "daily_proteins_wet_grain_silo"
     t.float "daily_proteins_henilaje"
     t.float "daily_proteins_silo"
     t.float "daily_proteins_bale"
-    t.float "daily_proteins_total_without_pasture"
-    t.float "daily_proteins_pasture_consumption"
+    t.float "daily_proteins_total_without_pasture", default: 0.0
+    t.float "daily_proteins_pasture_consumption", default: 0.0
     t.index ["estate_id"], name: "index_payrolls_on_estate_id"
     t.index ["rodeos_main_breed_id"], name: "index_payrolls_on_rodeos_main_breed_id"
     t.index ["user_id"], name: "index_payrolls_on_user_id"
