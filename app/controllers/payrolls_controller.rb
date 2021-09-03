@@ -165,7 +165,6 @@ class PayrollsController < ApplicationController
         :bale, 
         :form_of_supply_bale, 
         :urea_nitrogen_in_milk,
-        :daily_dry_bases_energy_conc,
         :daily_dry_bases_protein_conc,
         :daily_dry_bases_balanced_ration,
         :daily_dry_bases_total,
