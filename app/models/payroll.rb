@@ -50,7 +50,7 @@ class Payroll < ApplicationRecord
         @payroll.relationship_VO_VM = (@payroll.milking_cows / @payroll.number_of_cow_mass).round(2)
         @payroll.carga_VM_VMha = (@payroll.number_of_cow_mass / @payroll.dairy_surface).round(2)
         @payroll.protein_produced_in_milk = ( @payroll.protein / 100 ) * @payroll.liters_day_VO
-        @payroll.nitrogen_use_efficiency = ((@payroll.protein_produced_in_milk / @payroll.daily_proteins_total) * 100).round(0)
+        @payroll.nitrogen_use_efficiency = ((@payroll.protein_produced_in_milk / @payroll.daily_proteins_total) * 100)
         @payroll.daily_excretion = ((@payroll.daily_proteins_total - @payroll.protein_produced_in_milk) / 6.25).round(1)
         @payroll.monthly_excretion = (@payroll.daily_excretion * days * @payroll.milking_cows).round(0)
     end
@@ -83,7 +83,7 @@ class Payroll < ApplicationRecord
         greater_than_or_equal_to: 1,
         less_than_or_equal_to: 1500,
         only_integer: false, # or false to accept decimals
-		message:", Recuento celular va hasta 1500" 
+		message:", Recuento celular, valores entre 1 y 1500" 
     }
 
 	validates :bacterial_count,
@@ -91,7 +91,7 @@ class Payroll < ApplicationRecord
         greater_than_or_equal_to: 1,
         less_than_or_equal_to: 400,
         only_integer: false, # or false to accept decimals
-		message:", Recuento bacteriano va hasta 1500" 
+		message:", Recuento bacteriano, valores entre 1 y 400" 
     }
 
 	validates :grease,:protein,:lactose,
@@ -104,7 +104,7 @@ class Payroll < ApplicationRecord
 
 	validates :mun,
     numericality: {
-        greater_than_or_equal_to: 1,
+        greater_than_or_equal_to: 0,
         less_than_or_equal_to: 100,
         only_integer: false, # or false to accept decimals
 		message:", Valores entre 1 y 100" 
@@ -118,7 +118,16 @@ class Payroll < ApplicationRecord
 		message:", Valores entre -1 y 0" 
     }
 
-	validates :milking_cows, :dry_cows,
+    validates :milking_cows, 
+    numericality: {
+        greater_than_or_equal_to: 1,
+        less_than_or_equal_to: 100000,
+        only_integer: false, # or false to accept decimals
+		message:", Vacas en ordeño, valores entre 1 y 100000." 
+    }
+    
+
+	validates :dry_cows,
     numericality: {
         greater_than_or_equal_to: 0,
         less_than_or_equal_to: 100000,
@@ -144,7 +153,7 @@ class Payroll < ApplicationRecord
 
 	validates :mineral_salts,
     numericality: {
-        greater_than_or_equal_to: 1,
+        greater_than_or_equal_to: 0,
         less_than_or_equal_to: 1000,
         only_integer: false, # or false to accept decimals
 		message:", Valores menores a 1000." 
@@ -152,7 +161,7 @@ class Payroll < ApplicationRecord
 
 	validates :no_grazing_days,
     numericality: {
-        greater_than_or_equal_to: 1,
+        greater_than_or_equal_to: 0,
         less_than_or_equal_to: 32,
         only_integer: false, # or false to accept decimals
 		message:", Valores menores a 32." 

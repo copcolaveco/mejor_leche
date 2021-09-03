@@ -85,7 +85,7 @@
 
   <p id="relationship_grase_protein">
     <strong>Relación proteína - grasa:</strong>
-    <%= @payroll.relationship_grase_protein %>
+    <%= @payroll.relationship_grase_protein.round(3) %>
   </p>  
 
   <h4 class="subtitulos">SUPERFICIE</h4><hr>
@@ -207,7 +207,7 @@
 
   <p id="nitrogen_use_efficiency">
     <strong>Eficiencia de uso de nitrógeno:</strong>
-    <%= @payroll.nitrogen_use_efficiency.round(0) %>
+    <%= @payroll.nitrogen_use_efficiency.round(2) %>
   </p>
 
   <p>

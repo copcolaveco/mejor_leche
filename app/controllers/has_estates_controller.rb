@@ -10,7 +10,7 @@ class HasEstatesController < ApplicationController
 		@users = User.where(user_type: @user_type)
 	end
 	
-  def new
+  	def new
 		@has_estate = HasEstate.new
 	end
 

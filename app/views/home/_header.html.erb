@@ -18,6 +18,7 @@
 
       <nav class="enlaces" id="enlaces">
         <ul>
+          <li><a href=""><%= link_to 'Reportes', reports_path, class:"nav-link" %></a></li>
           <li><a href=""><%= link_to 'Predios', estates_url, class:"nav-link " %></a></li>
           <li><a href=""><%= link_to 'Planillas', payrolls_path, class:"nav-link " %></a></li>
           <li><a href=""><%= link_to 'Cerrar Sesión', destroy_user_session_path, method: :delete, class:"nav-link" %></a></li>

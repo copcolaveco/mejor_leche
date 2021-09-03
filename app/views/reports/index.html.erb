@@ -1,0 +1,27 @@
+<h4 class="subtitulos">Recuento Celular</h4>
+
+
+<div class="field form-group">
+    <label class="form-label">Predio</label>
+    <select class="form-select" <%= collection_select(:report, :estate_id, current_user.estates.order(created_at: :desc) , :id, :name, :onchange => "cambiarPredio($(this).val()") %></select>
+    <%# <%= select_tag "estates", options_for_select(current_user.estates.order(created_at: :desc), {:id =>"estates"}) %>
+</div><br>
+
+
+
+
+<%= line_chart @p.group_by_month(:saved_date).sum(:cell_count) %>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" >
+    $(document).ready(function() {
+        $('#estates').change(function() {
+            $.ajax({
+                url: "<%= update_graphics_path %>",
+                data: {
+                    estate_id: $("#estates option:selected").val
+                },
+                dataType: "script"
+            });
+        });
+    });
+</script>
