@@ -2,13 +2,21 @@
 
 <div class="field form-group">
     <label class="form-label">Predio</label>
-    <select class="form-select" <%= collection_select(:report, :estate_id, current_user.estates.order(created_at: :desc) , :id, :name, {onchange: "select_estate();"} ) %></select>
-    <%# <%= select_tag :estate_selection, options_from_collection_for_select(current_user.estates, :id, :name), :onchange => "$.get('#{estate_selection_reports_url(:id)}', {'_method':'get', 'estate_id':this.value})" ,:prompt => "Predios" %> 
-</div><br>
-
-
-<%= line_chart @p.group_by_month(:saved_date).sum(:cell_count) %>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js">
+    <%# <select class="form-select" <%= collection_select(:report, :estate_id, current_user.estates.order(created_at: :desc) , :id, :name, {onchange: "select_estate();"} ) %>
+    <%# <%= select_tag :estate_selection, options_from_collection_for_select(current_user.estates, :id, :name), :onchange => "$.get('#{estate_selection_reports_url(:id)}', {'_method':'get', 'estate_id':this.value})" ,:prompt => "Predios" %>  
     
-</script>
+    <%= select_tag :estate_selection, 
+      options_from_collection_for_select(current_user.estates, :id, :name), # your options for this select box
+      :'data-remote' => 'true', # important for UJS
+      :'data-url' => url_for(:controller => 'reports', :action => 'estate_selection'), # we get the data from here!
+      :'data-type' => 'json' # tell jQuery to parse the response as JSON!
+    %>
+
+
+</div><br>
+<h3 class="titulos form-titulo">graficas</h3>
+
+<div>  
+    <%= render 'show_chart', payroll: @payrolls %>
+</div>
+
