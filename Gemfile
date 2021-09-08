@@ -19,6 +19,7 @@ gem 'kaminari', '~> 1.2', '>= 1.2.1'
 gem 'wicked_pdf', '~> 2.1'
 gem 'wkhtmltopdf-binary', '~> 0.12.6.5'
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.7'
+gem 'jquery-rails', '4.3.5'
 
 
 #Create beautiful JavaScript charts with one line of Ruby

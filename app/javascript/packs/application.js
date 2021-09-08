@@ -13,3 +13,11 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
+//= require moment
+//= require jquery3
+//= require popper
+//= require chartkick
+//= require Chart.bundle
+//= require bootstrap
+//= require turbolinks
+//= require_tree .

@@ -29,7 +29,7 @@
 
   <div class="field form-group">
     <%= form.label 'Fecha de creación' %>
-    <%= form.date_select :saved_date, discard_day: true %> 
+    <%= form.date_select :saved_date,  {:use_month_names => ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre','Diciembre'], discard_day: true} %> 
   </div>
 
   <br>

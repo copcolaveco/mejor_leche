@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   resources :payrolls
   resources :has_estates
   resources :reports do
-    collection { post :import }
+    collection do
+      get 'estate_selection'
+    end
   end
   delete 'has_estates', action: :delete, controller: 'has_estates', defaults: { format: 'json' }
   devise_for :users, controllers: { sessions: 'users/sessions' }
