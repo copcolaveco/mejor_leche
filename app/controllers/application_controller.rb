@@ -11,7 +11,7 @@ before_action :set_user_type, only: %i[ show edit update destroy ]
   end
 	
   def set_user_type
-    @user_type = UserType.find(current_user.id)
+    @user_type = UserType.find(current_user.user_type_id)
   end
 
 end
