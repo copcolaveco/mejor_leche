@@ -10,22 +10,26 @@
       <th>Productor</th>
       <th>Departamento</th>
       <th>Rubro Productivo</th>
-      <th colspan="3"></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @estates.each do |estate| %>
       <tr>
-        <td><%= link_to estate.name , estate %></td>
+        <td><%= estate.name %></td>
         <td><%= estate.dicose %></td>
         <td><%= estate.user.username %></td>
         <td><%= estate.department.name %></td>
         <td><%= estate.productive_area.name %></td>
+        
         <td>
           <%= link_to(estate, method: :delete, data: { confirm: 'Se eliminaran todas las asociaciones de sus Técnicos como tambien las Planillas que tenga de este Predio, estas seguro de querer eliminar este Predio?' } ) do %>
             <i class="fas fa-trash"></i>
           <% end %>
+        </td>
+        <td>
+          <%= link_to '<i class="fas fa-edit"></i>' .html_safe, edit_estate_path(estate)  %>            
         </td>
       </tr>
     <% end %>

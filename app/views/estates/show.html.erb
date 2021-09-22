@@ -20,12 +20,143 @@
    <p>
   	  <strong>Rubro Productivo:</strong>
   	  <%= @estate.productive_area.name %>
-	 </p>
-    
+	 </p>    
   </p>
-
-  <%= link_to 'Editar', edit_estate_path(@estate), class:"btn", data: { disable_with: "Guardando..." } %> 
-  <%= link_to 'Atras', estates_path, class:"btn" %>
-  <%= link_to "PDF", estate_path(format: "pdf"), :class => "btn",:method => :get,target: '_blank' %>
-  <br/>
 </div>
+
+<div>
+	<h3 class="titulos">
+    	Recuento celular (en cel/mL)
+  	</h3>
+	<h4 class="subtitulos">El valor de recuento celular recomendado es menor a 250.000 celulas</h4>
+
+	<%= line_chart [
+		{name: "Recuento Celular", data:  @payrolls.group_by_month(:saved_date).sum(:cell_count)},
+		{name: "RC a nivel Nacional", data:  @all.group_by_month(:saved_date).average(:cell_count)},
+		{name: "Valor recomendado", data: @all.group_by_month(:saved_date).average(:recommended_value_rc) }
+		] %>
+</div>
+
+<div>
+	<h3 class="titulos">
+    	Litros no remitidos/ Litros Totales (%)
+  	</h3>
+	<h4 class="subtitulos">Se recomienda un % de Litros no remitidos / Litros totales menor al 5%</h4>
+	<%= line_chart @payrolls.group_by_month(:saved_date).sum(:liter_sent) %>
+</div>
+
+<div>
+	<h3 class="titulos">
+    	Recuento bacteriano (en UFC/mL)
+  	</h3>
+	<h4 class="subtitulos">El valor de recuento bacteriano recomendado es menor a 30.000 UFC/mL</h4>
+	<%= line_chart [
+		{name: "Recuento Bacteriano", data:  @payrolls.group_by_month(:saved_date).sum(:bacterial_count)},
+		{name: "RB a nivel Nacional", data:  @all.group_by_month(:saved_date).average(:bacterial_count)},
+		{name: "Valor recomendado", data: @all.group_by_month(:saved_date).average(:recommended_value_rb) }
+		] %>
+</div>
+
+<div>
+	<h3 class="titulos">
+    	Grasa (%)
+  	</h3>
+	<h4 class="subtitulos">El valor de % grasa no debe ser menor a  3,3%</h4>
+	<%= line_chart [
+		{name: "Grasa", data:  @payrolls.group_by_month(:saved_date).sum(:grease)},
+		{name: "Grasa a nivel Nacional", data:  @all.group_by_month(:saved_date).average(:grease)},
+		{name: "Valor recomendado", data: @all.group_by_month(:saved_date).average(:recommended_value_grase) }
+		] %>
+</div>
+
+<div>
+	<h3 class="titulos">
+    	Proteina (%)
+  	</h3>
+	<h4 class="subtitulos">El valor de % proteina entre 3 y 4%</h4>
+	<%= line_chart [
+		{name: "Proteína", data:  @payrolls.group_by_month(:saved_date).sum(:protein)},
+		{name: "Proteína a nivel Nacional", data:  @all.group_by_month(:saved_date).average(:protein)},
+		{name: "Valor recomendado Mínimo", data: @all.group_by_month(:saved_date).average(:recommended_value_protein_min) },
+		{name: "Valor recomendado Máximo", data: @all.group_by_month(:saved_date).average(:recommended_value_protein_max) }
+		] %>
+</div>
+
+<div>
+	<h3 class="titulos">
+    	Lactosa (%)
+  	</h3>
+	<h4 class="subtitulos">El valor de % lactosa deseable entre 4,5 y  5 %</h4>
+	<%= line_chart [
+		{name: "Lactosa", data:  @payrolls.group_by_month(:saved_date).sum(:lactose)},
+		{name: "Lactosa a nivel Nacional", data:  @all.group_by_month(:saved_date).average(:lactose)},
+		{name: "Valor recomendado Mínimo", data: @all.group_by_month(:saved_date).average(:recommended_value_lactose_min) },
+		{name: "Valor recomendado Máximo", data: @all.group_by_month(:saved_date).average(:recommended_value_lactose_max) }
+		] %>
+</div>
+
+<div>
+	<h3 class="titulos">
+    	MUN(NUL) (mg/dL)
+  	</h3>
+	<h4 class="subtitulos">El rango recomendado  de MUN recomendado es 10 a 20 mg/dL</h4>
+	<%= column_chart [
+		{name: "MUN", data:  @payrolls.group_by_month(:saved_date).sum(:MUN)},
+		{name: "MUN a nivel Nacional", data:  @all.group_by_month(:saved_date).average(:MUN)},
+		{name: "Valor recomendado Minimo", data: @all.group_by_month(:saved_date).average(:recommended_value_MUN_min ) },
+		{name: "Valor recomendado Máximo", data: @all.group_by_month(:saved_date).average(:recommended_value_MUN_max) }
+		] %>
+</div>
+
+<div>
+	<h3 class="titulos">
+    	Crioscopía (ºC)
+  	</h3>
+	<h4 class="subtitulos">El rango recomendado entre  -0,510 y -0,530.</h4>
+	<%= line_chart [
+		{name: "Crioscopía", data:  @payrolls.group_by_month(:saved_date).sum(:cryoscopy)},
+		{name: "Crioscopía a nivel Nacional", data:  @all.group_by_month(:saved_date).average(:cryoscopy)},
+		{name: "Valor recomendado Mínimo", data: @all.group_by_month(:saved_date).average(:recommended_value_cryoscopy_min) },
+		{name: "Valor recomendado Máximo", data: @all.group_by_month(:saved_date).average(:recommended_value_cryoscopy_max) }
+		] %>
+</div>
+
+<div>
+	<h3 class="titulos">
+    	% Mastitis clínica mensual(nº de vo con mastitis clínica en el mes/vo promedio al mes)
+  	</h3>
+	<h4 class="subtitulos">El % de Mastitis clínica / VO recomendado es inferior al 5%</h4>
+	<%= line_chart [
+		{name: "Mastitis", data:  @payrolls.group_by_month(:saved_date).sum(:clinical_mastitis)},
+		{name: "Mastitis a nivel Nacional", data:  @all.group_by_month(:saved_date).average(:clinical_mastitis)},
+		{name: "Valor recomendado", data: @all.group_by_month(:saved_date).average(:recommended_value_mastitis) }
+		] %>
+</div>
+
+<h3 class="titulos">INDICADORES NUTRICIONALES</h3>
+
+<div>
+	<h3 class="titulos">
+    	PERFIL DE LA DIETA
+  	</h3>
+	<h4 class="subtitulos">El valor de recuento bacteriano recomendado es menor a 30.000 UFC/mL</h4>
+	
+	<%= column_chart @payrolls.group_by_month(:saved_date).sum(:daily_dry_bases_pasture_consumption) %>
+</div>
+
+<div>
+	<h3 class="titulos">
+    	Aporte de proteina por tipo de alimento
+  	</h3>
+	<h4 class="subtitulos">El valor de recuento bacteriano recomendado es menor a 30.000 UFC/mL</h4>
+	<%= column_chart @payrolls.group_by_month(:saved_date).sum(:daily_dry_bases_henilaje) %>
+</div>
+
+<div>
+	<br/>
+	<%= link_to 'Atras', reports_path, class:"btn" %>
+  	<%# <%= link_to "PDF", estate_path(format: "pdf"), :class => "btn",:method => :get,target: '_blank' %> %>
+  	<br/>
+</div>
+
+

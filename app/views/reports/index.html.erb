@@ -1,22 +1,26 @@
-<h4 class="subtitulos">Recuento Celular</h4>
 
-<div class="field form-group">
-    <label class="form-label">Predio</label>
-    
-    <%# <select class="form-select" <%= collection_select(:report, :estate_id, current_user.estates.order(created_at: :desc) , :id, :name, {:class => "company_selection"} ) %> 
-    <%# <%= select_tag :estate_selection, options_from_collection_for_select(current_user.estates, :id, :name), :onchange => "$.get('#{estate_selection_reports_url(:id)}', {'_method':'get', 'estate_id':this.value})" ,:prompt => "Predios"   %> 
-    
-    <%= select_tag :estate_selection, 
-      options_from_collection_for_select(current_user.estates, :id, :name), # your options for this select box
-      :'data-remote' => 'true', # important for UJS
-      :'data-url' => url_for(:controller => 'reports', :action => 'estate_selection'), # we get the data from here!
-      :'data-type' => 'json' # tell jQuery to parse the response as JSON!
-    %>
+<h3 class="titulos">Reportes por predio</h3>
+ 
+<table class="table table table-hover table table-bordered">
+  <thead class="table-dark">
+    <tr>
+      <th>Nombre</th>
+      <th>Dicose</th>
+      <th>Productor</th>
+      <th>Departamento</th>
+      <th>Rubro Productivo</th>
+    </tr>
+  </thead>
 
-
-</div><br>
-<h3 class="titulos form-titulo">graficas</h3>
-
-<div>  
-    <%= line_chart @payrolls.group_by_month(:saved_date).sum(:cell_count), id: "chart_cell_count" %>
-</div>
+  <tbody>
+    <% @estates.each do |estate| %>
+      <tr>
+        <td><%= link_to estate.name , estate %></td>
+        <td><%= estate.dicose %></td>
+        <td><%= estate.user.username %></td>
+        <td><%= estate.department.name %></td>
+        <td><%= estate.productive_area.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

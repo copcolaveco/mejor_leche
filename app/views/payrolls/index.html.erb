@@ -7,20 +7,23 @@
       <th>Predio:</th>
       <th>Departamento:</th>
       <th>Fecha:</th>
-      <th colspan="1"></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @payrolls.each do |payroll| %>
       <tr>
-        <td><%= link_to payroll.estate.name, payroll %></td>
+        <td><%= payroll.estate.name %></td>
         <td><%= payroll.estate.department.name %></td>
         <td><%= payroll.saved_date.strftime("%Y %m") %></td>
         <td>
           <%= link_to(payroll, method: :delete, data: { confirm: 'Estas seguro de querer eliminar esta Planilla?' } ) do %>
             <i class="fas fa-trash"></i>
           <% end %>
+        </td>
+        <td>
+          <%= link_to '<i class="fas fa-edit"></i>' .html_safe, edit_payroll_path(payroll)  %>            
         </td>
       </tr>
     <% end %>

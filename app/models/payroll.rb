@@ -53,6 +53,16 @@ class Payroll < ApplicationRecord
         @payroll.nitrogen_use_efficiency = ((@payroll.protein_produced_in_milk / @payroll.daily_proteins_total) * 100)
         @payroll.daily_excretion = ((@payroll.daily_proteins_total - @payroll.protein_produced_in_milk) / 6.25).round(1)
         @payroll.monthly_excretion = (@payroll.daily_excretion * days * @payroll.milking_cows).round(0)
+
+        @payroll.dry_base_concentrate = (@payroll.daily_dry_bases_energy_conc + @payroll.daily_dry_bases_protein_conc + @payroll.daily_dry_bases_balanced_ration + @payroll.daily_dry_bases_wet_grain_silo)
+        @payroll.dry_base_reserve = (@payroll.daily_dry_bases_henilaje + @payroll.daily_dry_bases_silo + @payroll.daily_dry_bases_bale)
+        @payroll.dry_base_pasture = @payroll.daily_dry_bases_pasture_consumption
+        @payroll.dry_base_total_MS = (@payroll.dry_base_concentrate + @payroll.dry_base_reserve + @payroll.dry_base_pasture)
+
+        @payroll.protein_consumed_concentrate = (@payroll.daily_proteins_energy_conc + @payroll.daily_proteins_protein_conc + @payroll.daily_proteins_balanced_ration + @payroll.daily_proteins_wet_grain_silo)
+        @payroll.protein_consumed_reserve = (@payroll.daily_proteins_henilaje + @payroll.daily_proteins_silo + @payroll.daily_proteins_bale)
+        @payroll.protein_consumed_pasture = @payroll.daily_proteins_pasture_consumption
+        @payroll.protein_consumed_total_MS = (@payroll.protein_consumed_concentrate + @payroll.protein_consumed_reserve + @payroll.protein_consumed_pasture)
     end
 
     validates :saved_date, 

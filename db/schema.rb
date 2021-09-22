@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_30_175050) do
+ActiveRecord::Schema.define(version: 2021_09_22_143137) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -135,6 +135,27 @@ ActiveRecord::Schema.define(version: 2021_08_30_175050) do
     t.float "daily_proteins_bale"
     t.float "daily_proteins_total_without_pasture", default: 0.0
     t.float "daily_proteins_pasture_consumption", default: 0.0
+    t.float "recommended_value_rc", default: 250000.0
+    t.float "recommended_value_LNR_LT", default: 5.0
+    t.float "recommended_value_rb", default: 30000.0
+    t.float "recommended_value_grase", default: 3.3
+    t.float "recommended_value_protein_min", default: 3.0
+    t.float "recommended_value_protein_max", default: 4.0
+    t.float "recommended_value_lactose_min", default: 4.5
+    t.float "recommended_value_lactose_max", default: 5.0
+    t.float "recommended_value_MUN_min", default: 10.0
+    t.float "recommended_value_MUN_max", default: 20.0
+    t.float "recommended_value_cryoscopy_min", default: -0.51
+    t.float "recommended_value_cryoscopy_max", default: -0.53
+    t.float "recommended_value_mastitis", default: 5.0
+    t.float "dry_base_concentrate", default: 0.0
+    t.float "dry_base_reserve", default: 0.0
+    t.float "dry_base_pasture", default: 0.0
+    t.float "dry_base_total_MS", default: 0.0
+    t.float "protein_consumed_concentrate", default: 0.0
+    t.float "protein_consumed_reserve", default: 0.0
+    t.float "protein_consumed_pasture", default: 0.0
+    t.float "protein_consumed_total_MS", default: 0.0
     t.index ["estate_id"], name: "index_payrolls_on_estate_id"
     t.index ["rodeos_main_breed_id"], name: "index_payrolls_on_rodeos_main_breed_id"
     t.index ["user_id"], name: "index_payrolls_on_user_id"

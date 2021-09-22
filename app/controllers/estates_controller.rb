@@ -8,6 +8,7 @@ class EstatesController < ApplicationController
     @estates = current_user.estates.order(created_at: :desc)
     @departments = Department.all
     @user_type = UserType.find_by(typename: 'Productor')
+    
   end
 
   # GET /estates/1 or /estates/1.json
@@ -18,6 +19,8 @@ class EstatesController < ApplicationController
         render pdf: "Predio.pdf", template: "estates/show.html.erb", layout: 'pdf.html', type: "application/pdf"
       end
     end
+    @all = Payroll.all()
+    @payrolls = Payroll.where(estate_id: @estate.id)
   end
 
   # GET /estates/new
@@ -80,7 +83,7 @@ class EstatesController < ApplicationController
     @productive_area = ProductiveArea.find(params[:productive_areas_id])
   end
 
-  def set_estate
+  def set_has_estate
     @has_estate = HasEstate.find(params[:id])
   end
 
@@ -106,7 +109,7 @@ class EstatesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def estate_params
-      params.require(:estate).permit(:name, :dicose, :user_id, :department_id, :productive_area_id)
+      params.require(:estate).permit(:name, :dicose, :user_id, :department_id, :productive_area_id, :estate)
     end
 
     def search_params
