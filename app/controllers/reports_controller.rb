@@ -9,7 +9,7 @@ class ReportsController < ApplicationController
     @estates = current_user.estates.order(created_at: :desc)
     @departments = Department.all
     @user_type = UserType.find_by(typename: 'Productor')
-    
+    @payrolls = current_user.payrolls.order(saved_date: :desc)
   end
 
   # GET /estates/1 or /estates/1.json

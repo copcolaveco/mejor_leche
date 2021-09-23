@@ -27,17 +27,17 @@
   <hr>
 
   <p>
-    <strong>Litros emitidos:</strong>
+    <strong>Litros remitidos:</strong>
     <%= @payroll.liter_sent %>
   </p>
 
   <p>
-    <strong>Litros de leche no emitidos:</strong>
+    <strong>Litros de leche no remitidos:</strong>
     <%= @payroll.liters_of_milk_not_sent %>
   </p>
 
   <p id ="proportion_NR_NP">
-    <strong>Proporción no remitidos no procesados / litro:</strong>
+    <strong>Proporción no remitidos - no procesados / litros totales:</strong>
     <%= @payroll.proportion_NR_NP.round(0) %>
   </p>
 
@@ -91,13 +91,13 @@
   <h4 class="subtitulos">SUPERFICIE</h4><hr>
 
   <p>
-    <strong>Superficie VM (ha):</strong>
-    <%= @payroll.vm_surface %>
-  </p>
-
-  <p>
     <strong>Superficie Lechera:</strong>
     <%= @payroll.dairy_surface %>
+  </p>
+  
+  <p>
+    <strong>Superficie VM (ha):</strong>
+    <%= @payroll.vm_surface %>
   </p>
 
   <h4 class="subtitulos">RODEO LECHERO</h4><hr>
@@ -299,9 +299,11 @@
   var proportion_NR_NP = document.getElementById("proportion_NR_NP")
   if (<%= @payroll.proportion_NR_NP.round(0) %> <= 5) {
     proportion_NR_NP.style.backgroundColor = "#199f49"
+    proportion_NR_NP.value = "prueba texto"
   }
   if (<%= @payroll.proportion_NR_NP.round(0) %> > 5) {
     proportion_NR_NP.style.backgroundColor = "#f7df1e"
+    proportion_NR_NP.value = proportion_NR_NP.value + "prueba texto"
   }
 
   var relationship_grase_protein = document.getElementById("relationship_grase_protein")

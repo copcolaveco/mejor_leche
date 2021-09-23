@@ -26,3 +26,29 @@
     <% end %>
   </tbody>
 </table>
+
+<h3 class="titulos">Reporte de planillas Mensuales</h3>
+
+<table class="tablas table table table-hover table table-bordered">
+  <thead class="table-dark">
+    <tr>
+      <th>Predio:</th>
+      <th>Departamento:</th>
+      <th>Fecha:</th>
+      <th>Rodeo:</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @payrolls.each do |payroll| %>
+      <tr>
+        <td><%= payroll.estate.name %></td>
+        <td><%= payroll.estate.department.name %></td>
+        <td><%= payroll.saved_date.strftime("%Y %m") %></td>
+        <td><%= payroll.rodeos_main_breed.name %></td>
+        <td><%= link_to 'Reporte Planilla', payroll, class:"btn" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
