@@ -74,9 +74,9 @@ body{
     padding-left: 10px;
 }
 
-.btn:hover{
+/* .btn:hover{
     padding: 15px 45px;
-}
+} */
 
 /* FORMULARIOS */
 .form-formulario{
@@ -377,9 +377,9 @@ body{
     padding: 15px 50px;
 }
 
-.btn-input:hover{
+/* .btn-input:hover{
     padding: 15px 65px;
-}
+} */
 
 /* ALERTAS */
 .alertas{
@@ -528,7 +528,7 @@ footer{
 }
 
 #btn-top:hover{
-    background: #d89127;
+    background: #27d84d;
 }
 
 #btn-top:hover span{

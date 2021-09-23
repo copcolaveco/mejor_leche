@@ -42,7 +42,11 @@
     	Litros no remitidos/ Litros Totales (%)
   	</h3>
 	<h4 class="subtitulos">Se recomienda un % de Litros no remitidos / Litros totales menor al 5%</h4>
-	<%= line_chart @payrolls.group_by_month(:saved_date).sum(:liter_sent) %>
+	<%= line_chart [
+		{name: "Relación LR/LT %", data:  @payrolls.group_by_month(:saved_date).sum(:proportion_NR_NP)},
+		{name: "% a nivel Nacional", data:  @all.group_by_month(:saved_date).average(:proportion_NR_NP)},
+		{name: "Valor recomendado", data: @all.group_by_month(:saved_date).average(:recommended_value_LNR_LT) }
+		] %>
 </div>
 
 <div>
@@ -140,8 +144,11 @@
     	PERFIL DE LA DIETA
   	</h3>
 	<h4 class="subtitulos">El valor de recuento bacteriano recomendado es menor a 30.000 UFC/mL</h4>
-	
-	<%= column_chart @payrolls.group_by_month(:saved_date).sum(:daily_dry_bases_pasture_consumption) %>
+	<%= column_chart [
+		{name: "Consumo Concentrado", data:  @payrolls.group_by_month(:saved_date).sum(:dry_base_concentrate)},
+		{name: "Consumo Reserva", data:  @payrolls.group_by_month(:saved_date).sum(:dry_base_reserve)},
+		{name: "Consumo Pasturas", data: @payrolls.group_by_month(:saved_date).sum(:dry_base_pasture ) }
+		] %>
 </div>
 
 <div>
@@ -149,13 +156,20 @@
     	Aporte de proteina por tipo de alimento
   	</h3>
 	<h4 class="subtitulos">El valor de recuento bacteriano recomendado es menor a 30.000 UFC/mL</h4>
-	<%= column_chart @payrolls.group_by_month(:saved_date).sum(:daily_dry_bases_henilaje) %>
+	<%= column_chart [
+		{name: "Concentrado proteico (kg/VO/día)", data:  @payrolls.group_by_month(:saved_date).sum(:daily_proteins_protein_conc)},
+		{name: "Concentrado energético (kg/VO/día)", data:  @payrolls.group_by_month(:saved_date).sum(:daily_proteins_energy_conc)},
+		{name: "Aporte proteía GH (kg/VO/día)", data: @payrolls.group_by_month(:saved_date).sum(:daily_proteins_wet_grain_silo ) },
+		{name: "Aporte proteía henilaje (kg/VO/día)", data: @payrolls.group_by_month(:saved_date).sum(:daily_proteins_henilaje ) },
+		{name: "Aporte proteía silo (kg/VO/día)", data: @payrolls.group_by_month(:saved_date).sum(:daily_proteins_silo ) },
+		{name: "Aporte proteía pastura (kg/VO/día)", data: @payrolls.group_by_month(:saved_date).sum(:daily_proteins_pasture_consumption ) }
+		] %>
 </div>
 
 <div>
 	<br/>
 	<%= link_to 'Atras', reports_path, class:"btn" %>
-  	<%# <%= link_to "PDF", estate_path(format: "pdf"), :class => "btn",:method => :get,target: '_blank' %> %>
+  	<%# <%= link_to "PDF", estate_path(format: "pdf"), :class => "btn",:method => :get,target: '_blank' %>
   	<br/>
 </div>
 

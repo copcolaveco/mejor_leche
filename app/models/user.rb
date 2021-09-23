@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  before_destroy :destroy_estate
+  before_destroy :destroy_asociation
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
@@ -40,11 +40,16 @@ class User < ApplicationRecord
   	end
   end
 
-  def destroy_estate
+  def destroy_asociation
     @user = self
     @estates = Estate.where(user_id: @user.id)
     @estates.each do |e|
-      Estate.destroy(e.id)
+      Estate.destroy(e.id)      
+    end
+
+    @has_estates = HasEstate.where(user_id: @user.id)
+    @has_estates.each do |e|
+      HasEstate.destroy(e.id) 
     end
   end
 
