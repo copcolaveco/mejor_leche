@@ -40,8 +40,7 @@ class EstatesController < ApplicationController
     @estate = current_user.estates.build(estate_params)
     respond_to do |format|
       if @estate.save
-        format.html { redirect_to @estate, notice: "Predio creado correctamente." }
-        format.json { render :show, status: :created, location: @estate }     
+        format.html { redirect_to estates_url, notice: "Predio creado correctamente." }   
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @estate.errors, status: :unprocessable_entity }
@@ -53,8 +52,7 @@ class EstatesController < ApplicationController
   def update
     respond_to do |format|
       if @estate.update(estate_params)
-        format.html { redirect_to @estate, notice: "Predio modificado correctamente." }
-        format.json { render :show, status: :ok, location: @estate }
+        format.html { redirect_to estates_url, notice: "Predio modificado correctamente." }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @estate.errors, status: :unprocessable_entity }
