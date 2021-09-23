@@ -143,7 +143,6 @@
 	<h3 class="titulos">
     	PERFIL DE LA DIETA
   	</h3>
-	<h4 class="subtitulos">El valor de recuento bacteriano recomendado es menor a 30.000 UFC/mL</h4>
 	<%= column_chart [
 		{name: "Consumo Concentrado", data:  @payrolls.group_by_month(:saved_date).sum(:dry_base_concentrate)},
 		{name: "Consumo Reserva", data:  @payrolls.group_by_month(:saved_date).sum(:dry_base_reserve)},
@@ -155,7 +154,6 @@
 	<h3 class="titulos">
     	Aporte de proteina por tipo de alimento
   	</h3>
-	<h4 class="subtitulos">El valor de recuento bacteriano recomendado es menor a 30.000 UFC/mL</h4>
 	<%= column_chart [
 		{name: "Concentrado proteico (kg/VO/día)", data:  @payrolls.group_by_month(:saved_date).sum(:daily_proteins_protein_conc)},
 		{name: "Concentrado energético (kg/VO/día)", data:  @payrolls.group_by_month(:saved_date).sum(:daily_proteins_energy_conc)},
