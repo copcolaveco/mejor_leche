@@ -20,6 +20,7 @@ class EstatesController < ApplicationController
       end
     end
     @all = Payroll.all()
+    @dpto_payroll = Payroll.where(estate_id: Estate.where(department_id: @estate.department_id))
     @payrolls = Payroll.where(estate_id: @estate.id)
   end
 

@@ -43,12 +43,29 @@ body{
     font-weight: 600;
 }
 
+.titulos_informes_graficas{
+    font-size: 40px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    padding-top: 50px;
+}
+
 #titulo-nombre {
     margin-top: 20px;
 }
 
 .subtitulos{
     font-size: 25px;
+    font-weight: 400;
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--color-primario);
+}
+
+.subtitulos_informes_graficas{
+    font-size: 15px;
     font-weight: 400;
     text-align: center;
     text-transform: uppercase;

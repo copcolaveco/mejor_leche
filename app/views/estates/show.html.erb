@@ -25,133 +25,143 @@
 </div>
 
 <div>
-	<h3 class="titulos">
+	<h3 class="titulos_informes_graficas">
     	Recuento celular (en cel/mL)
   	</h3>
-	<h4 class="subtitulos">El valor de recuento celular recomendado es menor a 250.000 celulas</h4>
+	<h4 class="subtitulos_informes_graficas">El valor de recuento celular recomendado es menor a 250.000 celulas</h4>
 
 	<%= line_chart [
-		{name: "Recuento Celular", data:  @payrolls.group_by_month(:saved_date).sum(:cell_count)},
-		{name: "RC a nivel Nacional", data:  @all.group_by_month(:saved_date).average(:cell_count)},
-		{name: "Valor recomendado", data: @all.group_by_month(:saved_date).average(:recommended_value_rc) }
-		] %>
+		{name: "Recuento Celular (cel/mL)", data:  @payrolls.group_by_month(:saved_date).sum(:cell_count)},
+		{name: "RC a nivel Nacional (cel/mL)", data:  @all.group_by_month(:saved_date).average(:cell_count)},
+		{name: "RC a nivel Departamental (cel/mL)", data:  @dpto_payroll.group_by_month(:saved_date).average(:cell_count)},
+		{name: "Valor recomendado (cel/mL)", data: @all.group_by_month(:saved_date).average(:recommended_value_rc) }
+		], ytitle: "(cel/mL)", discrete: true %>
 </div>
 
+
 <div>
-	<h3 class="titulos">
+	<h3 class="titulos_informes_graficas">
     	Litros no remitidos/ Litros Totales (%)
   	</h3>
-	<h4 class="subtitulos">Se recomienda un % de Litros no remitidos / Litros totales menor al 5%</h4>
+	<h4 class="subtitulos_informes_graficas">Se recomienda un % de Litros no remitidos / Litros totales menor al 5%</h4>
 	<%= line_chart [
-		{name: "Relación LR/LT %", data:  @payrolls.group_by_month(:saved_date).sum(:proportion_NR_NP)},
-		{name: "% a nivel Nacional", data:  @all.group_by_month(:saved_date).average(:proportion_NR_NP)},
-		{name: "Valor recomendado", data: @all.group_by_month(:saved_date).average(:recommended_value_LNR_LT) }
-		] %>
+		{name: "Relación LR/LT (%)", data:  @payrolls.group_by_month(:saved_date).sum(:proportion_NR_NP)},
+		{name: "LnR/LT a nivel Nacional (%)", data:  @all.group_by_month(:saved_date).average(:proportion_NR_NP)},
+		{name: "LnR/LT a nivel Departamental (%)", data:  @dpto_payroll.group_by_month(:saved_date).average(:proportion_NR_NP)},
+		{name: "Valor recomendado (%)", data: @all.group_by_month(:saved_date).average(:recommended_value_LNR_LT) }
+		], ytitle: "(%)", discrete: true %>
 </div>
 
 <div>
-	<h3 class="titulos">
+	<h3 class="titulos_informes_graficas">
     	Recuento bacteriano (en UFC/mL)
   	</h3>
-	<h4 class="subtitulos">El valor de recuento bacteriano recomendado es menor a 30.000 UFC/mL</h4>
+	<h4 class="subtitulos_informes_graficas">El valor de recuento bacteriano recomendado es menor a 30.000 UFC/mL</h4>
 	<%= line_chart [
-		{name: "Recuento Bacteriano", data:  @payrolls.group_by_month(:saved_date).sum(:bacterial_count)},
-		{name: "RB a nivel Nacional", data:  @all.group_by_month(:saved_date).average(:bacterial_count)},
-		{name: "Valor recomendado", data: @all.group_by_month(:saved_date).average(:recommended_value_rb) }
-		] %>
+		{name: "Recuento Bacteriano (UFC/mL)", data:  @payrolls.group_by_month(:saved_date).sum(:bacterial_count)},
+		{name: "RB a nivel Nacional (UFC/mL)", data:  @all.group_by_month(:saved_date).average(:bacterial_count)},
+		{name: "RB a nivel Departamental (UFC/mL)", data:  @dpto_payroll.group_by_month(:saved_date).average(:bacterial_count)},
+		{name: "Valor recomendado (UFC/mL)", data: @all.group_by_month(:saved_date).average(:recommended_value_rb) }
+		], ytitle: "(UFC/mL)", discrete: true %>
 </div>
 
 <div>
-	<h3 class="titulos">
+	<h3 class="titulos_informes_graficas">
     	Grasa (%)
   	</h3>
-	<h4 class="subtitulos">El valor de % grasa no debe ser menor a  3,3%</h4>
+	<h4 class="subtitulos_informes_graficas">El valor de % grasa no debe ser menor a  3,3%</h4>
 	<%= line_chart [
-		{name: "Grasa", data:  @payrolls.group_by_month(:saved_date).sum(:grease)},
-		{name: "Grasa a nivel Nacional", data:  @all.group_by_month(:saved_date).average(:grease)},
-		{name: "Valor recomendado", data: @all.group_by_month(:saved_date).average(:recommended_value_grase) }
-		] %>
+		{name: "Grasa (%)", data:  @payrolls.group_by_month(:saved_date).sum(:grease)},
+		{name: "Grasa a nivel Nacional (%)", data:  @all.group_by_month(:saved_date).average(:grease)},
+		{name: "Grasa a nivel Departamental (%)", data:  @dpto_payroll.group_by_month(:saved_date).average(:grease)},
+		{name: "Valor recomendado (%)", data: @all.group_by_month(:saved_date).average(:recommended_value_grase) }
+		], ytitle: "(%)", discrete: true %>
 </div>
 
 <div>
-	<h3 class="titulos">
+	<h3 class="titulos_informes_graficas">
     	Proteina (%)
   	</h3>
-	<h4 class="subtitulos">El valor de % proteina entre 3 y 4%</h4>
+	<h4 class="subtitulos_informes_graficas">El valor de % proteina entre 3 y 4%</h4>
 	<%= line_chart [
-		{name: "Proteína", data:  @payrolls.group_by_month(:saved_date).sum(:protein)},
-		{name: "Proteína a nivel Nacional", data:  @all.group_by_month(:saved_date).average(:protein)},
-		{name: "Valor recomendado Mínimo", data: @all.group_by_month(:saved_date).average(:recommended_value_protein_min) },
-		{name: "Valor recomendado Máximo", data: @all.group_by_month(:saved_date).average(:recommended_value_protein_max) }
-		] %>
+		{name: "Proteína (%)", data:  @payrolls.group_by_month(:saved_date).sum(:protein)},
+		{name: "Proteína a nivel Nacional (%)", data:  @all.group_by_month(:saved_date).average(:protein)},
+		{name: "Proteína a nivel Departamental (%)", data:  @dpto_payroll.group_by_month(:saved_date).average(:protein)},
+		{name: "Valor recomendado Mínimo (%)", data: @all.group_by_month(:saved_date).average(:recommended_value_protein_min) },
+		{name: "Valor recomendado Máximo (%)", data: @all.group_by_month(:saved_date).average(:recommended_value_protein_max) }
+		], ytitle: "(%)", discrete: true %>
 </div>
 
 <div>
-	<h3 class="titulos">
+	<h3 class="titulos_informes_graficas">
     	Lactosa (%)
   	</h3>
-	<h4 class="subtitulos">El valor de % lactosa deseable entre 4,5 y  5 %</h4>
+	<h4 class="subtitulos_informes_graficas">El valor de % lactosa deseable entre 4,5 y  5 %</h4>
 	<%= line_chart [
-		{name: "Lactosa", data:  @payrolls.group_by_month(:saved_date).sum(:lactose)},
-		{name: "Lactosa a nivel Nacional", data:  @all.group_by_month(:saved_date).average(:lactose)},
-		{name: "Valor recomendado Mínimo", data: @all.group_by_month(:saved_date).average(:recommended_value_lactose_min) },
-		{name: "Valor recomendado Máximo", data: @all.group_by_month(:saved_date).average(:recommended_value_lactose_max) }
-		] %>
+		{name: "Lactosa (%)", data:  @payrolls.group_by_month(:saved_date).sum(:lactose)},
+		{name: "Lactosa a nivel Nacional (%)", data:  @all.group_by_month(:saved_date).average(:lactose)},
+		{name: "Lactosa a nivel Departamental (%)", data:  @dpto_payroll.group_by_month(:saved_date).average(:lactose)},
+		{name: "Valor recomendado Mínimo (%)", data: @all.group_by_month(:saved_date).average(:recommended_value_lactose_min) },
+		{name: "Valor recomendado Máximo (%)", data: @all.group_by_month(:saved_date).average(:recommended_value_lactose_max) }
+		], ytitle: "(%)", discrete: true %>
 </div>
 
 <div>
-	<h3 class="titulos">
+	<h3 class="titulos_informes_graficas">
     	MUN(NUL) (mg/dL)
   	</h3>
-	<h4 class="subtitulos">El rango recomendado  de MUN recomendado es 10 a 20 mg/dL</h4>
+	<h4 class="subtitulos_informes_graficas">El rango recomendado de MUN es 10 a 20 mg/dL</h4>
 	<%= column_chart [
-		{name: "MUN", data:  @payrolls.group_by_month(:saved_date).sum(:MUN)},
-		{name: "MUN a nivel Nacional", data:  @all.group_by_month(:saved_date).average(:MUN)},
-		{name: "Valor recomendado Minimo", data: @all.group_by_month(:saved_date).average(:recommended_value_MUN_min ) },
-		{name: "Valor recomendado Máximo", data: @all.group_by_month(:saved_date).average(:recommended_value_MUN_max) }
-		] %>
+		{name: "MUN (mg/dL)", data:  @payrolls.group_by_month(:saved_date).sum(:MUN)},
+		{name: "MUN a nivel Nacional (mg/dL)", data:  @all.group_by_month(:saved_date).average(:MUN)},
+		{name: "MUN a nivel Departamental (mg/dL)", data:  @dpto_payroll.group_by_month(:saved_date).average(:MUN)},
+		{name: "Valor recomendado Minimo (mg/dL)", data: @all.group_by_month(:saved_date).average(:recommended_value_MUN_min ) },
+		{name: "Valor recomendado Máximo (mg/dL)", data: @all.group_by_month(:saved_date).average(:recommended_value_MUN_max) }
+		], ytitle: "(mg/dl)", discrete: true %>
 </div>
 
 <div>
-	<h3 class="titulos">
+	<h3 class="titulos_informes_graficas">
     	Crioscopía (ºC)
   	</h3>
-	<h4 class="subtitulos">El rango recomendado entre  -0,510 y -0,530.</h4>
+	<h4 class="subtitulos_informes_graficas">El rango recomendado entre  -0,510 y -0,530.</h4>
 	<%= line_chart [
-		{name: "Crioscopía", data:  @payrolls.group_by_month(:saved_date).sum(:cryoscopy)},
-		{name: "Crioscopía a nivel Nacional", data:  @all.group_by_month(:saved_date).average(:cryoscopy)},
-		{name: "Valor recomendado Mínimo", data: @all.group_by_month(:saved_date).average(:recommended_value_cryoscopy_min) },
-		{name: "Valor recomendado Máximo", data: @all.group_by_month(:saved_date).average(:recommended_value_cryoscopy_max) }
-		] %>
+		{name: "Crioscopía (ºC)", data:  @payrolls.group_by_month(:saved_date).sum(:cryoscopy)},
+		{name: "Crioscopía a nivel Nacional (ºC)", data:  @all.group_by_month(:saved_date).average(:cryoscopy)},
+		{name: "Crioscopía a nivel Departamental (ºC)", data:  @dpto_payroll.group_by_month(:saved_date).average(:cryoscopy)},
+		{name: "Valor recomendado Mínimo (ºC)", data: @all.group_by_month(:saved_date).average(:recommended_value_cryoscopy_min) },
+		{name: "Valor recomendado Máximo (ºC)", data: @all.group_by_month(:saved_date).average(:recommended_value_cryoscopy_max) }
+		], ytitle: "(ºC)", discrete: true %>
 </div>
 
 <div>
-	<h3 class="titulos">
+	<h3 class="titulos_informes_graficas">
     	% Mastitis clínica mensual(nº de vo con mastitis clínica en el mes/vo promedio al mes)
   	</h3>
-	<h4 class="subtitulos">El % de Mastitis clínica / VO recomendado es inferior al 5%</h4>
+	<h4 class="subtitulos_informes_graficas">El % de Mastitis clínica / VO recomendado es inferior al 5%</h4>
 	<%= line_chart [
-		{name: "Mastitis", data:  @payrolls.group_by_month(:saved_date).sum(:clinical_mastitis)},
-		{name: "Mastitis a nivel Nacional", data:  @all.group_by_month(:saved_date).average(:clinical_mastitis)},
-		{name: "Valor recomendado", data: @all.group_by_month(:saved_date).average(:recommended_value_mastitis) }
-		] %>
+		{name: "Mastitis (%)", data:  @payrolls.group_by_month(:saved_date).sum(:clinical_mastitis)},
+		{name: "Mastitis a nivel Nacional (%)", data:  @all.group_by_month(:saved_date).average(:clinical_mastitis)},
+		{name: "Mastitis a nivel Departamental (%)", data:  @dpto_payroll.group_by_month(:saved_date).average(:clinical_mastitis)},
+		{name: "Valor recomendado (%)", data: @all.group_by_month(:saved_date).average(:recommended_value_mastitis) }
+		], ytitle: "(%)", discrete: true %>
 </div>
 
-<h3 class="titulos">INDICADORES NUTRICIONALES</h3>
+<h3 class="titulos_informes_graficas">INDICADORES NUTRICIONALES</h3>
 
 <div>
-	<h3 class="titulos">
+	<h3 class="titulos_informes_graficas">
     	PERFIL DE LA DIETA
   	</h3>
 	<%= column_chart [
-		{name: "Consumo Concentrado", data:  @payrolls.group_by_month(:saved_date).sum(:dry_base_concentrate)},
-		{name: "Consumo Reserva", data:  @payrolls.group_by_month(:saved_date).sum(:dry_base_reserve)},
-		{name: "Consumo Pasturas", data: @payrolls.group_by_month(:saved_date).sum(:dry_base_pasture ) }
-		] %>
+		{name: "Consumo Concentrado (%)", data:  @payrolls.group_by_month(:saved_date).sum(:dry_base_concentrate)},
+		{name: "Consumo Reserva (%)", data:  @payrolls.group_by_month(:saved_date).sum(:dry_base_reserve)},
+		{name: "Consumo Pasturas (%)", data: @payrolls.group_by_month(:saved_date).sum(:dry_base_pasture ) }
+		], ytitle: "(%)", discrete: true %>
 </div>
 
 <div>
-	<h3 class="titulos">
+	<h3 class="titulos_informes_graficas">
     	Aporte de proteina por tipo de alimento
   	</h3>
 	<%= column_chart [
@@ -161,7 +171,7 @@
 		{name: "Aporte proteía henilaje (kg/VO/día)", data: @payrolls.group_by_month(:saved_date).sum(:daily_proteins_henilaje ) },
 		{name: "Aporte proteía silo (kg/VO/día)", data: @payrolls.group_by_month(:saved_date).sum(:daily_proteins_silo ) },
 		{name: "Aporte proteía pastura (kg/VO/día)", data: @payrolls.group_by_month(:saved_date).sum(:daily_proteins_pasture_consumption ) }
-		] %>
+		], ytitle: "(kg/VO/día)", discrete: true %>
 </div>
 
 <div>
