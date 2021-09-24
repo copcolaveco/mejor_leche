@@ -35,7 +35,7 @@
 		{name: "RC a nivel Nacional (cel/mL)", data:  @all.group_by_month(:saved_date).average(:cell_count)},
 		{name: "RC a nivel Departamental (cel/mL)", data:  @dpto_payroll.group_by_month(:saved_date).average(:cell_count)},
 		{name: "Valor recomendado (cel/mL)", data: @all.group_by_month(:saved_date).average(:recommended_value_rc) }
-		], ytitle: "(cel/mL)", discrete: true %>
+		], ytitle: "(cel/mL)", discrete: true, colors: ["#199f49", "#666","#0000ff", "#ecab0f"] %>
 </div>
 
 
@@ -49,7 +49,7 @@
 		{name: "LnR/LT a nivel Nacional (%)", data:  @all.group_by_month(:saved_date).average(:proportion_NR_NP)},
 		{name: "LnR/LT a nivel Departamental (%)", data:  @dpto_payroll.group_by_month(:saved_date).average(:proportion_NR_NP)},
 		{name: "Valor recomendado (%)", data: @all.group_by_month(:saved_date).average(:recommended_value_LNR_LT) }
-		], ytitle: "(%)", discrete: true %>
+		], ytitle: "(%)", discrete: true, colors: ["#199f49", "#666","#0000ff", "#ecab0f"] %>
 </div>
 
 <div>
@@ -62,7 +62,7 @@
 		{name: "RB a nivel Nacional (UFC/mL)", data:  @all.group_by_month(:saved_date).average(:bacterial_count)},
 		{name: "RB a nivel Departamental (UFC/mL)", data:  @dpto_payroll.group_by_month(:saved_date).average(:bacterial_count)},
 		{name: "Valor recomendado (UFC/mL)", data: @all.group_by_month(:saved_date).average(:recommended_value_rb) }
-		], ytitle: "(UFC/mL)", discrete: true %>
+		], ytitle: "(UFC/mL)", discrete: true, colors: ["#199f49", "#666","#0000ff", "#ecab0f"] %>
 </div>
 
 <div>
@@ -75,7 +75,7 @@
 		{name: "Grasa a nivel Nacional (%)", data:  @all.group_by_month(:saved_date).average(:grease)},
 		{name: "Grasa a nivel Departamental (%)", data:  @dpto_payroll.group_by_month(:saved_date).average(:grease)},
 		{name: "Valor recomendado (%)", data: @all.group_by_month(:saved_date).average(:recommended_value_grase) }
-		], ytitle: "(%)", discrete: true %>
+		], ytitle: "(%)", discrete: true, colors: ["#199f49", "#666","#0000ff", "#ecab0f"] %>
 </div>
 
 <div>
@@ -89,7 +89,7 @@
 		{name: "Proteína a nivel Departamental (%)", data:  @dpto_payroll.group_by_month(:saved_date).average(:protein)},
 		{name: "Valor recomendado Mínimo (%)", data: @all.group_by_month(:saved_date).average(:recommended_value_protein_min) },
 		{name: "Valor recomendado Máximo (%)", data: @all.group_by_month(:saved_date).average(:recommended_value_protein_max) }
-		], ytitle: "(%)", discrete: true %>
+		], ytitle: "(%)", discrete: true, colors: ["#199f49", "#666","#0000ff", "#b00", "#b00"] %>
 </div>
 
 <div>
@@ -103,7 +103,7 @@
 		{name: "Lactosa a nivel Departamental (%)", data:  @dpto_payroll.group_by_month(:saved_date).average(:lactose)},
 		{name: "Valor recomendado Mínimo (%)", data: @all.group_by_month(:saved_date).average(:recommended_value_lactose_min) },
 		{name: "Valor recomendado Máximo (%)", data: @all.group_by_month(:saved_date).average(:recommended_value_lactose_max) }
-		], ytitle: "(%)", discrete: true %>
+		], ytitle: "(%)", discrete: true, colors: ["#199f49", "#666","#0000ff", "#b00", "#b00"] %>
 </div>
 
 <div>
@@ -117,7 +117,7 @@
 		{name: "MUN a nivel Departamental (mg/dL)", data:  @dpto_payroll.group_by_month(:saved_date).average(:MUN)},
 		{name: "Valor recomendado Minimo (mg/dL)", data: @all.group_by_month(:saved_date).average(:recommended_value_MUN_min ) },
 		{name: "Valor recomendado Máximo (mg/dL)", data: @all.group_by_month(:saved_date).average(:recommended_value_MUN_max) }
-		], ytitle: "(mg/dl)", discrete: true %>
+		], ytitle: "(mg/dl)", discrete: true, colors: ["#199f49", "#666","#0000ff", "#b00", "#b00"] %>
 </div>
 
 <div>
@@ -131,7 +131,7 @@
 		{name: "Crioscopía a nivel Departamental (ºC)", data:  @dpto_payroll.group_by_month(:saved_date).average(:cryoscopy)},
 		{name: "Valor recomendado Mínimo (ºC)", data: @all.group_by_month(:saved_date).average(:recommended_value_cryoscopy_min) },
 		{name: "Valor recomendado Máximo (ºC)", data: @all.group_by_month(:saved_date).average(:recommended_value_cryoscopy_max) }
-		], ytitle: "(ºC)", discrete: true %>
+		], ytitle: "(ºC)", discrete: true, colors: ["#199f49", "#666","#0000ff", "#b00", "#b00"] %>
 </div>
 
 <div>
@@ -144,7 +144,7 @@
 		{name: "Mastitis a nivel Nacional (%)", data:  @all.group_by_month(:saved_date).average(:clinical_mastitis)},
 		{name: "Mastitis a nivel Departamental (%)", data:  @dpto_payroll.group_by_month(:saved_date).average(:clinical_mastitis)},
 		{name: "Valor recomendado (%)", data: @all.group_by_month(:saved_date).average(:recommended_value_mastitis) }
-		], ytitle: "(%)", discrete: true %>
+		], ytitle: "(%)", discrete: true, colors: ["#199f49", "#666","#0000ff", "#ecab0f"] %>
 </div>
 
 <h3 class="titulos_informes_graficas">INDICADORES NUTRICIONALES</h3>
@@ -177,7 +177,7 @@
 <div>
 	<br/>
 	<%= link_to 'Atras', reports_path, class:"btn" %>
-  	<%# <%= link_to "PDF", estate_path(format: "pdf"), :class => "btn",:method => :get,target: '_blank' %>
+  	<%= link_to "PDF", estate_path(format: "pdf"), :class => "btn",:method => :get,target: '_blank' %>
   	<br/>
 </div>
 

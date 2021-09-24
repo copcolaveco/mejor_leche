@@ -8,7 +8,6 @@ class EstatesController < ApplicationController
     @estates = current_user.estates.order(created_at: :desc)
     @departments = Department.all
     @user_type = UserType.find_by(typename: 'Productor')
-    
   end
 
   # GET /estates/1 or /estates/1.json
