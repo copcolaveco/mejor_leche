@@ -2,7 +2,7 @@ class User < ApplicationRecord
   before_destroy :destroy_asociation
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :confirmable
+         :recoverable, :rememberable, :validatable
 
          has_many :payrolls
          has_many :estates

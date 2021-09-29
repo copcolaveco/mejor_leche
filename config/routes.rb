@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     end
   end
   delete 'has_estates', action: :delete, controller: 'has_estates', defaults: { format: 'json' }
-  devise_for :users
+  devise_for :users, controllers: { sessions: 'users/sessions' }
 
   # get 'home/index'
   root 'home#index'
