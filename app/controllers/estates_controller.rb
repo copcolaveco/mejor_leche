@@ -12,15 +12,15 @@ class EstatesController < ApplicationController
 
   # GET /estates/1 or /estates/1.json
   def show
+    @all = Payroll.all()
+    @dpto_payroll = Payroll.where(estate_id: Estate.where(department_id: @estate.department_id))
+    @payrolls = Payroll.where(estate_id: @estate.id)
     respond_to do |format|
       format.html
       format.pdf do
         render pdf: "Predio.pdf", template: "estates/show.html.erb", layout: 'pdf.html', type: "application/pdf"
       end
-    end
-    @all = Payroll.all()
-    @dpto_payroll = Payroll.where(estate_id: Estate.where(department_id: @estate.department_id))
-    @payrolls = Payroll.where(estate_id: @estate.id)
+    end    
   end
 
   # GET /estates/new
