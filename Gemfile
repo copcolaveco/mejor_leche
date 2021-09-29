@@ -21,9 +21,6 @@ gem 'wkhtmltopdf-binary', '~> 0.12.6.5'
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.7'
 gem 'jquery-rails', '4.3.5'
 gem 'chart-js-rails', '~> 0.0.9'
-gem 'figaro', '~> 1.2'
-gem 'better_errors', '~> 2.9', '>= 2.9.1'
-gem 'rails_12factor', '~> 0.0.3'
 
 #Create beautiful JavaScript charts with one line of Ruby
 gem 'chartkick', '~> 4.0', '>= 4.0.5'
