@@ -1,7 +1,7 @@
 class EstatesController < ApplicationController
   before_action :set_estate, only: [ :show ,:edit ,:update ,:destroy ]
   before_action :authenticate_user!, except: [:show, :index]
-  before_action :user_autorization, only: [ :show ,:edit ,:update ,:destroy, :new ]
+  before_action :user_autorization, only: [ :edit ,:update ,:destroy, :new ]
 
   # GET /estates or /estates.json
   def index
@@ -15,6 +15,7 @@ class EstatesController < ApplicationController
     @all = Payroll.all()
     @dpto_payroll = Payroll.where(estate_id: Estate.where(department_id: @estate.department_id))
     @payrolls = Payroll.where(estate_id: @estate.id)
+    @payroll_productor = Payroll.where(estate_id: current_user.estates.ids)
     respond_to do |format|
       format.html
       format.pdf do

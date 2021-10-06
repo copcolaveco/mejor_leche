@@ -5,8 +5,8 @@ class PayrollsController < ApplicationController
 
   # GET /payrolls or /payrolls.json
   def index
-    @payrolls = current_user.payrolls.order(saved_date: :desc)
-    @estates = current_user.estates.order(created_at: :desc)     
+    @payrolls = Payroll.where(estate_id: current_user.estates.ids )
+    @estates = current_user.estates.order(created_at: :desc)  
   end
 
   # GET /payrolls/1 or /payrolls/1.json
@@ -107,7 +107,7 @@ class PayrollsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_payroll
-      @payroll = current_user.payrolls.find(params[:id])
+      @payroll = Payroll.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

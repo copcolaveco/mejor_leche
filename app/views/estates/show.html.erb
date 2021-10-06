@@ -32,10 +32,11 @@
 
 	<%= line_chart [
 		{name: "Recuento Celular (cel/mL)", data:  @payrolls.group_by_month(:saved_date).sum(:cell_count)},
+		{name: "Recuento Celular mis predios (cel/mL)", data:  @payroll_productor.group_by_month(:saved_date).sum(:cell_count)},
 		{name: "RC a nivel Nacional (cel/mL)", data:  @all.group_by_month(:saved_date).average(:cell_count)},
 		{name: "RC a nivel Departamental (cel/mL)", data:  @dpto_payroll.group_by_month(:saved_date).average(:cell_count)},
 		{name: "Valor recomendado (cel/mL)", data: @all.group_by_month(:saved_date).average(:recommended_value_rc) }
-		], ytitle: "(cel/mL)", discrete: true, colors: ["#199f49", "#666","#0000ff", "#ecab0f"] %>
+		], ytitle: "(cel/mL)", discrete: true, colors: ["#199f49", "#999f49", "#666","#0000ff", "#ecab0f"] %>
 </div>
 
 
@@ -46,10 +47,11 @@
 	<h4 class="subtitulos_informes_graficas">Se recomienda un % de Litros no remitidos / Litros totales menor al 5%</h4>
 	<%= line_chart [
 		{name: "Relación LR/LT (%)", data:  @payrolls.group_by_month(:saved_date).sum(:proportion_NR_NP)},
+		{name: "Relación LR/LT (%) mis predios (cel/mL)", data:  @payroll_productor.group_by_month(:saved_date).sum(:proportion_NR_NP)},
 		{name: "LnR/LT a nivel Nacional (%)", data:  @all.group_by_month(:saved_date).average(:proportion_NR_NP)},
 		{name: "LnR/LT a nivel Departamental (%)", data:  @dpto_payroll.group_by_month(:saved_date).average(:proportion_NR_NP)},
 		{name: "Valor recomendado (%)", data: @all.group_by_month(:saved_date).average(:recommended_value_LNR_LT) }
-		], ytitle: "(%)", discrete: true, colors: ["#199f49", "#666","#0000ff", "#ecab0f"] %>
+		], ytitle: "(%)", discrete: true, colors: ["#199f49", "#999f49", "#666","#0000ff", "#ecab0f"] %>
 </div>
 
 <div>
