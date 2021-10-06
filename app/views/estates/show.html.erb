@@ -139,7 +139,7 @@
 		{name: "Crioscopía a nivel Departamental (ºC)", data:  @dpto_payroll.group_by_month(:saved_date).average(:cryoscopy)},
 		{name: "Valor recomendado Mínimo (ºC)", data: @all.group_by_month(:saved_date).average(:recommended_value_cryoscopy_min) },
 		{name: "Valor recomendado Máximo (ºC)", data: @all.group_by_month(:saved_date).average(:recommended_value_cryoscopy_max) }
-		], ytitle: "(ºC)", discrete: true, colors: ["#199f49","#999f49","#666","#0000ff", "#b00", "#b00"] %>
+		], ytitle: "(ºC)", discrete: true, colors: ["#199f49","#999f49","#666","#0000ff", "#b00", "#b00"], round: 3, zeros: true  %>
 </div>
 
 <div>
