@@ -103,7 +103,7 @@
 		{name: "Lactosa a nivel Departamental (%)", data:  @dpto_payroll.group_by_month(:saved_date).average(:lactose)},
 		{name: "Valor recomendado Mínimo (%)", data: @all.group_by_month(:saved_date).average(:recommended_value_lactose_min) },
 		{name: "Valor recomendado Máximo (%)", data: @all.group_by_month(:saved_date).average(:recommended_value_lactose_max) }
-		], ytitle: "(%)", discrete: true, colors: ["#199f49", "#666","#0000ff", "#b00", "#b00"] %>
+		], ytitle: "(%)", discrete: true, colors: ["#199f49", "#666","#0000ff", "#b00", "#b00"], min: 4, max: 6 %>
 </div>
 
 <div>
@@ -112,12 +112,12 @@
   	</h3>
 	<h4 class="subtitulos_informes_graficas">El rango recomendado de MUN es 10 a 20 mg/dL</h4>
 	<%= column_chart [
-		{name: "MUN (mg/dL)", data:  @payrolls.group_by_month(:saved_date).sum(:MUN)},
+		{name: "MUN (mg/dL)", data:  @payrolls.group_by_month(:saved_date).sum(:MUN) },
 		{name: "MUN a nivel Nacional (mg/dL)", data:  @all.group_by_month(:saved_date).average(:MUN)},
 		{name: "MUN a nivel Departamental (mg/dL)", data:  @dpto_payroll.group_by_month(:saved_date).average(:MUN)},
 		{name: "Valor recomendado Minimo (mg/dL)", data: @all.group_by_month(:saved_date).average(:recommended_value_MUN_min ) },
 		{name: "Valor recomendado Máximo (mg/dL)", data: @all.group_by_month(:saved_date).average(:recommended_value_MUN_max) }
-		], ytitle: "(mg/dl)", discrete: true, colors: ["#199f49", "#666","#0000ff", "#b00", "#b00"] %>
+		], ytitle: "(mg/dl)", discrete: true, colors: ["#199f49", "#666","#0000ff", "#b00", "#b00"], download: true %>
 </div>
 
 <div>
@@ -157,7 +157,7 @@
 		{name: "Consumo Concentrado (%)", data:  @payrolls.group_by_month(:saved_date).sum(:dry_base_concentrate)},
 		{name: "Consumo Reserva (%)", data:  @payrolls.group_by_month(:saved_date).sum(:dry_base_reserve)},
 		{name: "Consumo Pasturas (%)", data: @payrolls.group_by_month(:saved_date).sum(:dry_base_pasture ) }
-		], ytitle: "(%)", discrete: true %>
+		], ytitle: "(%)", discrete: true, stacked: true %>
 </div>
 
 <div>
@@ -171,7 +171,7 @@
 		{name: "Aporte proteía henilaje (kg/VO/día)", data: @payrolls.group_by_month(:saved_date).sum(:daily_proteins_henilaje ) },
 		{name: "Aporte proteía silo (kg/VO/día)", data: @payrolls.group_by_month(:saved_date).sum(:daily_proteins_silo ) },
 		{name: "Aporte proteía pastura (kg/VO/día)", data: @payrolls.group_by_month(:saved_date).sum(:daily_proteins_pasture_consumption ) }
-		], ytitle: "(kg/VO/día)", discrete: true %>
+		], ytitle: "(kg/VO/día)", discrete: true, stacked: true %>
 </div>
 
 <div>
