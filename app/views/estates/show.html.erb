@@ -47,7 +47,7 @@
 	<h4 class="subtitulos_informes_graficas">Se recomienda un % de Litros no remitidos / Litros totales menor al 5%</h4>
 	<%= line_chart [
 		{name: "Relación LR/LT (%)", data:  @payrolls.group_by_month(:saved_date).sum(:proportion_NR_NP)},
-		{name: "Relación LR/LT (%) mis predios (cel/mL)", data:  @payroll_productor.group_by_month(:saved_date).sum(:proportion_NR_NP)},
+		{name: "Relación LR/LT (%) mis predios", data:  @payroll_productor.group_by_month(:saved_date).sum(:proportion_NR_NP)},
 		{name: "LnR/LT a nivel Nacional (%)", data:  @all.group_by_month(:saved_date).average(:proportion_NR_NP)},
 		{name: "LnR/LT a nivel Departamental (%)", data:  @dpto_payroll.group_by_month(:saved_date).average(:proportion_NR_NP)},
 		{name: "Valor recomendado (%)", data: @all.group_by_month(:saved_date).average(:recommended_value_LNR_LT) }
@@ -61,10 +61,11 @@
 	<h4 class="subtitulos_informes_graficas">El valor de recuento bacteriano recomendado es menor a 30.000 UFC/mL</h4>
 	<%= line_chart [
 		{name: "Recuento Bacteriano (UFC/mL)", data:  @payrolls.group_by_month(:saved_date).sum(:bacterial_count)},
+		{name: "Recuento Bacteriano (UFC/mL) mis predios", data:  @payroll_productor.group_by_month(:saved_date).sum(:bacterial_count)},
 		{name: "RB a nivel Nacional (UFC/mL)", data:  @all.group_by_month(:saved_date).average(:bacterial_count)},
 		{name: "RB a nivel Departamental (UFC/mL)", data:  @dpto_payroll.group_by_month(:saved_date).average(:bacterial_count)},
 		{name: "Valor recomendado (UFC/mL)", data: @all.group_by_month(:saved_date).average(:recommended_value_rb) }
-		], ytitle: "(UFC/mL)", discrete: true, colors: ["#199f49", "#666","#0000ff", "#ecab0f"] %>
+		], ytitle: "(UFC/mL)", discrete: true, colors: ["#199f49", "#999f49", "#666","#0000ff", "#ecab0f"] %>
 </div>
 
 <div>
@@ -74,10 +75,11 @@
 	<h4 class="subtitulos_informes_graficas">El valor de % grasa no debe ser menor a  3,3%</h4>
 	<%= line_chart [
 		{name: "Grasa (%)", data:  @payrolls.group_by_month(:saved_date).sum(:grease)},
+		{name: "Grasa (%) mis predios", data:  @payroll_productor.group_by_month(:saved_date).sum(:grease)},
 		{name: "Grasa a nivel Nacional (%)", data:  @all.group_by_month(:saved_date).average(:grease)},
 		{name: "Grasa a nivel Departamental (%)", data:  @dpto_payroll.group_by_month(:saved_date).average(:grease)},
 		{name: "Valor recomendado (%)", data: @all.group_by_month(:saved_date).average(:recommended_value_grase) }
-		], ytitle: "(%)", discrete: true, colors: ["#199f49", "#666","#0000ff", "#ecab0f"] %>
+		], ytitle: "(%)", discrete: true, colors: ["#199f49","#999f49", "#666","#0000ff", "#ecab0f"] %>
 </div>
 
 <div>
@@ -87,11 +89,12 @@
 	<h4 class="subtitulos_informes_graficas">El valor de % proteina entre 3 y 4%</h4>
 	<%= line_chart [
 		{name: "Proteína (%)", data:  @payrolls.group_by_month(:saved_date).sum(:protein)},
+		{name: "Proteína (%) mis predios", data:  @payroll_productor.group_by_month(:saved_date).sum(:protein)},
 		{name: "Proteína a nivel Nacional (%)", data:  @all.group_by_month(:saved_date).average(:protein)},
 		{name: "Proteína a nivel Departamental (%)", data:  @dpto_payroll.group_by_month(:saved_date).average(:protein)},
 		{name: "Valor recomendado Mínimo (%)", data: @all.group_by_month(:saved_date).average(:recommended_value_protein_min) },
 		{name: "Valor recomendado Máximo (%)", data: @all.group_by_month(:saved_date).average(:recommended_value_protein_max) }
-		], ytitle: "(%)", discrete: true, colors: ["#199f49", "#666","#0000ff", "#b00", "#b00"] %>
+		], ytitle: "(%)", discrete: true, colors: ["#199f49","#999f49", "#666","#0000ff", "#b00", "#b00"] %>
 </div>
 
 <div>
@@ -101,11 +104,12 @@
 	<h4 class="subtitulos_informes_graficas">El valor de % lactosa deseable entre 4,5 y  5 %</h4>
 	<%= line_chart [
 		{name: "Lactosa (%)", data:  @payrolls.group_by_month(:saved_date).sum(:lactose)},
+		{name: "Lactosa (%) mis predios", data:  @payroll_productor.group_by_month(:saved_date).sum(:lactose)},
 		{name: "Lactosa a nivel Nacional (%)", data:  @all.group_by_month(:saved_date).average(:lactose)},
 		{name: "Lactosa a nivel Departamental (%)", data:  @dpto_payroll.group_by_month(:saved_date).average(:lactose)},
 		{name: "Valor recomendado Mínimo (%)", data: @all.group_by_month(:saved_date).average(:recommended_value_lactose_min) },
 		{name: "Valor recomendado Máximo (%)", data: @all.group_by_month(:saved_date).average(:recommended_value_lactose_max) }
-		], ytitle: "(%)", discrete: true, colors: ["#199f49", "#666","#0000ff", "#b00", "#b00"], min: 4, max: 6 %>
+		], ytitle: "(%)", discrete: true, colors: ["#199f49","#999f49", "#666","#0000ff", "#b00", "#b00"], min: 4, max: 6 %>
 </div>
 
 <div>
@@ -115,11 +119,12 @@
 	<h4 class="subtitulos_informes_graficas">El rango recomendado de MUN es 10 a 20 mg/dL</h4>
 	<%= column_chart [
 		{name: "MUN (mg/dL)", data:  @payrolls.group_by_month(:saved_date).sum(:MUN) },
+		{name: "MUN (mg/dL) mis predios", data:  @payroll_productor.group_by_month(:saved_date).sum(:MUN)},
 		{name: "MUN a nivel Nacional (mg/dL)", data:  @all.group_by_month(:saved_date).average(:MUN)},
 		{name: "MUN a nivel Departamental (mg/dL)", data:  @dpto_payroll.group_by_month(:saved_date).average(:MUN)},
 		{name: "Valor recomendado Minimo (mg/dL)", data: @all.group_by_month(:saved_date).average(:recommended_value_MUN_min ) },
 		{name: "Valor recomendado Máximo (mg/dL)", data: @all.group_by_month(:saved_date).average(:recommended_value_MUN_max) }
-		], ytitle: "(mg/dl)", discrete: true, colors: ["#199f49", "#666","#0000ff", "#b00", "#b00"], download: true %>
+		], ytitle: "(mg/dl)", discrete: true, colors: ["#199f49","#999f49", "#666","#0000ff", "#b00", "#b00"], download: true %>
 </div>
 
 <div>
@@ -129,11 +134,12 @@
 	<h4 class="subtitulos_informes_graficas">El rango recomendado entre  -0,510 y -0,530.</h4>
 	<%= line_chart [
 		{name: "Crioscopía (ºC)", data:  @payrolls.group_by_month(:saved_date).sum(:cryoscopy)},
+		{name: "Crioscopía (ºC) mis predios", data:  @payroll_productor.group_by_month(:saved_date).sum(:cryoscopy)},
 		{name: "Crioscopía a nivel Nacional (ºC)", data:  @all.group_by_month(:saved_date).average(:cryoscopy)},
 		{name: "Crioscopía a nivel Departamental (ºC)", data:  @dpto_payroll.group_by_month(:saved_date).average(:cryoscopy)},
 		{name: "Valor recomendado Mínimo (ºC)", data: @all.group_by_month(:saved_date).average(:recommended_value_cryoscopy_min) },
 		{name: "Valor recomendado Máximo (ºC)", data: @all.group_by_month(:saved_date).average(:recommended_value_cryoscopy_max) }
-		], ytitle: "(ºC)", discrete: true, colors: ["#199f49", "#666","#0000ff", "#b00", "#b00"] %>
+		], ytitle: "(ºC)", discrete: true, colors: ["#199f49","#999f49","#666","#0000ff", "#b00", "#b00"] %>
 </div>
 
 <div>
@@ -143,10 +149,11 @@
 	<h4 class="subtitulos_informes_graficas">El % de Mastitis clínica / VO recomendado es inferior al 5%</h4>
 	<%= line_chart [
 		{name: "Mastitis (%)", data:  @payrolls.group_by_month(:saved_date).sum(:clinical_mastitis)},
+		{name: "Mastitis (%) mis predios", data:  @payroll_productor.group_by_month(:saved_date).sum(:clinical_mastitis)},
 		{name: "Mastitis a nivel Nacional (%)", data:  @all.group_by_month(:saved_date).average(:clinical_mastitis)},
 		{name: "Mastitis a nivel Departamental (%)", data:  @dpto_payroll.group_by_month(:saved_date).average(:clinical_mastitis)},
 		{name: "Valor recomendado (%)", data: @all.group_by_month(:saved_date).average(:recommended_value_mastitis) }
-		], ytitle: "(%)", discrete: true, colors: ["#199f49", "#666","#0000ff", "#ecab0f"] %>
+		], ytitle: "(%)", discrete: true, colors: ["#199f49","#999f49", "#666","#0000ff", "#ecab0f"] %>
 </div>
 
 <h3 class="titulos_informes_graficas">INDICADORES NUTRICIONALES</h3>
