@@ -5,6 +5,8 @@
   <thead class="table-dark">
     <tr>
       <th>Predio:</th>
+      <th>Productor:</th>
+      <th>Creada por:</th>
       <th>Departamento:</th>
       <th>Fecha:</th>
       <th colspan="2"></th>
@@ -15,6 +17,8 @@
     <% @payrolls.each do |payroll| %>
       <tr>
         <td><%= payroll.estate.name %></td>
+        <td><%= payroll.estate.user.username %></td>
+        <td><%= payroll.user.username %></td>
         <td><%= payroll.estate.department.name %></td>
         <td><%= payroll.saved_date.strftime("%Y %m") %></td>
         <td>
