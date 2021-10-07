@@ -15,7 +15,7 @@ class EstatesController < ApplicationController
     @all = Payroll.all()
     @dpto_payroll = Payroll.where(estate_id: Estate.where(department_id: @estate.department_id))
     @payrolls = Payroll.where(estate_id: @estate.id)
-    @payroll_productor = Payroll.where(estate_id: current_user.estates.ids)
+    @payroll_productor = Payroll.where(estate_id: Estate.select("id").where(user_id: @estate.user.id))
     respond_to do |format|
       format.html
       format.pdf do
