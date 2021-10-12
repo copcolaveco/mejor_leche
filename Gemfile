@@ -23,9 +23,7 @@ gem 'jquery-rails', '4.3.5'
 gem 'chart-js-rails', '~> 0.0.9'
 gem 'figaro', '~> 1.2'
 gem 'better_errors', '~> 2.9', '>= 2.9.1'
-
-# Transform HTML into PDF/PNG/JPEG using Google Puppeteer/Chromium
-gem 'grover', '~> 1.0', '>= 1.0.6'
+gem 'rails_12factor', '~> 0.0.3'
 
 #Create beautiful JavaScript charts with one line of Ruby
 gem 'chartkick', '~> 4.0', '>= 4.0.5'
@@ -42,7 +40,8 @@ group :development do
 end
 
 group :production do
-  gem 'rails_12factor', '0.0.2'
+  
+  #gem 'rails_12factor', '0.0.2'
 end
 
 group :test do
