@@ -2,6 +2,7 @@ class EstatesController < ApplicationController
   before_action :set_estate, only: [ :show ,:edit ,:update ,:destroy ]
   before_action :authenticate_user!, except: [:show, :index]
   before_action :user_autorization, only: [ :edit ,:update ,:destroy, :new ]
+  include ActionController::MimeResponds
 
   # GET /estates or /estates.json
   def index
@@ -12,18 +13,42 @@ class EstatesController < ApplicationController
 
   # GET /estates/1 or /estates/1.json
   def show
+    @class_name = @estate.class.name
+
+    # controller = ActionController::Base.new
+    # html = controller.render_to_string(template: 'estates/show', layout: 'pdf')
+    
+
     @all = Payroll.all()
     @dpto_payroll = Payroll.where(estate_id: Estate.where(department_id: @estate.department_id))
     @payrolls = Payroll.where(estate_id: @estate.id)
     @payroll_productor = Payroll.where(estate_id: Estate.select("id").where(user_id: @estate.user.id))
+    @estates = current_user.estates.order(created_at: :desc)
+
+
+    html_string = render_to_string(
+      {
+         template: 'estates/show.html.erb',
+         locals: { id: params[:id] }
+      })
+
+    pdf = Grover.new(html_string, format: 'A4').to_pdf
     respond_to do |format|
       format.html
       format.pdf do
-        render pdf: "Predio.pdf", template: "estates/show.html.erb", layout: 'pdf.html', type: "application/pdf"
+        send_data(pdf, filename: 'reporte.pdf', type: 'application/pdf')
+        
+        # render pdf: "Predio.pdf", template: "estates/show.html.erb", layout: 'pdf.html', type: "application/pdf"
       end
     end    
   end
 
+  def generate_pdf
+    pdf_report_template = 'estates/show'
+    formatter = PdfFormatter.new(@estate, pdf_report_template)
+    formatter.generate_pdf_document
+  end
+  
   # GET /estates/new
   def new    
     @estate = current_user.estates.build

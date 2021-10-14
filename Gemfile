@@ -25,6 +25,14 @@ gem 'figaro', '~> 1.2'
 gem 'better_errors', '~> 2.9', '>= 2.9.1'
 gem 'rails_12factor', '~> 0.0.3'
 
+gem 'grover', '~> 0.12.3'
+
+# Extracting `assigns` and `assert_template` from ActionDispatch.
+gem 'rails-controller-testing', '~> 1.0', '>= 1.0.5'
+
+# Using binding_of_caller we can grab bindings from higher up the call stack and evaluate code in that context
+gem 'binding_of_caller', '~> 1.0'
+
 #Create beautiful JavaScript charts with one line of Ruby
 gem 'chartkick', '~> 4.0', '>= 4.0.5'
 gem 'groupdate', '~> 5.2', '>= 5.2.2'
