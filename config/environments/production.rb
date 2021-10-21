@@ -1,11 +1,6 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
-
-  const browser = await puppeteer.launch({
-    headless: true,
-    args: ['--use-gl=egl'],
-  });
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
