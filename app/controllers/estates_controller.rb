@@ -26,28 +26,28 @@ class EstatesController < ApplicationController
     @estates = current_user.estates.order(created_at: :desc)
 
 
-    html_string = render_to_string(
-      {
-         template: 'estates/show.html.erb',
-         locals: { id: params[:id] }
-      })
+    # html_string = render_to_string(
+    #   {
+    #      template: 'estates/show.html.erb',
+    #      locals: { id: params[:id] }
+    #   })
 
-    pdf = Grover.new(html_string, format: 'A4').to_pdf
+    # pdf = Grover.new(html_string, format: 'A4').to_pdf
     respond_to do |format|
       format.html
       format.pdf do
-        send_data(pdf, filename: 'reporte.pdf', type: 'application/pdf')
+        #send_data(pdf, filename: 'reporte.pdf', type: 'application/pdf')
         
-        # render pdf: "Predio.pdf", template: "estates/show.html.erb", layout: 'pdf.html', type: "application/pdf"
+         render pdf: "Predio.pdf", template: "estates/show.html.erb", layout: 'pdf.html', type: "application/pdf"
       end
     end    
   end
 
-  def generate_pdf
-    pdf_report_template = 'estates/show'
-    formatter = PdfFormatter.new(@estate, pdf_report_template)
-    formatter.generate_pdf_document
-  end
+  # def generate_pdf
+  #   pdf_report_template = 'estates/show'
+  #   formatter = PdfFormatter.new(@estate, pdf_report_template)
+  #   formatter.generate_pdf_document
+  # end
   
   # GET /estates/new
   def new    

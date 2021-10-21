@@ -11,17 +11,17 @@ class PayrollsController < ApplicationController
 
   # GET /payrolls/1 or /payrolls/1.json
   def show
-    html_string = render_to_string(
-      {
-         template: 'payrolls/show.html.erb',
-         locals: { id: params[:id] }
-      })
-    pdf = Grover.new(html_string, format: 'A4').to_pdf
+    # html_string = render_to_string(
+    #   {
+    #      template: 'payrolls/show.html.erb',
+    #      locals: { id: params[:id] }
+    #   })
+    # pdf = Grover.new(html_string, format: 'A4').to_pdf
     respond_to do |format|
       format.html
       format.pdf do
-        send_data(pdf, filename: 'reporte.pdf', type: 'application/pdf')
-        # render pdf: "#{@payroll.saved_date.strftime("%Y %m %d")}, #{@payroll.estate}.pdf", template: "payrolls/show.html.erb", layout: 'pdf.html', type: "application/pdf"
+        # send_data(pdf, filename: 'reporte.pdf', type: 'application/pdf')
+        render pdf: "#{@payroll.saved_date.strftime("%Y %m %d")}, #{@payroll.estate}.pdf", template: "payrolls/show.html.erb", layout: 'pdf.html', type: "application/pdf"
       end
     end
     
