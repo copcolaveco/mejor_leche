@@ -37,6 +37,8 @@ gem 'binding_of_caller', '~> 1.0'
 gem 'chartkick', '~> 4.0', '>= 4.0.5'
 gem 'groupdate', '~> 5.2', '>= 5.2.2'
 
+gem 'wkhtmltopdf-heroku', '2.12.6.0'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
