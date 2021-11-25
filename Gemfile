@@ -17,7 +17,7 @@ gem "bootstrap_form", "~> 4.0"
 gem 'pg', '~> 1.2', '>= 1.2.3'
 gem 'kaminari', '~> 1.2', '>= 1.2.1'
 gem 'wicked_pdf', '~> 2.1'
-gem 'wkhtmltopdf-binary', '~> 0.12.6.5'
+gem 'wkhtmltopdf-binary', '~> 0.12.3'
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.7'
 gem 'jquery-rails', '4.3.5'
 gem 'chart-js-rails', '~> 0.0.9'
