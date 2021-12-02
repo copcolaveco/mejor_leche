@@ -1,7 +1,5 @@
-*.psd
-*.pdf
-test
-spec
-features
-doc
-public
+# cat .slugignore
+
+/test
+/spec
+/docss
