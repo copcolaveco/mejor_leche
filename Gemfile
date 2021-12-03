@@ -27,8 +27,7 @@ gem 'rails_12factor', '~> 0.0.3'
 
 gem 'grover', '~> 0.12.3'
 
-# Extracting `assigns` and `assert_template` from ActionDispatch.
-gem 'rails-controller-testing', '~> 1.0', '>= 1.0.5'
+
 
 # Using binding_of_caller we can grab bindings from higher up the call stack and evaluate code in that context
 gem 'binding_of_caller', '~> 1.0'
@@ -58,6 +57,8 @@ group :test do
   gem 'capybara', '>= 3.26'
   gem 'selenium-webdriver'
   gem 'webdrivers'
+  # Extracting `assigns` and `assert_template` from ActionDispatch.
+gem 'rails-controller-testing', '~> 1.0', '>= 1.0.5'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
