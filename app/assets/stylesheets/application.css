@@ -448,7 +448,9 @@ body{
     color: #721c24;
 }
 
-
+#send_email{
+    opacity: 0;
+}
 
 #alertSuccess{
     background: #d4edda;

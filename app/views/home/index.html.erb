@@ -165,6 +165,8 @@
 			<div class="fiels-btn">
 				<input type="submit" class="btn btn-input" value="Enviar">
 			</div>
+
+			<a href="mailto:sebastianabellauribe@gmail.com" id="send_email">MAil</a>
 		</form>
      </section>
 
@@ -221,6 +223,10 @@ var formulario = document.getElementById("formulario");
                }, 2000);     
           }else{
                e.preventDefault();
+				const form = new FormData(this)
+				const $send = document.querySelector('#send_email')
+				$send.setAttribute('href',  `mailto:colaveco@gmail.com?subject=${form.get('nombre')}&body=${form.get('comentarios')}`)
+				$send.click()
                alertSuccess.classList.remove("hide");
                alertSuccess.classList.add("show");
 
